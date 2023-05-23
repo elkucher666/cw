@@ -2,82 +2,130 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Творческий цех - администрация</title>
-        <link rel="shortcut icon" href="img/MainLogo2.png">
+        <title>Творческий цех</title>
+        <link rel="shortcut icon" href="img/LogoWeb.png">
         <link rel="stylesheet" type="text/css" href="css/mainstyleadmin.css">
+        <!--script src="js/jquery-3.6.4.min.js"></script-->
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/moment-with-locales.min.js"></script> <!-- библиотека moment-with-locales.min.js -->
-        <script src="js/Filter.js"></script>
+        <script type="text/javascript" src="js/bitroidCalendarEv1.js"></script> <!-- плагин CalendarEvents -->
+        <script src="js/Catalog.js"></script>
+        <script src="js/Caledar.js"></script>
+        <script src="js/Booking.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Montserrat+Alternates&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     </head>
     <body style="margin: 0;">
-        <div class="logoline">
-            <div class="Logo">
-                <img class="LogoImg" src="img/MainLogo1.png">
-            </div>
-        </div>
-        <div class="header">            
+        <div class="header">
+            <img class="LogoImg" src="img/MainLogo1.png">      
             <div class="linename">
-                <div class="decor"></div>
-                <div class="decor1"></div>
-                <div class="name">РАСПИСАНИЕ МАСТЕРСКИХ</div>
+                <p class="name">РАС<span class="decor-1">П</span>ИСАНИЕ МАСТЕ<span class="decor-2">Р</span>СКИХ</p>
             </div>
         </div>
         <div class="content">
-            <button class="filterbut">
-                <img src="img/Filtr.png">
-                <img class="butfilt" src="img/ButFilt.png">
-            </button>
-            <div class="filtersenting">
-                <div class="filtersetup" style="margin-left: 10vw;">
-                    <div class="periodfilt">
-                        Период:
-                        <div class="date">
-                            с:<input id="datebeg" type="date">
-                            по:<input id="dateend" type="date">
+            <div class="filter">
+                <div class="filterrow">
+                    <div class="filtercol">
+                        <div class="periodfilt">
+                            Период:
+                            <div class="date">
+                                с:<input id="datebeg" type="date">
+                                по:<input id="dateend" type="date">
+                            </div>
+                        </div>
+                        <div class="typerooms">
+                            Помещения:
+                            <select id="rooms">
+                                <option value="">Все</option>
+                                <option value="">АУДИТОРИЯ №1</option>
+                                <option value="">АУДИТОРИЯ №2</option>
+                                <option value="">АУДИТОРИЯ №3</option>
+                                <option value="">АУДИТОРИЯ №4</option>
+                                <option value="">АУДИТОРИЯ №5</option>
+                                <option value="">АУДИТОРИЯ №6</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="typerooms">
-                        Помещения:
-                        <select id="rooms">
-                            <option value="">Все</option>
-                            <option value="">АУДИТОРИЯ №1</option>
-                            <option value="">АУДИТОРИЯ №2</option>
-                            <option value="">АУДИТОРИЯ №3</option>
-                            <option value="">АУДИТОРИЯ №4</option>
-                            <option value="">АУДИТОРИЯ №5</option>
-                            <option value="">АУДИТОРИЯ №6</option>
-                        </select>
+                    <div class="filtercol">
+                        <div class="status">
+                            Статус:
+                            <select id="statusroom">
+                                <option value="">Все</option>
+                                <option value="">Одобреные</option>
+                                <option value="">Неодобреные</option>
+                                <option value="">На расмотрение</option>
+                            </select>
+                        </div>
+                        <div class="statuspeople">
+                            Должность:
+                            <select id="statuspeople">
+                                <option value="">Все</option>
+                                <option value="">Преподаватель</option>
+                                <option value="">Студент</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="filtersetup">
-                    <div class="status">
-                        Статус:
-                        <select id="statusroom">
-                            <option value="">Все</option>
-                            <option value="">Одобреные</option>
-                            <option value="">Неодобреные</option>
-                            <option value="">На расмотрение</option>
-                        </select>
-                    </div>
-                    <div class="statuspeople">
-                        Должность:
-                        <select id="statuspeople">
-                            <option value="">Все</option>
-                            <option value="">Преподаватель</option>
-                            <option value="">Студент</option>
-                        </select>
+                <div class="filterrow">
+                    <div class="filtbutgroup">
+                        <button id="yfilter" class="butsfilter">Сортировать</button>
+                        <button id="nfilter" class="butsfilter">Отчистить</button>
                     </div>
                 </div>
+            </div>
+            <!-- <div class="filtersenting">
+                <div class="filtergroup">
+                    <div class="filtersetup">
+                        <div class="periodfilt">
+                            Период:
+                            <div class="date">
+                                с:<input id="datebeg" type="date">
+                                по:<input id="dateend" type="date">
+                            </div>
+                        </div>
+                        <div class="typerooms">
+                            Помещения:
+                            <select id="rooms">
+                                <option value="">Все</option>
+                                <option value="">АУДИТОРИЯ №1</option>
+                                <option value="">АУДИТОРИЯ №2</option>
+                                <option value="">АУДИТОРИЯ №3</option>
+                                <option value="">АУДИТОРИЯ №4</option>
+                                <option value="">АУДИТОРИЯ №5</option>
+                                <option value="">АУДИТОРИЯ №6</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filtersetup">
+                        <div class="status">
+                            Статус:
+                            <select id="statusroom">
+                                <option value="">Все</option>
+                                <option value="">Одобреные</option>
+                                <option value="">Неодобреные</option>
+                                <option value="">На расмотрение</option>
+                            </select>
+                        </div>
+                        <div class="statuspeople">
+                            Должность:
+                            <select id="statuspeople">
+                                <option value="">Все</option>
+                                <option value="">Преподаватель</option>
+                                <option value="">Студент</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="filtersetup">
                     <div class="butsfiltergroup">
                         <button id="yfilter" class="butsfilter">Применить</button>
                         <button id="nfilter" class="butsfilter">Отчистить</button>
                     </div>
                 </div>                
-            </div>
+            </div> -->
             <div class="groupbuttime">
                 <button class="today">
                     СЕГОДНЯ
