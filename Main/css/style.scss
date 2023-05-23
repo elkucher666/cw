@@ -1,0 +1,156 @@
+body {
+    margin: 0;
+    background-color: white;
+    font-family: "Rubik", sans-serif; 
+
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        border: none;
+        outline: none;
+        font-family: "Century Gothic";
+    }
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-light-grey);
+    transition: 0.2s;
+    &:hover {
+        color: var(--color-orange);
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    display: block;
+    font-size: 1rem;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-weight: bold;
+}
+
+
+.none {
+    display: none !important;
+}
+
+$hratio: 100vw / 1440;
+
+.container {
+    display: flex;
+    flex-direction: row;
+
+    aside {
+        display: flex;
+        flex-direction: column;
+        background-color: black;
+        .logo {
+            height: calc(400 * $hratio);
+            img {
+                height: 100%;
+            }
+        }
+    }
+
+    .body {
+        header {
+            background-image: url(./../img/header_background.png);
+            background-size: 100% 110%;
+            height: calc(264 * $hratio);
+
+            .name {
+                padding-top: calc(90*$hratio*1.2);
+                padding-left: calc(330*$hratio);
+                font-weight: 700;
+                font-size: calc(50*$hratio);
+                font-style: normal;
+                color: white;
+            }
+        }
+
+        main {
+            .greeting {
+                background-image: url(./../img/greeting_background.png);
+                background-size: 100% 105%;
+                margin-top: calc(90*$hratio*1.2);
+                margin-left: calc(207*$hratio);
+                padding-top: calc(66*$hratio*1.2);
+                padding-left: calc(72*$hratio);
+                height: calc(397*$hratio);
+                color: white;
+                font-style: normal;
+                font-weight: 700;
+                font-size: calc(40*$hratio);
+            }
+
+            .wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .radio {
+                    background: #454857;
+                    padding: 4px;
+                    border-radius: 3px;
+                    box-shadow: inset 0 0 0 3px rgba(35, 33, 45, 0.3),
+                        0 0 0 3px rgba(185, 185, 185, 0.3);
+                    position: relative;
+
+                    input {
+                        width: auto;
+                        height: 100%;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+                        appearance: none;
+                        outline: none;
+                        cursor: pointer;
+                        border-radius: 2px;
+                        padding: 4px 8px;
+                        background: #454857;
+                        color: #bdbdbdbd;
+                        font-size: 14px;
+                        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                            "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+                            "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                        transition: all 100ms linear;
+
+                        &:checked {
+                            background-image: linear-gradient(180deg, #95d891, #74bbad);
+                            color: #fff;
+                            box-shadow: 0 1px 1px #0000002e;
+                            text-shadow: 0 1px 0px #79485f7a;
+                        }
+
+                        &:before {
+                            content: attr(label);
+                            display: inline-block;
+                            text-align: center;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            
+        }
+    }
+}
+
+
+
+

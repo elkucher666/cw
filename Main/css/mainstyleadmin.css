@@ -1,0 +1,179 @@
+body {
+  background-color: #C9404A;
+}
+
+.logoline {
+  background-color: #1A1819;
+  height: 100%;
+  padding: 2vw;
+  position: fixed;
+  margin: 0vw 2vw;
+  top: 0;
+  width: 9vw;
+  z-index: 2;
+}
+.logoline .LogoImg {
+  padding: 20% 0%;
+  height: 30%;
+  width: 100%;
+}
+
+.header {
+  background-color: #C9404A;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 13px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+}
+.header .linename {
+  border: 0.5vw solid #ffffff;
+  margin: 2vw 10vw 2vw 30vw;
+  height: -moz-min-content;
+  height: min-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.header .linename .decor {
+  width: 2.5vw;
+  height: 8vw;
+  background-color: #1A1819;
+  position: absolute;
+  top: 1vw;
+  left: 45vw;
+  z-index: -1;
+}
+.header .linename .decor1 {
+  width: 1.5vw;
+  height: 3.5vw;
+  background-color: #1A1819;
+  position: absolute;
+  top: 5.2vw;
+  left: 72.5vw;
+  z-index: -1;
+}
+.header .linename .name {
+  color: #ffffff;
+  font-family: "Century Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3.5vw;
+  line-height: 100%;
+  margin: 1vw;
+  white-space: nowrap;
+}
+
+.content {
+  margin: 20vw 0vw;
+  display: flex;
+  flex-direction: column;
+}
+.content .filterbut {
+  background-color: #C9404A;
+  border: none;
+  width: -moz-min-content;
+  width: min-content;
+  margin: 1vw;
+  margin-left: 20vw;
+  display: flex;
+  align-items: center;
+}
+.content .filterbut img {
+  width: 6vw;
+}
+.content .filterbut .butfilt {
+  width: 3vw;
+}
+.content .filtersenting {
+  background-color: #952930;
+  box-shadow: inset 0px 0px 10px 9px rgba(0, 0, 0, 0.45);
+  display: flex;
+  padding: 5vw;
+  color: #ffffff;
+  font-family: "Century Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2vw;
+  height: -moz-max-content;
+  height: max-content;
+  transition: 0.7s;
+}
+.content .filtersenting .filtersetup input, .content .filtersenting .filtersetup select {
+  background-color: #1A1819;
+  border: none;
+  color: #ffffff;
+  font-family: "Century Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2vw;
+  -webkit-appearance: none;
+  padding: 0.5vw;
+  width: 17vw;
+  text-align: center;
+  margin: 0vw 1vw;
+  -webkit-padding-start: 0;
+          padding-inline-start: 0;
+}
+.content .filtersenting .filtersetup .periodfilt, .content .filtersenting .filtersetup .typerooms {
+  margin: 1vw 4vw;
+  display: flex;
+  flex-direction: column;
+}
+.content .filtersenting .filtersetup .periodfilt .date, .content .filtersenting .filtersetup .typerooms .date {
+  display: flex;
+  margin: 1vw -3vw;
+  align-items: flex-end;
+}
+.content .filtersenting .filtersetup .periodfilt .date ::-webkit-calendar-picker-indicator, .content .filtersenting .filtersetup .typerooms .date ::-webkit-calendar-picker-indicator {
+  display: none;
+}
+.content .filtersenting .filtersetup .periodfilt #rooms, .content .filtersenting .filtersetup .typerooms #rooms {
+  margin: 1vw 0vw;
+}
+.content .filtersenting .filtersetup .status, .content .filtersenting .filtersetup .statuspeople {
+  margin: 1vw 0vw;
+  display: flex;
+  flex-direction: column;
+}
+.content .filtersenting .filtersetup .status select, .content .filtersenting .filtersetup .statuspeople select {
+  margin: 1vw 0vw;
+  padding: 0.6vw;
+}
+.content .filtersenting .filtersetup .butsfiltergroup {
+  display: flex;
+  flex-direction: column;
+  margin: 4vw 1vw;
+}
+.content .filtersenting .filtersetup .butsfiltergroup button {
+  border: none;
+  background-color: #ffffff;
+  color: #C9404A;
+  padding: 0.5vw 2vw;
+  margin: 0.5vw;
+  font-family: "Century Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2vw;
+}
+.content .groupbuttime {
+  margin: 0 0 0 15vw;
+  display: flex;
+}
+.content .groupbuttime button {
+  background-color: #C9404A;
+  border: none;
+  color: #ffffff;
+  font-family: "Century Gothic";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 3vw;
+  width: 25%;
+  padding: 3vw 0;
+}
+.content .groupbuttime button:hover {
+  background-color: #ffffff;
+  color: #C9404A;
+}/*# sourceMappingURL=mainstyleadmin.css.map */

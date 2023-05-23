@@ -5,42 +5,43 @@
         <title>Творческий цех</title>
         <link rel="shortcut icon" href="img/LogoWeb.png">
         <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
-        <!--link rel="stylesheet" type="text/css" href="css/bitroidCalendarEv.css"-->
         <!--script src="js/jquery-3.6.4.min.js"></script-->
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/moment-with-locales.min.js"></script> <!-- библиотека moment-with-locales.min.js -->
         <script type="text/javascript" src="js/bitroidCalendarEv1.js"></script> <!-- плагин CalendarEvents -->
-        <script src="js/Navbar.js"></script>
         <script src="js/Catalog.js"></script>
         <script src="js/Caledar.js"></script>
         <script src="js/Booking.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Montserrat+Alternates&display=swap" rel="stylesheet">
-    </head>
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">    </head>
     <body style="margin: 0;">
-        <div class="logoline">
-            <div class="Logo">
-                <img class="LogoImg" src="img/MainLogo1.png">
-            </div>
-        </div>
-        <div class="navbar">
-            <div class="mySidenav" id="mySidenav"  style="width: 100px;"></div>
-        </div>
         <div class="header">
-                        
+            <img class="LogoImg" src="img/MainLogo2.png">      
             <div class="linename">
-                <div class="decor"></div>
-                <div class="decor1"></div>
-                <div class="name">РАСПИСАНИЕ МАСТЕРСКИХ</div>
+                <!-- <div class="decor-1"></div>
+                <div class="decor-2"></div> -->
+                <p class="name">РАС<span class="decor-1">П</span>ИСАНИЕ МАСТЕ<span class="decor-2">Р</span>СКИХ</p>
             </div>
         </div>
-        <div id="about"></div>
+        <div class="selected" id="selected">
+            <div class="selectedimg">
+                <img src="img/room1.jpg" alt="" class="selectedimg">
+            </div>
+            <div class="selectedroom">
+                <p class="auditselect">АУДИТОРИЯ №1</p>
+                <p class="steetselect">КУРЧАТОВА</p>
+            </div>
+            <div class="paramselectroom">Площадь: 20м<br>Оборудования: пианино</div>
+        </div>
         <div class="content">
             <div class="hellomess">
+                <!-- <div class="decor2"></div> -->
                 <div class="messege">Здраствуте, дорогие посетители!
-                    <br>
-                    На сайте “РАСПИСАНИ МАСТЕРСКИХ” вы можете узнать полную информацию о помещениях, а так же когда они занаты или забронировать.</div>
+                    <br>На сайте “РАСПИСАНИ МАСТЕРСКИХ” вы можете узнать полную информацию о помещениях, а так же когда они занаты или забронировать.
+                </div>
+                <!-- <div class="decor3"></div> -->
             </div>
             <div id="catalogstr"></div>
             <div id="catalog" class="catalog">

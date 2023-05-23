@@ -66,7 +66,7 @@ function Catalog (){
     for (i = 0; i < rooms.length; i++){
         var room = jQuery('<div>', {
             id: 'АУДИТОРИЯ №' + (i + 1),
-            class: "room"
+            class: 'room'
         }).get(0);
         var picture = jQuery('<img>', {
             src: rooms[i][1]
@@ -87,7 +87,7 @@ function Catalog (){
         
         document.getElementById(rooms[i][0]).appendChild(room);
         if (!(first.includes(rooms[i][0]))){
-            document.getElementById('АУДИТОРИЯ №' + (i + 1)).style.marginLeft = "34vw";
+            document.getElementById('АУДИТОРИЯ №' + (i + 1)).style.marginLeft = "34%";
             first.push(rooms[i][0]);
         }
         for(j = 0; j < title.length; j++){
@@ -98,7 +98,7 @@ function Catalog (){
 
     }
     for(i = 0; i < last.length; i++){
-        document.getElementById('АУДИТОРИЯ №' + (last[i][1] + 1)).style.marginRight = "22vw";
+        document.getElementById('АУДИТОРИЯ №' + (last[i][1] + 1)).style.marginRight = "34%";
     }
 }
 function openPage(pageName,elmnt){
@@ -115,4 +115,17 @@ function openPage(pageName,elmnt){
     elmnt.style.borderBottom = 'thick solid #C9404A';
     elmnt.style.borderWidth = '0.5vw';
 
+}
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  if (scrolled > 50){
+    document.getElementById("selected").style.top = '8vw';
+  }else{
+    document.getElementById("selected").style.top = '0px';
+  }
+  
 }
