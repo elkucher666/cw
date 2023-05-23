@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let formData = new FormData();
+        formData.append("fullname", "dasfas");
+        formData.append("age", "22");
+        formData.append("institute", "iit");
+        formData.append("course", "3");
+        formData.append("phone", "+5555555555");
+        formData.append("social_network", "vk");
+        formData.append("id_room", "1");
+        formData.append("booking_date", "23.05.2023");
+        formData.append("booking_start", "14:00");
+        formData.append("booking_end", "15:00");
+        formData.append("application_date", toDateString(new Date()));
+    
+         function toDateString(date) {
+            let result = "";
+            result +=  date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() +" "+ date.getHours() + ":" + date.getMinutes();
+            return result;
+        }
+            fetch('./queries/application.php', {
+                method: 'POST',
+                body: formData
+            }).then(() => {console.log('Загружено'); })
+            .catch(() => { console.log('Ошибка');})
+    </script>
+    
+</body>
+</html>
