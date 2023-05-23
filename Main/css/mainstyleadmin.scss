@@ -1,71 +1,68 @@
 $white: #ffffff;
 $black: #1A1819;
-$red: #C9404A;
-$font: "Century Gothic";
+$grey: #302D2E;
+$red: #d4535c;
+$font: 'IBM Plex Sans', sans-serif;
+$display: 100vw / 1920;
 
 body {
-    background-color: $red;
+    background-color: $black;
+    margin: 0;
 }
 
-.logoline {
-    background-color: $black;
-    height: 100%;
-    padding: 2vw;
-    position: fixed;
-    margin: 0vw 2vw;
-    top: 0;
-    width: 9vw;
-    z-index: 2;
-    .LogoImg {
-        padding: 20% 0%;
-        height: 30%;
-        width: 100%;
-        
-    }
-}
 .header {
-    background-color: $red;
+    background-color: $black;
     position: fixed;
-    z-index: 1;
+    z-index: 2;
     width: 100%;
+    height: min-content;
     top: 0;
     left: 0;
-    box-shadow: 0px 13px 10px rgba(0, 0, 0, 0.5);
+    filter: drop-shadow(0px 10px 10px rgba(255, 255, 255, 0.25));
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    .LogoImg {
+        padding: 1% 0%;
+        height: 1%;
+        width: 7%;
+    }
     .linename {
-        border: 0.5vw solid $white;
-        margin: 2vw 10vw 2vw 30vw;
+        //border: 2px solid $black;
+        margin-right: 10%;
         height: min-content;
         width: fit-content;
-        .decor {
-            width: 2.5vw;
-            height: 8vw;
-            background-color: $black;
-            position: absolute;
-            top: 1vw;
-            left: 45vw;
-            z-index: -1;
-        }
-        .decor1 {
-            width: 1.5vw;
-            height: 3.5vw;
-            background-color: $black;
-            position: absolute;
-            top: 5.2vw;
-            left: 72.5vw;
-            z-index: -1;
-        }
         .name {
             color: $white;
             font-family: $font;
-            font-style: normal;
             font-weight: 700;
-            font-size: 3.5vw;
-            line-height: 100%;
-            margin: 1vw;
+            font-size: calc(40 * $display + 10px);
+            margin: -1px 30px;
             white-space: nowrap;
-            
+            padding: 1px 30px;
+            border: 2px solid $white;
+            .decor-1, .decor-2 {
+                position: relative;
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    z-index: -1;
+                    width: 1.2ch;
+                    height: 2.5em;
+                    background-color: $red;
+                }
+            }
+            .decor-2 {
+                &::before {
+                    top: 50%;
+                    transform: translateY(10%);
+                    z-index: -1;
+                    width: 1ch;
+                    height: 1em;   
+                }
+            }
         }
     }
 }
@@ -73,109 +70,95 @@ body {
     margin: 20vw 0vw;
     display: flex;
     flex-direction: column;
-    .filterbut {
-        background-color: $red;
-        border: none;
-        width: min-content;
-        margin: 1vw;
-        margin-left: 20vw;
-        display: flex;
-        align-items: center;
-        img {
-            width: 6vw;
-        }
-        .butfilt {
-            width: 3vw;
-            
-        }
-    }
-    .filtersenting {
-        background-color: #952930;
-        box-shadow: inset 0px 0px 10px 9px rgba(0, 0, 0, 0.45);
+    .filter {
+        background-color: $grey;
         display: flex;
         padding: 5vw;
         color: $white;
         font-family: $font;
-        font-style: normal;
-        font-weight: 700;
-        font-size: 2vw;
+        font-weight: bolder;
+        font-size: calc(15 * $display + 10px);
         height: max-content;
-        transition: 0.7s;
-        .filtersetup {
-            input, select {
-                background-color: $black;
-                border: none;
-                color: $white;
-                font-family: $font;
-                font-style: normal;
-                font-weight: 700;
-                font-size: 2vw;
-                -webkit-appearance: none;
-                padding: 0.5vw;
-                width: 17vw;
-                text-align: center;
-                margin: 0vw 1vw;
-                padding-inline-start: 0;
-            }
-            .periodfilt, .typerooms {
-                margin: 1vw 4vw;
+        flex-direction: column;
+        align-items: center;
+        .filterrow {
+            display: flex;
+            flex-direction: row;
+            .filtercol {
                 display: flex;
                 flex-direction: column;
-                .date {
+                margin: 0 50px;
+                input, select {
+                    background-color: $red;
+                    border: none;
+                    color: $white;
+                    font-family: $font;
+                    font-weight: bolder;
+                    font-size: calc(15 * $display + 10px);
+                    -webkit-appearance: none;
+                    width: calc(250 * $display + 10px);
+                    height: 30px;
+                    margin: 5px;
+                    text-align: center;
+                    padding-inline-start: 0;
                     display: flex;
-                    margin: 1vw -3vw;
-                    align-items: flex-end;
-                    ::-webkit-calendar-picker-indicator{
-                        display:none;
-                    }                    
+                    flex-direction: row;
                 }
-                #rooms {
-                    margin: 1vw 0vw;
+                .periodfilt, .typerooms {
+                    display: flex;
+                    flex-direction: column;
+                    .date {
+                        display: flex;
+                        align-items: flex-end;
+                        margin-left: -25px;
+                        ::-webkit-calendar-picker-indicator{
+                            display:none;
+                        }                    
+                    }
+                    #rooms {
+                        margin: 1vw 0vw;
+                    }
+                }
+                .status, .statuspeople {
+                    display: flex;
+                    flex-direction: column;
+                    select {
+
+                    }
                 }
             }
-            .status, .statuspeople {
-                margin: 1vw 0vw;
+            .filtbutgroup {
                 display: flex;
-                flex-direction: column;
-                select {
-                    margin: 1vw 0vw;
-                    padding: 0.6vw;
-                }
-            }
-            .butsfiltergroup {
-                display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 margin: 4vw 1vw;
                 button {
                     border: none;
                     background-color: $white;
                     color: $red;
-                    padding: 0.5vw 2vw;
-                    margin: 0.5vw;
+                    padding: 5px 15px;
+                    //margin: 0.5vw;
                     font-family: $font;
                     font-style: normal;
                     font-weight: 700;
-                    font-size: 2vw;
+                    font-size: calc(15 * $display + 10px);
                 }
             }
+    
         }
     }
     .groupbuttime {
-        margin: 0 0 0 15vw;
         display: flex;
         button {
-            background-color: $red;
+            background-color: $black;
             border: none;
             color: $white;
             font-family: $font;
-            font-style: normal;
-            font-weight: 700;
-            font-size: 3vw;
+            font-weight: bolder;
+            font-size: calc(25 * $display + 10px);
             width: 25%;
-            padding:  3vw 0;
+            padding:  25px 0;
             &:hover {
-                background-color: $white;
-                color: $red;
+                background-color: $grey;
             }
         }
     }
