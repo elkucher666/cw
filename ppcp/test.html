@@ -23,14 +23,41 @@
     
          function toDateString(date) {
             let result = "";
-            result +=  date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() +" "+ date.getHours() + ":" + date.getMinutes();
+
+            function beautify(number) {
+                if (number < 10) {
+                    return "0" + number;
+                } else {
+                    return number;
+                }
+            }
+
+
+
+            result +=  date.getDate() + "." + beautify(date.getMonth() + 1) + "." + date.getFullYear() +" "+ date.getHours() + ":" + beautify(date.getMinutes());
             return result;
         }
-            fetch('./queries/application.php', {
+
+
+
+        function validateApplication(/*formData*/ application) {
+            
+        }
+
+        async function run() {
+            let response = await fetch('./queries/send_application.php', {
                 method: 'POST',
                 body: formData
-            }).then(() => {console.log('Загружено'); })
-            .catch(() => { console.log('Ошибка');})
+            });
+
+            let result = await response.text();
+
+            console.dir(result);
+
+        }
+
+        run();
+
     </script>
     
 </body>
