@@ -5,6 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .none {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <script>
@@ -59,29 +65,120 @@
 
         validateApplication(formData);
 
-        async function run() {
-            let response = await fetch('./queries/send_application.php', {
-                method: 'POST',
-                body: formData
+        // async function run() {
+        //     let response = await fetch('./queries/send_application.php', {
+        //         method: 'POST',
+        //         body: formData
+        //     });
+
+        //     let result = await response.text();
+
+
+        //     let obj = JSON.parse(result);
+
+
+        //     console.dir(result);
+        // }
+
+        // run();
+
+    </script>
+    <!-- <form>
+        <p>Введите телефон в формате 2-xxx-xxx, где вместо x 
+        должна быть цифра:</p>
+        <p><input type="tel" pattern="2-[0-9]{3}-[0-9]{3}" title="Напиши номер телефона, пидор"></p>
+        <p><input type="submit" value="Отправить"></p>
+    </form> -->
+
+    
+
+
+
+    <script>
+        async function loadRooms() {
+
+            let response = await fetch('./queries/get_room.php', {
+                method: 'POST'
             });
 
             let result = await response.text();
 
 
-            let obj = JSON.parse(result);
+            let rooms = JSON.parse(result);
 
 
-            console.dir(result);
+            console.dir(rooms);
+
+
+            let addresses = [];
+
+            let room_elements = [];
+
+            for (let room of rooms) {
+                if (!addresses.includes(room.address)) {
+                    addresses.push(room.address);
+                }
+
+                let room_element = document.createElement("div");
+                room_element.dataset.address = room.address;
+                room_element.classList.add("room");
+                room_element.classList.add("none");
+
+                let image = document.createElement("img");
+                image.classList.add("image");
+                image.src = room.image;
+
+                let name = document.createElement("div");
+                name.classList.add("name");
+                name.textContent  = room.name;
+
+                let description = document.createElement("div");
+                description.classList.add("description");
+                description.textContent = room.description;
+
+
+                room_element.append(image, name, description);
+                document.querySelector(".rooms_wrapper").append(room_element);
+            }
+
+            for (let address of addresses) {
+                let button = document.createElement("button");
+                button.textContent = address;
+                document.querySelector(".button_container").append(button);
+
+
+                button.addEventListener("click", function() {
+                    let rooms = document.querySelectorAll(`room`);
+                    rooms.forEach(function(room) {
+                        room.classList.add("none");
+                    });
+                    
+                    let visible_rooms = document.querySelectorAll(`.room[data-address="${address}"]`);
+                    visible_rooms.forEach(function(room) {
+                        room.classList.remove("none");
+                    });
+                    
+                });
+            }
+
+            
+
         }
 
-        run();
+
+        loadRooms();
+
 
     </script>
-    <form>
-        <p>Введите телефон в формате 2-xxx-xxx, где вместо x 
-        должна быть цифра:</p>
-        <p><input type="tel" pattern="2-[0-9]{3}-[0-9]{3}" title="Напиши номер телефона, пидор"></p>
-        <p><input type="submit" value="Отправить"></p>
-    </form>
+
+    <div class="button_container">
+        
+    </div>
+
+    <div class="rooms_wrapper">
+
+    </div>
+
+
 </body>
 </html>
