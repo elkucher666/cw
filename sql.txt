@@ -1,0 +1,2 @@
+SELECT * FROM 'room' where address='($address)'; //выбор комнат по указанному адресу
+SELECT 'booking_date','booking_start','booking_end' FROM 'application' where  ='($address)';
