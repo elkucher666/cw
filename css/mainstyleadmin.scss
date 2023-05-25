@@ -94,15 +94,19 @@ body {
                     color: $white;
                     font-family: $font;
                     font-weight: bolder;
-                    font-size: calc(15 * $display + 10px);
+                    font-size: calc(25 * $display);
                     -webkit-appearance: none;
-                    width: calc(250 * $display + 10px);
-                    height: 35px;
+                    width: calc(210 * $display);
+                    //height: 35px;
+                    padding: 5px 15px;
                     margin: 5px;
                     text-align: center;
                     padding-inline-start: 0;
                     display: flex;
                     flex-direction: row;
+                }
+                .tel, .fio {
+                    width: calc(600 * $display);
                 }
                 .periodfilt, .typerooms {
                     display: flex;
@@ -130,9 +134,9 @@ body {
                     border: none;
                     background-color: $white;
                     color: $red;
-                    width:  calc(250 * $display + 10px);
+                    width:  calc(210 * $display + 50px);
                     padding: 5px 15px;
-                    margin: 0px 50px;
+                    margin: 0px 52px;
                     font-family: $font;
                     font-style: normal;
                     font-weight: bolder;
@@ -161,6 +165,46 @@ body {
             &:hover {
                 background-color: $grey;
             }
+        }
+    }
+    .aplication {
+        border-collapse: collapse;
+        tbody {
+            background-color: $black;
+            color: $white;
+            font-family: $font;
+            text-align: center;
+            .namerow {
+                th {
+                    background-color: $black;
+                    font-weight: 400;
+                    padding: 15px 0px;
+                    border-bottom: 2px solid $white;
+
+                    
+                }
+            }
+            tr {
+                background-color: $grey;
+                button {
+                    background-color: $grey;
+                    border: none;
+                    width: 50px;
+                    img {
+                        width: 50%;
+                    }
+                }
+                td {
+                    border: 0px;
+                    padding: 15px 0px;
+                    font-weight: bolder;
+                    width: 10px;
+                    &:last-child {
+                        width: 10px;
+                    }
+                }
+            }
+    
         }
     }
 }

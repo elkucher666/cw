@@ -29,9 +29,9 @@
                     onClick: null,
                     onReady: null,
                     clickable: true,
-                    events : [],
+                    events : ".calendarev-events-container",
                     containers : {
-                        events : ".calendarev-events-container"
+                        //events : ".calendarev-events-container"
                     },
                     showEventBlock: false
                 }, options),
@@ -130,8 +130,8 @@
 
                     html  = '<div class="calendarev-container-calendar">';
                     html += '<div class="calendarev-calendar-head">';
-                    html += '<span class="prev">&#8592;</span>';
-                    html += '<span class="next">&#8594;</span>';
+                    html += '<span class="prev"><img src=img/prev.png></span>';
+                    html += '<span class="next"><img src=img/next.png></span>';
                     html += '<div class="calendarev-selects">';
 
                     // head month
@@ -224,7 +224,11 @@
                         html += '</tr></table>';
 
                         if (settings.showEventBlock) {
-                        	html += '<div class="calendarev-events-container"></div>';
+                            /*var lesson = jQuery('<div>', {
+                                class: 'calendarev-events-container'
+                            }).get(0);
+                            $('.worktimeroom').get(0).appendChild(lesson);*/
+                        	//html += '<div class="calendarev-events-container"></div>';
                         }
 
                     } else {
@@ -307,7 +311,11 @@
                         html += '</tr></table>';
 
                         if (settings.showEventBlock) {
-                        	html += '<div class="calendarev-events-container"></div>';
+                            /*var lesson = jQuery('<div>', {
+                                class: 'calendarev-events-container'
+                            }).get(0);
+                            $('.worktimeroom').get(0).appendChild(lesson);*/
+                        	//html += '<div class="calendarev-events-container"></div>';
                         }
                     }
 

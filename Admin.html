@@ -5,13 +5,9 @@
         <title>Творческий цех</title>
         <link rel="shortcut icon" href="img/LogoWeb.png">
         <link rel="stylesheet" type="text/css" href="css/mainstyleadmin.css">
-        <!--script src="js/jquery-3.6.4.min.js"></script-->
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/moment-with-locales.min.js"></script> <!-- библиотека moment-with-locales.min.js -->
         <script type="text/javascript" src="js/bitroidCalendarEv1.js"></script> <!-- плагин CalendarEvents -->
-        <script src="js/Catalog.js"></script>
-        <script src="js/Caledar.js"></script>
-        <script src="js/Booking.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Montserrat+Alternates&display=swap" rel="stylesheet">
@@ -29,23 +25,26 @@
                 <div class="filterrow">
                     <div class="filtercol">
                         <div class="periodfilt">
-                            Период:
+                            Дата брони:
                             <div class="date">
-                                с:<input id="datebeg" type="date">
-                                по:<input id="dateend" type="date">
+                                <input id="datebeg" type="date">
                             </div>
                         </div>
                         <div class="typerooms">
-                            Помещения:
-                            <select id="rooms">
-                                <option value="">Все</option>
-                                <option value="">АУДИТОРИЯ №1</option>
-                                <option value="">АУДИТОРИЯ №2</option>
-                                <option value="">АУДИТОРИЯ №3</option>
-                                <option value="">АУДИТОРИЯ №4</option>
-                                <option value="">АУДИТОРИЯ №5</option>
-                                <option value="">АУДИТОРИЯ №6</option>
-                            </select>
+                            Дата заявки:
+                            <div class="date">
+                                <input id="datebeg" type="date">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="filtercol">
+                        <div class="telephone">
+                            Телефон:
+                            <input class="tel" type="text">    
+                        </div>
+                        <div class="fio">
+                            ФИО:
+                            <input class="fio" type="text">
                         </div>
                     </div>
                     <div class="filtercol">
@@ -59,7 +58,7 @@
                             </select>
                         </div>
                         <div class="statuspeople">
-                            Должность:
+                            Адрес:
                             <select id="statuspeople">
                                 <option value="">Все</option>
                                 <option value="">Преподаватель</option>
@@ -70,62 +69,11 @@
                 </div>
                 <div class="filterrow">
                     <div class="filtbutgroup">
-                        <button id="yfilter" class="butsfilter">Сортировать</button>
+                        <button id="yfilter" class="butsfilter">Применить</button>
                         <button id="nfilter" class="butsfilter">Отчистить</button>
                     </div>
                 </div>
             </div>
-            <!-- <div class="filtersenting">
-                <div class="filtergroup">
-                    <div class="filtersetup">
-                        <div class="periodfilt">
-                            Период:
-                            <div class="date">
-                                с:<input id="datebeg" type="date">
-                                по:<input id="dateend" type="date">
-                            </div>
-                        </div>
-                        <div class="typerooms">
-                            Помещения:
-                            <select id="rooms">
-                                <option value="">Все</option>
-                                <option value="">АУДИТОРИЯ №1</option>
-                                <option value="">АУДИТОРИЯ №2</option>
-                                <option value="">АУДИТОРИЯ №3</option>
-                                <option value="">АУДИТОРИЯ №4</option>
-                                <option value="">АУДИТОРИЯ №5</option>
-                                <option value="">АУДИТОРИЯ №6</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="filtersetup">
-                        <div class="status">
-                            Статус:
-                            <select id="statusroom">
-                                <option value="">Все</option>
-                                <option value="">Одобреные</option>
-                                <option value="">Неодобреные</option>
-                                <option value="">На расмотрение</option>
-                            </select>
-                        </div>
-                        <div class="statuspeople">
-                            Должность:
-                            <select id="statuspeople">
-                                <option value="">Все</option>
-                                <option value="">Преподаватель</option>
-                                <option value="">Студент</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="filtersetup">
-                    <div class="butsfiltergroup">
-                        <button id="yfilter" class="butsfilter">Применить</button>
-                        <button id="nfilter" class="butsfilter">Отчистить</button>
-                    </div>
-                </div>                
-            </div> -->
             <div class="groupbuttime">
                 <button class="today">
                     СЕГОДНЯ
@@ -140,6 +88,122 @@
                     ВСЁ ВРЕМЯ
                 </button>
             </div>
+            <table class="aplication">
+                <tbody>
+                    <tr class="namerow">
+                        <th>№</th>
+                        <th>ДАТА БРОНИ</th>
+                        <th>ВРЕМЯ</th>
+                        <th>ФИО</th>
+                        <th>ТЕЛЕФОН</th>
+                        <th>ПОМЕЩЕНИЕ/АДРЕС</th>
+                        <th>ДАТА ЗАЯВКИ</th>
+                        <th>СТАТУС</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>22.12.2023</td>
+                        <td>18:00 - 19:00</td>
+                        <td>ФАМИЛИЯ АЛЕКСАНДР АЛЕКСАНДРОВИЧ</td>
+                        <td>+79788888888</td>
+                        <td>АУДИТОРИЯ №1, Гоголя</td>
+                        <th>23.05.2023<br>20:50</th>
+                        <td>
+                            <button class="accept">
+                                <img src="img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>22.12.2023</td>
+                        <td>18:00 - 19:00</td>
+                        <td>ФАМИЛИЯ АЛЕКСАНДР АЛЕКСАНДРОВИЧ</td>
+                        <td>+79788888888</td>
+                        <td>АУДИТОРИЯ №1, Гоголя</td>
+                        <th>23.05.2023<br>20:50</th>
+                        <td>
+                            <button class="accept">
+                                <img src="img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>22.12.2023</td>
+                        <td>18:00 - 19:00</td>
+                        <td>ФАМИЛИЯ АЛЕКСАНДР АЛЕКСАНДРОВИЧ</td>
+                        <td>+79788888888</td>
+                        <td>АУДИТОРИЯ №1, Гоголя</td>
+                        <th>23.05.2023<br>20:50</th>
+                        <td>
+                            <button class="accept">
+                                <img src="img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>22.12.2023</td>
+                        <td>18:00 - 19:00</td>
+                        <td>ФАМИЛИЯ АЛЕКСАНДР АЛЕКСАНДРОВИЧ</td>
+                        <td>+79788888888</td>
+                        <td>АУДИТОРИЯ №1, Гоголя</td>
+                        <th>23.05.2023<br>20:50</th>
+                        <td>
+                            <button class="accept">
+                                <img src="img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>22.12.2023</td>
+                        <td>18:00 - 19:00</td>
+                        <td>ФАМИЛИЯ АЛЕКСАНДР АЛЕКСАНДРОВИЧ</td>
+                        <td>+79788888888</td>
+                        <td>АУДИТОРИЯ №1, Гоголя</td>
+                        <th>23.05.2023<br>20:50</th>
+                        <td>
+                            <button class="accept">
+                                <img src="img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>22.12.2023</td>
+                        <td>18:00 - 19:00</td>
+                        <td>ФАМИЛИЯ АЛЕКСАНДР АЛЕКСАНДРОВИЧ</td>
+                        <td>+79788888888</td>
+                        <td>АУДИТОРИЯ №1, Гоголя</td>
+                        <th>23.05.2023<br>20:50</th>
+                        <td>
+                            <button class="accept">
+                                <img src="img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             
         </div>
     </body>

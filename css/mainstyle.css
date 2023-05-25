@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital@0;1&display=swap");
+.none {
+  display: none !important;
+}
+
 body {
   margin: 0;
 }
@@ -59,7 +64,7 @@ body {
   height: 1em;
 }
 
-.selected {
+.top_bar {
   margin: 0px 0px;
   position: fixed;
   top: 0;
@@ -73,7 +78,7 @@ body {
   z-index: 1;
   transition: 0.5s;
 }
-.selected .selectedimg {
+.top_bar .selectedimg {
   width: 25%;
   height: 100%;
   -o-object-fit: cover;
@@ -81,7 +86,7 @@ body {
   -o-object-position: center;
      object-position: center;
 }
-.selected .selectedimg::after {
+.top_bar .selectedimg::after {
   content: "";
   position: absolute;
   left: 0;
@@ -89,7 +94,7 @@ body {
   height: 110px;
   background: linear-gradient(to left, #ffffff, rgba(255, 255, 255, 0));
 }
-.selected .selectedimg img {
+.top_bar .selectedimg img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -97,24 +102,24 @@ body {
   -o-object-position: center;
      object-position: center;
 }
-.selected .selectedroom, .selected .paramselectroom {
+.top_bar .selectedroom, .top_bar .paramselectroom {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: bolder;
 }
-.selected .selectedroom .auditselect, .selected .paramselectroom .auditselect {
+.top_bar .selectedroom .auditselect, .top_bar .paramselectroom .auditselect {
   font-size: calc(0.78125vw + 10px);
 }
-.selected .selectedroom .steetselect, .selected .paramselectroom .steetselect {
+.top_bar .selectedroom .steetselect, .top_bar .paramselectroom .steetselect {
   font-size: calc(0.2604166667vw + 10px);
   color: #d4535c;
 }
-.selected .selectedroom {
+.top_bar .selectedroom {
   display: flex;
   flex-direction: column;
   align-items: center;
   line-height: 0px;
 }
-.selected .paramselectroom {
+.top_bar .paramselectroom {
   width: 25%;
   font-size: calc(0.5208333333vw + 10px);
   font-weight: 300;
@@ -179,22 +184,21 @@ body {
 
 .catalog {
   display: flex;
-  margin: 10vw 0vw;
+  margin: 20% 0px 0px 0px;
   justify-content: center;
   flex-direction: column;
 }
-.catalog .menustreet {
+.catalog .addresses {
   display: flex;
   width: 100%;
 }
-.catalog .menustreet .tablink {
-  border-top-style: none;
-  border-right-style: none;
-  border-left-style: none;
-  border-bottom-style: solid;
-  border-width: 2px;
-  border-color: #ffffff;
+.catalog .addresses > * {
+  flex: 1;
+}
+.catalog .addresses .tab {
   padding: 2%;
+  border: none;
+  border-bottom: 2px solid #ffffff;
   transition: 0.5s;
   background-color: #ffffff;
   font-family: "IBM Plex Sans", sans-serif;
@@ -204,26 +208,20 @@ body {
   line-height: 100%;
   cursor: pointer;
 }
-.catalog .menustreet .tablink:hover {
+.catalog .addresses .tab:hover {
   background-color: #d9d9d9;
 }
-.catalog .menustreet #defaultOpen {
+.catalog .addresses .tab.selected {
   border-bottom: thick solid #d4535c;
   border-width: 0.5vw;
 }
-.catalog .menustreet #linestreet {
-  background-color: #d4535c;
-  height: 0.5vw;
-  position: absolute;
-  margin: 9vw 0vw;
-}
-.catalog .contentstreet {
+.catalog .rooms {
   width: 100%;
   display: flex;
 }
-.catalog .contentstreet .tabcontent {
+.catalog .rooms .tabcontent {
   color: rgb(4, 4, 4);
-  display: none;
+  display: flex;
   padding: 10px 20px;
   height: 100%;
   overflow-x: scroll;
@@ -231,22 +229,19 @@ body {
   white-space: nowrap;
   width: 100%;
 }
-.catalog .contentstreet .tabcontent::-webkit-scrollbar {
+.catalog .rooms .tabcontent::-webkit-scrollbar {
   display: none;
 }
-.catalog .contentstreet .lastroom {
-  margin-right: 20vw;
-}
-.catalog .contentstreet .room, .catalog .contentstreet .lastroom {
+.catalog .rooms .room {
   background-color: #ffffff;
   box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
   margin: 2vw;
   cursor: pointer;
 }
-.catalog .contentstreet .room img, .catalog .contentstreet .lastroom img {
+.catalog .rooms .room img {
   width: 31.25vw;
 }
-.catalog .contentstreet .room .nameroom, .catalog .contentstreet .lastroom .nameroom {
+.catalog .rooms .room .name {
   margin: 1vw;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
@@ -254,13 +249,19 @@ body {
   font-size: calc(1.0416666667vw + 5px);
   line-height: 100%;
 }
-.catalog .contentstreet .room .parametroom, .catalog .contentstreet .lastroom .parametroom {
+.catalog .rooms .room .description {
   padding: 2vw 1vw;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: 300;
   font-size: calc(0.78125vw + 5px);
   line-height: 100%;
+}
+.catalog .rooms .room:first-child {
+  margin-left: 34%;
+}
+.catalog .rooms .room:last-child {
+  margin-right: 34%;
 }
 .catalog .worktimeroom {
   display: flex;
@@ -438,6 +439,7 @@ body {
   padding: 1vw;
   width: 30vw;
   background-color: #ffffff;
+  z-index: 0;
   cursor: pointer;
 }
 .buttons button .linebut {
@@ -450,13 +452,27 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: bolder;
   font-size: calc(1.0416666667vw + 5px);
+  z-index: 3;
 }
-.buttons button .decor {
-  background-color: #d4535c;
-  height: 5vw;
-  width: 2vw;
+.buttons button .linebut .namebut .decor-3, .buttons button .linebut .namebut .decor-4 {
+  position: relative;
+}
+.buttons button .linebut .namebut .decor-3::before, .buttons button .linebut .namebut .decor-4::before {
+  content: "";
   position: absolute;
-  z-index: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  width: 1ch;
+  height: 2.5em;
+  background-color: #d4535c;
+}
+.buttons button .linebut .namebut .decor-4::before {
+  top: 10%;
+  transform: translateY(10%);
+  z-index: -1;
+  width: 1.2ch;
+  height: 1.5em;
 }
 
 #booking {
@@ -567,31 +583,36 @@ body {
 }
 
 .footer {
-  background-color: #d4535c;
+  background-color: #ffffff;
   width: 100%;
   bottom: 0;
   left: 0;
   display: flex;
   justify-content: center;
+  box-shadow: 0px -6px 15px rgba(0, 0, 0, 0.5);
 }
 .footer .container {
-  border: 3px solid #ffffff;
-  margin: 2vw 10vw 2vw 30vw;
+  border: 3px solid #1A1819;
+  margin: 20px;
   height: -moz-min-content;
   height: min-content;
   width: -moz-fit-content;
   width: fit-content;
 }
 .footer .container .contactinfo {
-  color: #ffffff;
+  color: #1A1819;
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 2vw;
+  font-weight: 600;
+  font-size: calc(1.3020833333vw + 8px);
   margin: 1vw;
+  text-align: center;
 }
 .footer .container .contactinfo .contact {
-  color: #ffffff;
+  text-align: left;
+  color: #1A1819;
   font-family: "IBM Plex Sans", sans-serif;
-  font-size: 1vw;
+  font-weight: 300;
+  font-size: calc(0.625vw + 8px);
   margin: 2vw;
 }
 

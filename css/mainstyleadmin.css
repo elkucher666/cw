@@ -93,16 +93,19 @@ body {
   color: #ffffff;
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: bolder;
-  font-size: calc(0.78125vw + 10px);
+  font-size: 1.3020833333vw;
   -webkit-appearance: none;
-  width: calc(13.0208333333vw + 10px);
-  height: 35px;
+  width: 10.9375vw;
+  padding: 5px 15px;
   margin: 5px;
   text-align: center;
   -webkit-padding-start: 0;
           padding-inline-start: 0;
   display: flex;
   flex-direction: row;
+}
+.content .filter .filterrow .filtercol .tel, .content .filter .filterrow .filtercol .fio {
+  width: 31.25vw;
 }
 .content .filter .filterrow .filtercol .periodfilt, .content .filter .filterrow .filtercol .typerooms {
   display: flex;
@@ -129,9 +132,9 @@ body {
   border: none;
   background-color: #ffffff;
   color: #d4535c;
-  width: calc(13.0208333333vw + 10px);
+  width: calc(10.9375vw + 50px);
   padding: 5px 15px;
-  margin: 0px 50px;
+  margin: 0px 52px;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: bolder;
@@ -157,4 +160,39 @@ body {
 }
 .content .groupbuttime button:hover {
   background-color: #302D2E;
+}
+.content .aplication {
+  border-collapse: collapse;
+}
+.content .aplication tbody {
+  background-color: #1A1819;
+  color: #ffffff;
+  font-family: "IBM Plex Sans", sans-serif;
+  text-align: center;
+}
+.content .aplication tbody .namerow th {
+  background-color: #1A1819;
+  font-weight: 400;
+  padding: 15px 0px;
+  border-bottom: 2px solid #ffffff;
+}
+.content .aplication tbody tr {
+  background-color: #302D2E;
+}
+.content .aplication tbody tr button {
+  background-color: #302D2E;
+  border: none;
+  width: 50px;
+}
+.content .aplication tbody tr button img {
+  width: 50%;
+}
+.content .aplication tbody tr td {
+  border: 0px;
+  padding: 15px 0px;
+  font-weight: bolder;
+  width: 10px;
+}
+.content .aplication tbody tr td:last-child {
+  width: 10px;
 }/*# sourceMappingURL=mainstyleadmin.css.map */

@@ -1,8 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital@0;1&display=swap');
+
 $white: #ffffff;
 $black: #1A1819;
 $red: #d4535c;
 $font: 'IBM Plex Sans', sans-serif;
 $display: 100vw / 1920;
+
+
+.none {
+    display: none !important;
+}
+
 
 body {
     margin: 0;
@@ -63,7 +71,7 @@ body {
         }
     }
 }
-.selected {
+.top_bar {
     margin: 0px 0px;
     position: fixed;
     top: 0;
@@ -183,20 +191,19 @@ body {
 }
 .catalog {
     display: flex;
-    margin: 10vw 0vw;
+    margin: 20% 0px 0px 0px;
     justify-content: center;
     flex-direction: column;
-    .menustreet {
+    .addresses {
         display: flex;
         width: 100%;
-        .tablink {
-            border-top-style: none;
-            border-right-style: none;
-            border-left-style: none;
-            border-bottom-style: solid;
-            border-width: 2px;
-            border-color: $white;
+        > * {
+            flex: 1;
+        }
+        .tab {
             padding: 2%;
+            border: none;
+            border-bottom: 2px solid $white;
             transition: 0.5s;
             background-color: $white;
             font-family: $font;
@@ -205,28 +212,25 @@ body {
             font-size: calc(30 * $display + 10px);
             line-height: 100%;
             cursor: pointer;
+
             &:hover {
                 background-color: #d9d9d9;
             }
-        }
-        #defaultOpen {
-            border-bottom: thick solid $red;
-            border-width: 0.5vw;
-        }
-        #linestreet {
-            background-color: $red;
-            height: 0.5vw;
-            position: absolute;
-            margin: 9vw 0vw;
+
+            &.selected {
+                border-bottom: thick solid $red;
+                border-width: 0.5vw;
+            
+            }
         }
     }
-    .contentstreet {
+    .rooms {
         width: 100%;
         //margin-left: 30vw;
         display: flex;
         .tabcontent {
             color: rgb(4, 4, 4);
-            display: none;
+            display: flex;
             padding: 10px 20px;
             height: 100%;
             overflow-x: scroll;
@@ -238,11 +242,10 @@ body {
             }
 
         }
-        .lastroom{
-            margin-right: 20vw;
-        }
 
-        .room, .lastroom {
+
+
+        .room {
             background-color: $white;
             box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
             margin: 2vw;
@@ -250,7 +253,8 @@ body {
             img {
                 width: calc(600 * $display);
             }
-            .nameroom {
+
+            .name {
                 margin: 1vw;
                 font-family: $font;
                 font-style: normal;
@@ -259,7 +263,8 @@ body {
                 line-height: 100%;
                 //width: 100%;
             }
-            .parametroom {
+
+            .description {
                 padding: 2vw 1vw;
                 font-family: $font;
                 font-style: normal;
@@ -267,6 +272,14 @@ body {
                 font-size: calc(15 * $display + 5px);
                 line-height: 100%;
                 //width: 100%;
+            }
+
+            &:first-child {
+                margin-left: 34%;
+            }
+    
+            &:last-child {
+                margin-right: 34%;
             }
         }
         
@@ -462,6 +475,7 @@ body {
         padding: 1vw;
         width: 30vw;
         background-color: $white;
+        z-index: 0;
         cursor: pointer;
         .linebut {
             border: 2px solid $black;
@@ -472,15 +486,30 @@ body {
                 font-family: $font;
                 font-weight: bolder;
                 font-size: calc(20 * $display + 5px);
+                z-index: 3;
+                .decor-3, .decor-4 {
+                    position: relative;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        z-index: -1;
+                        width: 1ch;
+                        height: 2.5em;
+                        background-color: $red;
+                    }
+                }
+                .decor-4 {
+                    &::before {
+                        top: 10%;
+                        transform: translateY(10%);
+                        z-index: -1;
+                        width: 1.2ch;
+                        height: 1.5em;   
+                    }
+                }
             }
-        }
-        .decor {
-            background-color: $red;
-            height: 5vw;
-            width: 2vw;
-            position: absolute;
-            z-index: 0;
-            
         }
     }
 }
@@ -596,26 +625,31 @@ body {
 }
 
 .footer {
-    background-color: $red;
+    background-color: $white;
     width: 100%;
     bottom: 0;
     left: 0;
     display: flex;
     justify-content: center;
+    box-shadow:  0px -6px 15px rgba(0, 0, 0, 0.5);
     .container {
-        border: 3px solid $white;
-        margin: 2vw 10vw 2vw 30vw;
+        border: 3px solid $black;
+        margin: 20px;
         height: min-content;
         width: fit-content;
         .contactinfo {
-            color: $white;
+            color: $black;
             font-family: $font;
-            font-size: 2vw;
+            font-weight: 600;
+            font-size: calc(25 * $display + 8px);
             margin: 1vw;
+            text-align: center;
             .contact {
-                color: $white;
+                text-align: left;
+                color: $black;
                 font-family: $font;
-                font-size: 1vw;
+                font-weight: 300;
+                font-size: calc(12 * $display + 8px);
                 margin: 2vw;
             }
         }
