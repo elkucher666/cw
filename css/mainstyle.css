@@ -37,7 +37,7 @@ body {
   color: #1A1819;
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 700;
-  font-size: calc(2.0833333333vw + 10px);
+  font-size: 2.0833333333vw;
   margin: -1px 30px;
   white-space: nowrap;
   padding: 1px 30px;
@@ -623,6 +623,16 @@ body {
   .header .linename .name {
     font-size: calc(2.0833333333vw + 10px);
     margin: 10px 30px;
+  }
+  .catalog .worktimeroom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .catalog .worktimeroom .calendarev-events-container {
+    border: none;
+    border-top: 2px solid #1A1819;
+    width: auto;
   }
 }
 @media (max-width: 800px) {

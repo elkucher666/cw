@@ -33,7 +33,6 @@ body {
         width: 7%;
     }
     .linename {
-        //border: 2px solid $black;
         margin-right: 10%;
         height: min-content;
         width: fit-content;
@@ -41,7 +40,7 @@ body {
             color: $black;
             font-family: $font;
             font-weight: 700;
-            font-size: calc(40 * $display + 10px);
+            font-size: calc(40 * $display);
             margin: -1px 30px;
             white-space: nowrap;
             padding: 1px 30px;
@@ -664,6 +663,18 @@ body {
             .name {
                 font-size: calc(40 * $display + 10px);
                 margin: 10px 30px;
+            }
+        }
+    }
+    .catalog {
+        .worktimeroom {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .calendarev-events-container {
+                border: none;
+                border-top: 2px solid $black;
+                width: auto;
             }
         }
     }
