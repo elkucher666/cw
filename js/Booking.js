@@ -23,6 +23,18 @@ $(document).ready(function() {
         }
         
     });
+
+    document.querySelector(".timebegin").addEventListener("change", function() {
+        select = document.querySelector(".timebegin").value;
+        document.querySelector(".timeend").value = select;
+    });
+
+    document.querySelector(".timeend").addEventListener("change", function() {
+        select = document.querySelector(".timeend").value;
+        document.querySelector(".timebegin").value = select;
+    });
+
+
     $('#close').click(function(e){
         $('#booking').get(0).style.display = 'none';
         $('.dataform').get(0).innerHTML = '';
