@@ -267,7 +267,7 @@ body {
   display: flex;
   justify-content: flex-end;
   z-index: 0;
-  margin: 150px 0px;
+  margin: 150px 0px 0px 0px;
 }
 .catalog .worktimeroom .calendarev-container-calendar {
   display: block;
@@ -437,7 +437,7 @@ body {
   border: none;
   margin: 2vw 3vw;
   padding: 1vw;
-  width: 30vw;
+  width: auto;
   background-color: #ffffff;
   z-index: 0;
   cursor: pointer;
@@ -447,11 +447,11 @@ body {
   position: relative;
 }
 .buttons button .linebut .namebut {
-  margin: 20px;
+  margin: 0.5208333333vw 35px;
   color: #1A1819;
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: bolder;
-  font-size: calc(1.0416666667vw + 5px);
+  font-size: 1.8229166667vw;
   z-index: 3;
 }
 .buttons button .linebut .namebut .decor-3, .buttons button .linebut .namebut .decor-4 {
@@ -497,7 +497,7 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.5vw;
+  font-size: 1.5625vw;
   width: -moz-max-content;
   width: max-content;
 }
@@ -522,7 +522,9 @@ body {
   display: table-cell;
   width: auto;
   border: none;
-  padding: 0vw 2vw 0vw 1vw;
+  border-bottom: 0.2vw solid #1A1819;
+  padding: -2px 5px;
+  margin: 0px 5px;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -558,28 +560,36 @@ body {
   margin: 2vw 3vw;
   padding: 0.5vw;
   width: 20vw;
-  background-color: #d4535c;
+  background-color: #ffffff;
   cursor: pointer;
+  z-index: 0;
 }
 #booking form button .linebut {
-  border: 0.3vw solid #ffffff;
+  border: 2px solid #1A1819;
   position: relative;
 }
 #booking form button .linebut .namebut {
   margin: 0.5vw;
-  color: #ffffff;
+  color: #1A1819;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.5vw;
+  font-size: 1.5625vw;
   line-height: 100%;
+  z-index: 3;
 }
-#booking form button .decor {
-  background-color: #1A1819;
-  height: 2vw;
-  width: 1vw;
+#booking form button .linebut .namebut .decor-5 {
+  position: relative;
+}
+#booking form button .linebut .namebut .decor-5::before {
+  content: "";
   position: absolute;
-  z-index: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  width: 1.2ch;
+  height: 2.5em;
+  background-color: #d4535c;
 }
 
 .footer {
@@ -629,10 +639,33 @@ body {
     flex-direction: column;
     align-items: center;
   }
+  .catalog .worktimeroom .my-class {
+    width: 50%;
+  }
+  .catalog .worktimeroom .my-class .calendarev-container-calendar {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .catalog .worktimeroom .my-class .calendarev-container-calendar .calendarev-calendar-head {
+    width: 80%;
+  }
+  .catalog .worktimeroom .my-class .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select {
+    font-size: 2.34375vw;
+  }
   .catalog .worktimeroom .calendarev-events-container {
     border: none;
     border-top: 2px solid #1A1819;
-    width: auto;
+    width: 45%;
+    margin-top: 20px;
+    padding: 10px 0px;
+  }
+  .catalog .worktimeroom .calendarev-events-container .event-block {
+    padding: 10px 20px;
+  }
+  .buttons button .linebut .namebut {
+    font-size: 2.6041666667vw;
   }
 }
 @media (max-width: 800px) {

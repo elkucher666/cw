@@ -287,7 +287,7 @@ body {
         display: flex;
         justify-content: flex-end;
         z-index: 0;
-        margin: 150px 0px;
+        margin: 150px 0px 0px 0px;
         .calendarev-container-calendar {
             display: block;
             font-family: $font;
@@ -472,7 +472,7 @@ body {
         border: none;
         margin: 2vw 3vw;
         padding: 1vw;
-        width: 30vw;
+        width: auto;
         background-color: $white;
         z-index: 0;
         cursor: pointer;
@@ -480,11 +480,11 @@ body {
             border: 2px solid $black;
             position: relative;
             .namebut {
-                margin: 20px;
+                margin:  calc(10 * $display) 35px;
                 color: $black;
                 font-family: $font;
                 font-weight: bolder;
-                font-size: calc(20 * $display + 5px);
+                font-size: calc(35 * $display);
                 z-index: 3;
                 .decor-3, .decor-4 {
                     position: relative;
@@ -536,7 +536,7 @@ body {
         font-family: $font;
         font-style: normal;
         font-weight: 700;
-        font-size: 1.5vw;
+        font-size: calc(30 * $display);
         width: max-content;
         #close {
             width: 1vw;
@@ -558,7 +558,9 @@ body {
                 display: table-cell;
                 width: auto;
                 border: none;
-                padding: 0vw 2vw 0vw 1vw;
+                border-bottom: 0.2vw solid $black;
+                padding: -2px 5px;
+                margin: 0px 5px;
                 font-family: $font;
                 font-style: normal;
                 font-weight: 700;
@@ -595,28 +597,35 @@ body {
             margin: 2vw 3vw;
             padding: 0.5vw;
             width: 20vw;
-            background-color: $red;
+            background-color: $white;
             cursor: pointer;
+            z-index: 0;
             .linebut {
-                border: 0.3vw solid $white;
+                border: 2px solid $black;
                 position: relative;
                 .namebut {
                     margin: 0.5vw;
-                    color: $white;
+                    color: $black;
                     font-family: $font;
                     font-style: normal;
                     font-weight: 700;
-                    font-size: 1.5vw;
+                    font-size: calc(30 * $display);
                     line-height: 100%;
+                    z-index: 3;
+                    .decor-5 {
+                        position: relative;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            z-index: -1;
+                            width: 1.2ch;
+                            height: 2.5em;
+                            background-color: $red;
+                        }
+                    }
                 }
-            }
-            .decor {
-                background-color: $black;
-                height: 2vw;
-                width: 1vw;
-                position: absolute;
-                z-index: 0;
-                
             }
         }
     }
@@ -671,10 +680,39 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
+            .my-class {
+                width: 50%;
+                .calendarev-container-calendar {
+                    margin: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .calendarev-calendar-head {
+                        width: 80%;
+                        .calendarev-selects select{
+                            font-size: calc(45 * $display);
+                        }
+                    }
+                }
+            }
             .calendarev-events-container {
                 border: none;
                 border-top: 2px solid $black;
-                width: auto;
+                width: 45%;
+                margin-top: 20px;
+                padding: 10px 0px;
+                .event-block {
+                    padding: 10px 20px;
+                }
+            }
+        }
+    }
+    .buttons {
+        button {
+            .linebut {
+                .namebut {
+                    font-size: calc(50 * $display);
+                }
             }
         }
     }
