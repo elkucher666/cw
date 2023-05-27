@@ -25,13 +25,20 @@ $(document).ready(function() {
     });
 
     document.querySelector(".timebegin").addEventListener("change", function() {
-        select = document.querySelector(".timebegin").value;
-        document.querySelector(".timeend").value = select;
+        selectbeg = document.querySelector(".timebegin").value;
+        selectend = document.querySelector(".timeend").value;
+        if (selectbeg > selectend){
+            document.querySelector(".timeend").value = selectbeg;
+        }
+
     });
 
     document.querySelector(".timeend").addEventListener("change", function() {
-        select = document.querySelector(".timeend").value;
-        document.querySelector(".timebegin").value = select;
+        selectbeg = document.querySelector(".timebegin").value;
+        selectend = document.querySelector(".timeend").value;
+        if (selectbeg > selectend){
+            document.querySelector(".timebegin").value = selectend;
+        }
     });
 
 
