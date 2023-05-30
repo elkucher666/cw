@@ -527,8 +527,6 @@ body {
         position: fixed;
         z-index: 10;
         background-color: $white;
-        //left: 0vw;
-        //top: 1vw;
         padding: 2vw;
         display: flex;
         flex-direction: column;
@@ -537,16 +535,16 @@ body {
         font-style: normal;
         font-weight: 700;
         font-size: calc(30 * $display);
-        width: max-content;
+        //width: max-content;
         #close {
-            width: 1vw;
-            height: 1vw;
+            width: 10px;
+            height: 10px;
             position: sticky;
             left: 100%;
             cursor: pointer;
         }
         .nameform {
-            font-size: 2vw;
+            font-size:  calc(30 * $display);
         }
         .dataform {
             margin: 1vw;
@@ -564,7 +562,7 @@ body {
                 font-family: $font;
                 font-style: normal;
                 font-weight: 700;
-                font-size: 1.5vw;
+                font-size: calc(25 * $display);
                 -webkit-appearance: none;
                 -moz-appearance: none;
                 ::-ms-expand {
@@ -575,7 +573,7 @@ body {
                 }
             }
         }
-        .formstep {
+        .formstep, .formstepcheck {
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -584,13 +582,67 @@ body {
                 font-family: $font;
                 font-style: normal;
                 font-weight: 700;
-                font-size: 1.5vw;
+                font-size:  calc(25 * $display);
                 height: 2vw;
                 margin: 1vw;
                 border: none;
                 border-bottom: 0.2vw solid $black;
                 box-shadow: inset ;
             }
+            .container {
+                display: flex;
+                position: relative;
+                padding-left: 15px;
+                margin: 12px;
+                cursor: pointer;
+                font-size: calc(25 * $display);
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                    &:checked ~ .checkmark {
+                        background-color: $white;
+                        &:after {
+                            display: block;
+                        }
+                    }
+                }
+                .checkmark {
+                    position: absolute;
+                    top: calc(5 * $display);
+                    left: calc(-15 * $display);
+                    height: calc(25 * $display);
+                    width: calc(25 * $display);
+                    border: 2px solid #c6c6c6;
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    &:after {
+                        content: "";
+                        display: none;
+                        width: calc(7 * $display);
+                        height: calc(20 * $display);
+                        border: solid $red;
+                        border-width: 0 calc(5 * $display) calc(5 * $display) 0;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                    }
+                }
+                &:hover input ~ .checkmark {
+                    background-color: #c6c6c6;
+                }
+            }
+              
+        }
+        .formstepcheck {
+            justify-content: center;
         }
         button {
             border: none;
@@ -637,6 +689,7 @@ body {
     width: 100%;
     bottom: 0;
     left: 0;
+    position: relative;
     display: flex;
     justify-content: center;
     box-shadow:  0px -6px 15px rgba(0, 0, 0, 0.5);
@@ -716,6 +769,104 @@ body {
             }
         }
     }
+
+    form{
+        font-size: calc(35 * $display);
+        width: 70%;
+        height: 90%;
+        #close {
+            width: 10px;
+            height: 10px;
+            position: sticky;
+            left: 100%;
+            cursor: pointer;
+        }
+        .nameform {
+            font-size:  calc(35 * $display);
+        }
+        .dataform {
+            margin: 5vw;
+        }
+        .timeform {
+            display: flex;
+            padding: 1vw;
+            select {
+                display: table-cell;
+                width: auto;
+                border: none;
+                border-bottom: 2px solid $black;
+                padding: 0px 1vw;
+                margin: 0px 5px;
+                font-family: $font;
+                font-style: normal;
+                font-weight: 700;
+                font-size: calc(30 * $display);
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                ::-ms-expand {
+                    display: none;
+                }
+                .calendarev-years{
+                    text-align: center;
+                }
+            }
+        }
+        .formstep {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            input, select {
+                width: 20vw;
+                font-family: $font;
+                font-style: normal;
+                font-weight: 700;
+                font-size:  calc(30 * $display);
+                height: 2vw;
+                margin: 1vw;
+                border: none;
+                border-bottom: 2px solid $black;
+                box-shadow: inset ;
+            }
+        }
+        button {
+            border: none;
+            margin: 2vw 3vw;
+            padding: 0.5vw;
+            width: 20vw;
+            background-color: $white;
+            cursor: pointer;
+            z-index: 0;
+            .linebut {
+                border: 2px solid $black;
+                position: relative;
+                .namebut {
+                    margin: 0.5vw;
+                    color: $black;
+                    font-family: $font;
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: calc(35 * $display);
+                    line-height: 100%;
+                    z-index: 3;
+                    .decor-5 {
+                        position: relative;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            z-index: -1;
+                            width: 1.2ch;
+                            height: 2.5em;
+                            background-color: $red;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
 }
 @media (max-width: 800px) {
     .header {

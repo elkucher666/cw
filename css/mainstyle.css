@@ -498,18 +498,16 @@ body {
   font-style: normal;
   font-weight: 700;
   font-size: 1.5625vw;
-  width: -moz-max-content;
-  width: max-content;
 }
 #booking form #close {
-  width: 1vw;
-  height: 1vw;
+  width: 10px;
+  height: 10px;
   position: sticky;
   left: 100%;
   cursor: pointer;
 }
 #booking form .nameform {
-  font-size: 2vw;
+  font-size: 1.5625vw;
 }
 #booking form .dataform {
   margin: 1vw;
@@ -528,7 +526,7 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.5vw;
+  font-size: 1.3020833333vw;
   -webkit-appearance: none;
   -moz-appearance: none;
 }
@@ -538,22 +536,72 @@ body {
 #booking form .timeform select .calendarev-years {
   text-align: center;
 }
-#booking form .formstep {
+#booking form .formstep, #booking form .formstepcheck {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-#booking form .formstep input, #booking form .formstep select {
+#booking form .formstep input, #booking form .formstep select, #booking form .formstepcheck input, #booking form .formstepcheck select {
   width: 20vw;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 1.5vw;
+  font-size: 1.3020833333vw;
   height: 2vw;
   margin: 1vw;
   border: none;
   border-bottom: 0.2vw solid #1A1819;
   box-shadow: inset;
+}
+#booking form .formstep .container, #booking form .formstepcheck .container {
+  display: flex;
+  position: relative;
+  padding-left: 15px;
+  margin: 12px;
+  cursor: pointer;
+  font-size: 1.3020833333vw;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#booking form .formstep .container input, #booking form .formstepcheck .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+#booking form .formstep .container input:checked ~ .checkmark, #booking form .formstepcheck .container input:checked ~ .checkmark {
+  background-color: #ffffff;
+}
+#booking form .formstep .container input:checked ~ .checkmark:after, #booking form .formstepcheck .container input:checked ~ .checkmark:after {
+  display: block;
+}
+#booking form .formstep .container .checkmark, #booking form .formstepcheck .container .checkmark {
+  position: absolute;
+  top: 0.2604166667vw;
+  left: -0.78125vw;
+  height: 1.3020833333vw;
+  width: 1.3020833333vw;
+  border: 2px solid #c6c6c6;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+#booking form .formstep .container .checkmark:after, #booking form .formstepcheck .container .checkmark:after {
+  content: "";
+  display: none;
+  width: 0.3645833333vw;
+  height: 1.0416666667vw;
+  border: solid #d4535c;
+  border-width: 0 0.2604166667vw 0.2604166667vw 0;
+  transform: rotate(45deg);
+}
+#booking form .formstep .container:hover input ~ .checkmark, #booking form .formstepcheck .container:hover input ~ .checkmark {
+  background-color: #c6c6c6;
+}
+#booking form .formstepcheck {
+  justify-content: center;
 }
 #booking form button {
   border: none;
@@ -597,6 +645,7 @@ body {
   width: 100%;
   bottom: 0;
   left: 0;
+  position: relative;
   display: flex;
   justify-content: center;
   box-shadow: 0px -6px 15px rgba(0, 0, 0, 0.5);
@@ -666,6 +715,101 @@ body {
   }
   .buttons button .linebut .namebut {
     font-size: 2.6041666667vw;
+  }
+  form {
+    font-size: 1.8229166667vw;
+    width: 70%;
+    height: 90%;
+  }
+  form #close {
+    width: 10px;
+    height: 10px;
+    position: sticky;
+    left: 100%;
+    cursor: pointer;
+  }
+  form .nameform {
+    font-size: 1.8229166667vw;
+  }
+  form .dataform {
+    margin: 5vw;
+  }
+  form .timeform {
+    display: flex;
+    padding: 1vw;
+  }
+  form .timeform select {
+    display: table-cell;
+    width: auto;
+    border: none;
+    border-bottom: 2px solid #1A1819;
+    padding: 0px 1vw;
+    margin: 0px 5px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5625vw;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  form .timeform select ::-ms-expand {
+    display: none;
+  }
+  form .timeform select .calendarev-years {
+    text-align: center;
+  }
+  form .formstep {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  form .formstep input, form .formstep select {
+    width: 20vw;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5625vw;
+    height: 2vw;
+    margin: 1vw;
+    border: none;
+    border-bottom: 2px solid #1A1819;
+    box-shadow: inset;
+  }
+  form button {
+    border: none;
+    margin: 2vw 3vw;
+    padding: 0.5vw;
+    width: 20vw;
+    background-color: #ffffff;
+    cursor: pointer;
+    z-index: 0;
+  }
+  form button .linebut {
+    border: 2px solid #1A1819;
+    position: relative;
+  }
+  form button .linebut .namebut {
+    margin: 0.5vw;
+    color: #1A1819;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.8229166667vw;
+    line-height: 100%;
+    z-index: 3;
+  }
+  form button .linebut .namebut .decor-5 {
+    position: relative;
+  }
+  form button .linebut .namebut .decor-5::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: -1;
+    width: 1.2ch;
+    height: 2.5em;
+    background-color: #d4535c;
   }
 }
 @media (max-width: 800px) {
