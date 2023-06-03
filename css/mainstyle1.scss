@@ -23,7 +23,7 @@ body {
     height: min-content;
     top: 0;
     left: 0;
-    box-shadow: calc(0*$display) calc(13*$display) calc(10*$display) rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 13px 10px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -41,10 +41,10 @@ body {
             font-family: $font;
             font-weight: 700;
             font-size: calc(40 * $display);
-            margin: calc(-1*$display) calc(30*$display);
+            margin: -1px 30px;
             white-space: nowrap;
-            padding: calc(1*$display) calc(30*$display);
-            border: calc(2*$display) solid $black;
+            padding: 1px 30px;
+            border: 2px solid $black;
             .decor-1, .decor-2 {
                 position: relative;
                 &::before {
@@ -71,15 +71,15 @@ body {
     }
 }
 .top_bar {
-    margin: calc(0*$display) calc(0*$display);
+    margin: 0px 0px;
     position: fixed;
     top: 0;
-    height: calc(110 * 1.2 *$display);
+    height: 110px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: calc(0*$display) calc(13*$display) calc(10*$display) rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 13px 10px rgba(0, 0, 0, 0.5);
     background-color: $white;
     z-index: 1;
     transition: 0.5s;
@@ -94,7 +94,7 @@ body {
             //top: 0;
             left: 0;
             width: 25%;
-            height: calc(110 * 1.2 * $display);
+            height: 110px;
             background: linear-gradient(to left, #ffffff,#ffffff00);
         }
         img {
@@ -108,10 +108,10 @@ body {
         font-family: $font;
         font-weight: bolder;
         .auditselect {
-            font-size: calc(15 * $display + calc(10*$display));
+            font-size: calc(15 * $display + 10px);
         }
         .steetselect {
-            font-size: calc(5 * $display + calc(10*$display));
+            font-size: calc(5 * $display + 10px);
             color: $red;
         }
     }
@@ -119,11 +119,11 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
-        line-height: calc(0*$display);
+        line-height: 0px;
     }
     .paramselectroom {
         width: 25%;
-        font-size: calc(10 * $display + calc(10*$display));
+        font-size: calc(10 * $display + 10px);
         font-weight: 300;
         color: $red;
         line-height: 200%;
@@ -137,17 +137,17 @@ body {
     justify-content: center;
 }
 .hellomess {
-    border: calc(2*$display) solid $black;
+    border: 2px solid $black;
     width: calc(40vw + 2 * $display);
     margin: 1% calc((100% - (40vw + 2 * $display)) / 2);
     .decor2, .decor3 {
-        border: calc(2*$display) solid $black;
+        border: 2px solid $black;
     }
     .decor2 {
         height: 5vw;
         width: 5%;
-        margin-top: -calc(20*$display);
-        margin-left: -calc(20*$display);
+        margin-top: -20px;
+        margin-left: -20px;
     }
     .decor3 {
         height: 3vw;
@@ -155,15 +155,15 @@ body {
         margin: 0% 0% -4% 95%;
     }
     .messege {
-        padding: calc(35*$display);
+        padding: 35px;
         // margin-top: -4vw;
         // margin-bottom: -2vw;
 
         font-family: $font;
         font-style: normal;
         font-weight: 700;
-        font-size: calc(10 * $display + calc(10*$display));
-        line-height: calc(30*$display);
+        font-size: calc(10 * $display + 10px);
+        line-height: 30px;
         color: $black;
         text-align: center;
 
@@ -172,25 +172,25 @@ body {
         &::before, &::after {
             content: '';
             position: absolute;
-            border: calc(2*$display) solid;
+            border: 2px solid;
         }
         &::before {
-            left: -calc(15*$display);
+            left: -15px;
             top: -15%;
-            width: calc(25*$display);
-            height: calc(75* 1.2 *$display);
+            width: 25px;
+            height: 75px;
         }
         &::after {
             right: -10%;
             bottom: -10%;
-            width: calc(80*$display);
-            height: calc(45 * 1.2 * $display);
+            width: 80px;
+            height: 45px;
         }
     }
 }
 .catalog {
     display: flex;
-    margin: 20% calc(0*$display) calc(0*$display) calc(0*$display);
+    margin: 20% 0px 0px 0px;
     justify-content: center;
     flex-direction: column;
     .addresses {
@@ -202,13 +202,13 @@ body {
         .tab {
             padding: 2%;
             border: none;
-            border-bottom: calc(2*$display) solid $white;
+            border-bottom: 2px solid $white;
             transition: 0.5s;
             background-color: $white;
             font-family: $font;
             font-style: normal;
             font-weight: 700;
-            font-size: calc(30 * $display + calc(10*$display));
+            font-size: calc(30 * $display + 10px);
             line-height: 100%;
             cursor: pointer;
 
@@ -230,7 +230,7 @@ body {
         .tabcontent {
             color: rgb(4, 4, 4);
             display: flex;
-            padding: calc(10*$display) calc(20*$display);
+            padding: 10px 20px;
             height: 100%;
             overflow-x: scroll;
             overflow-y: hidden;
@@ -246,7 +246,7 @@ body {
 
         .room {
             background-color: $white;
-            box-shadow: calc(0*$display) calc(6*$display) calc(15*$display) rgba(0, 0, 0, 0.5);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.5);
             margin: 2vw;
             cursor: pointer;
             img {
@@ -258,7 +258,7 @@ body {
                 font-family: $font;
                 font-style: normal;
                 font-weight: 700;
-                font-size: calc(20 * $display + calc(5*$display));
+                font-size: calc(20 * $display + 5px);
                 line-height: 100%;
                 //width: 100%;
             }
@@ -268,7 +268,7 @@ body {
                 font-family: $font;
                 font-style: normal;
                 font-weight: 300;
-                font-size: calc(15 * $display + calc(5*$display));
+                font-size: calc(15 * $display + 5px);
                 line-height: 100%;
                 //width: 100%;
             }
@@ -287,7 +287,7 @@ body {
         display: flex;
         justify-content: flex-end;
         z-index: 0;
-        margin: calc(150*$display) calc(0*$display) calc(0*$display) calc(0*$display);
+        margin: 150px 0px 0px 0px;
         .calendar {
             display: flex;
             align-items: center;
@@ -297,8 +297,8 @@ body {
                     align-items: center;
                     margin: calc(20 * $display) 0;
                     .blockoccupied, .blockpartoccupied {
-                        width: calc(30 * 1.2 * $display);
-                        height: calc(30 * 1.2 * $display);
+                        width: calc(40 * $display);
+                        height: calc(40 * $display);
                     }
                     .legendoccupied, .legendpartoccupied {
                         font-family: $font;
@@ -320,7 +320,7 @@ body {
                 position: relative;
                 background: $white;
                 min-height: 5vw;
-                margin: calc(5*$display) calc(50*$display) calc(5*$display) calc(10*$display);
+                margin: 5px 50px 5px 10px;
                 table {
                     //width: 100%;
                     border: 0;
@@ -335,10 +335,10 @@ body {
                     max-width: 100%;
                     width: 100%;
                     .prev {
-                        left: calc(0*$display);
+                        left: 0px;
                     }
                     .next {
-                        right: calc(0*$display);
+                        right: 0px;
                     }
                     .prev, .next {
                         color: $black;
@@ -360,13 +360,13 @@ body {
                         display: flex;
                         position: relative;
                         padding: 1vw 2vw;
-                        //margin: 0 calc(40*$display);
+                        //margin: 0 40px;
                         //max-width: 100%;
                         select {
                             display: table-cell;
                             width: auto;	
                             position: relative;
-                            font-size: calc(15 * $display + calc(6*$display));
+                            font-size: calc(15 * $display + 6px);
                             //padding: 1vw 2vw;
                             border: none;
                             font-family: $font;
@@ -388,8 +388,8 @@ body {
                     //width: 100%;
                     border-collapse: collapse;
                     th {
-                        padding: calc(10*$display);
-                        font-size: calc(10 * $display + calc(8*$display));
+                        padding: 10px;
+                        font-size: calc(10 * $display + 8px);
                         text-transform: uppercase;
                         font-weight: bolder;
                         color: $black;
@@ -397,14 +397,14 @@ body {
                         width: auto;
                     }
                     .calendarev-day {
-                        font-size: calc(10 * $display + calc(8*$display));
+                        font-size: calc(10 * $display + 8px);
                         font-weight: 400;
-                        padding: calc(10*$display);
+                        padding: 10px;
                         text-align: center;
                         background-color: none;
                         position: relative;
-                        width: calc(20*$display);
-                        height: calc(20 * 1.2 * $display);
+                        width: 20px;
+                        height: 20px;
                         border: none;
                         &:hover {
                             cursor: pointer;
@@ -429,26 +429,26 @@ body {
                             bottom: 100%;
                             left: 0;
                             background-color: $red;
-                            font-size: calc(10 * $display + calc(8*$display));
+                            font-size: calc(10 * $display + 8px);
                             color: $white;
-                            padding: calc(10*$display);
+                            padding: 10px;
                             z-index: 5;
-                            width: calc(150*$display);
+                            width: 150px;
                             :before {
                                 content: '';
                                 display: block;
                                 position: absolute;
-                                border: calc(5*$display) solid transparent;	
-                                border-top: calc(20*$display) solid $black;
-                                bottom: -calc(10*$display);
-                                left: calc(17*$display);
+                                border: 5px solid transparent;	
+                                border-top: 20px solid $black;
+                                bottom: -10px;
+                                left: 17px;
                             }
                         }
                     }
                     .calendarev-day-selected {
                         border: 0.2vw solid $black;
                         //font-weight: 700;
-                        font-size: calc(10 * $display + calc(8*$display));
+                        font-size: calc(10 * $display + 8px);
                     }
     
                 }
@@ -460,13 +460,16 @@ body {
         .calendarev-events-container {
             display: block;
             position: relative;
+            //min-width: 250px;
+            //height: 1;
             width: 50%;
-            margin: calc(0*$display);
+            margin: 0px;
             border: none;
-            border-left: calc(2*$display) solid $black;
+            border-left: 2px solid $black;
             .event-block {
                 display: block;
-                padding: calc(10*$display) calc(75*$display);
+                //border: 1px solid black;
+                padding: 10px 75px;
                 height: auto;
                 font-family: $font;
                 font-weight: 700;
@@ -476,12 +479,12 @@ body {
                     //background-color: #952828;
                 }
                 h3 {
-                    font-size: calc(20 * $display + calc(5*$display));
+                    font-size: calc(20 * $display + 5px);
                     margin: 0.1vw;
                     padding: 0;
                 }
                 article {
-                    font-size: calc(15 * $display + calc(5*$display));
+                    font-size: calc(15 * $display + 5px);
                     font-weight: 500;
                 }
             }
@@ -503,10 +506,10 @@ body {
         z-index: 0;
         cursor: pointer;
         .linebut {
-            border: calc(2*$display) solid $black;
+            border: 2px solid $black;
             position: relative;
             .namebut {
-                margin:  calc(10 * $display) calc(35*$display);
+                margin:  calc(10 * $display) 35px;
                 color: $black;
                 font-family: $font;
                 font-weight: bolder;
@@ -563,8 +566,8 @@ body {
         font-size: calc(30 * $display);
         //width: max-content;
         #close {
-            width: calc(10*$display);
-            height: calc(10 * 1.2 * $display);
+            width: 10px;
+            height: 10px;
             position: sticky;
             left: 100%;
             cursor: pointer;
@@ -583,8 +586,8 @@ body {
                 width: auto;
                 border: none;
                 border-bottom: 0.2vw solid $black;
-                padding: calc(0*$display) 1vw;
-                margin: calc(0*$display) calc(5*$display);
+                padding: 0px 1vw;
+                margin: 0px 5px;
                 font-family: $font;
                 font-style: normal;
                 font-weight: 700;
@@ -618,8 +621,8 @@ body {
             .container {
                 display: flex;
                 position: relative;
-                padding-left: calc(15*$display);
-                margin: calc(12*$display);
+                padding-left: 15px;
+                margin: 12px;
                 cursor: pointer;
                 font-size: calc(25 * $display);
                 -webkit-user-select: none;
@@ -643,9 +646,9 @@ body {
                     position: absolute;
                     top: calc(5 * $display);
                     left: calc(-15 * $display);
-                    height: calc(25  * 1.2 * $display);
+                    height: calc(25 * $display);
                     width: calc(25 * $display);
-                    border: calc(2*$display) solid #c6c6c6;
+                    border: 2px solid #c6c6c6;
                     display: flex;
                     align-items: flex-start;
                     justify-content: center;
@@ -653,7 +656,7 @@ body {
                         content: "";
                         display: none;
                         width: calc(7 * $display);
-                        height: calc(20  * 1.2 * $display);
+                        height: calc(20 * $display);
                         border: solid $red;
                         border-width: 0 calc(5 * $display) calc(5 * $display) 0;
                         -webkit-transform: rotate(45deg);
@@ -679,7 +682,7 @@ body {
             cursor: pointer;
             z-index: 0;
             .linebut {
-                border: calc(2*$display) solid $black;
+                border: 2px solid $black;
                 position: relative;
                 .namebut {
                     margin: 0.5vw;
@@ -718,17 +721,17 @@ body {
     position: relative;
     display: flex;
     justify-content: center;
-    box-shadow:  calc(0*$display) calc(-6*$display) calc(15*$display) rgba(0, 0, 0, 0.5);
+    box-shadow:  0px -6px 15px rgba(0, 0, 0, 0.5);
     .container {
-        border: calc(3*$display) solid $black;
-        margin: calc(20*$display);
+        border: 3px solid $black;
+        margin: 20px;
         height: min-content;
         width: fit-content;
         .contactinfo {
             color: $black;
             font-family: $font;
             font-weight: 600;
-            font-size: calc(25 * $display + calc(8*$display));
+            font-size: calc(25 * $display + 8px);
             margin: 1vw;
             text-align: center;
             .contact {
@@ -736,21 +739,21 @@ body {
                 color: $black;
                 font-family: $font;
                 font-weight: 300;
-                font-size: calc(12 * $display + calc(8*$display));
+                font-size: calc(12 * $display + 8px);
                 margin: 2vw;
             }
         }
     }
 }
-@media (max-width: calc(1100*$display)) {
+@media (max-width: 1100px) {
     .header {
         .LogoImg{
-            padding: calc(4 * $display + calc(10*$display)) 0%;
+            padding: calc(4 * $display + 10px) 0%;
         }
         .linename {
             .name {
-                font-size: calc(40 * $display + calc(10*$display));
-                margin: calc(10*$display) calc(30*$display);
+                font-size: calc(40 * $display + 10px);
+                margin: 10px 30px;
             }
         }
     }
@@ -776,12 +779,12 @@ body {
             }
             .calendarev-events-container {
                 border: none;
-                border-top: calc(2*$display) solid $black;
+                border-top: 2px solid $black;
                 width: 45%;
-                margin-top: calc(20*$display);
-                padding: calc(10*$display) calc(0*$display);
+                margin-top: 20px;
+                padding: 10px 0px;
                 .event-block {
-                    padding: calc(10*$display) calc(20*$display);
+                    padding: 10px 20px;
                 }
             }
         }
@@ -801,8 +804,8 @@ body {
         width: 70%;
         height: 90%;
         #close {
-            width: calc(10*$display);
-            height: calc(10*$display);
+            width: 10px;
+            height: 10px;
             position: sticky;
             left: 100%;
             cursor: pointer;
@@ -820,9 +823,9 @@ body {
                 display: table-cell;
                 width: auto;
                 border: none;
-                border-bottom: calc(2*$display) solid $black;
-                padding: calc(0*$display) 1vw;
-                margin: calc(0*$display) calc(5*$display);
+                border-bottom: 2px solid $black;
+                padding: 0px 1vw;
+                margin: 0px 5px;
                 font-family: $font;
                 font-style: normal;
                 font-weight: 700;
@@ -850,7 +853,7 @@ body {
                 height: 2vw;
                 margin: 1vw;
                 border: none;
-                border-bottom: calc(2*$display) solid $black;
+                border-bottom: 2px solid $black;
                 box-shadow: inset ;
             }
         }
@@ -863,7 +866,7 @@ body {
             cursor: pointer;
             z-index: 0;
             .linebut {
-                border: calc(2*$display) solid $black;
+                border: 2px solid $black;
                 position: relative;
                 .namebut {
                     margin: 0.5vw;
@@ -894,7 +897,7 @@ body {
 
 
 }
-@media (max-width: calc(800*$display)) {
+@media (max-width: 800px) {
     .header {
         padding: auto;
         height: max-content;
@@ -905,7 +908,7 @@ body {
         .linename {
             margin: 0;
             .name {
-                margin: calc(15*$display) 0;
+                margin: 15px 0;
             }
         }
     }
