@@ -16,23 +16,23 @@
         <div class="header">
             <img class="LogoImg" src="img/MainLogo2.png">      
             <div class="linename">
-                <p class="name">РАС<span class="decor-1">П</span>ИСАНИЕ МАСТЕ<span class="decor-2">Р</span>СКИХ</p>
+                <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p>
             </div>
         </div>
-        <div class="top_bar" id="top_bar">
+        <div class="top_bar none" id="top_bar">
             <div class="selectedimg">
-                <img src="img/room1.jpg" alt="" class="selectedimg">
+                <img alt="" class="selectedimg" id="room_image">
             </div>
             <div class="selectedroom">
-                <p class="auditselect">АУДИТОРИЯ №1</p>
-                <p class="steetselect">КУРЧАТОВА</p>
+                <p class="auditselect" id="room_name"></p>
+                <p class="steetselect" id="room_address"></p>
             </div>
-            <div class="paramselectroom">Площадь: 20м<br>Оборудования: пианино</div>
+            <div class="paramselectroom" id="room_description"></div>
         </div>
         <div class="content">
             <div class="hellomess">
                 <div class="messege">Здраствуте, дорогие посетители!
-                    <br>На сайте “РАСПИСАНИ МАСТЕРСКИХ” вы можете узнать полную информацию о помещениях, а так же их забронировать.
+                    <br>На сайте “ТВОРЧЕСКИЙ ЦЕХ” вы можете узнать полную информацию о помещениях, а так же их забронировать.
                 </div>
             </div>
             <div id="catalogstr"></div>
@@ -47,11 +47,11 @@
                 <div class="worktimeroom">
 
                     <div class="calendar">
-                        <div class="legend">
+                        <div class="legend none">
                             <div class="occupied">
                                 <div class="blockoccupied"></div>
                                 <p class="legendoccupied">- полнстью заняты</p>
-                            </div>
+                            </div>  
                             <div class="partially_occupied">
                                 <div class="blockpartoccupied"></div>
                                 <p class="legendpartoccupied">- частично заняты</p>
@@ -63,11 +63,6 @@
                 </div>
             </div>
             <div id="book" class="buttons">
-                <button class="search">
-                    <div class="linebut">
-                        <p class="namebut">НАЙТИ ПОМЕЩ<span class="decor-3">Е</span>НИЕ</p>
-                    </div>
-                </button>
                 <button class="order">
                     <div class="linebut">
                         <p class="namebut">ЗАБР<span class="decor-4">О</span>НИРОВАТЬ</p>

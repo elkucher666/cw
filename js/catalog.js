@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", loadRooms);  
 
+
 async function loadRooms() {
 
     let response = await fetch('./queries/get_room.php', {
@@ -22,7 +23,12 @@ async function loadRooms() {
         room_element.dataset.address = room.address;
         room_element.classList.add("room");
         room_element.addEventListener("click", function() {
-            insertCalendar(room.id)
+            insertCalendar(room.id);
+            document.querySelector("#top_bar").classList.remove("none");
+            document.querySelector("#room_image").src = room.image;
+            document.querySelector("#room_name").textContent = room.name;
+            document.querySelector("#room_address").textContent = room.address;
+            document.querySelector("#room_description").textContent = room.description;
         });
 
         let image = document.createElement("img");

@@ -476,6 +476,7 @@
 // document.addEventListener("DOMContentLoaded", insertCalendar);
 
 async function insertCalendar(room_id) {
+    document.querySelector(".calendar .legend").classList.remove("none");
 
     let formData = new FormData();
     formData.append("id", room_id);
@@ -487,7 +488,6 @@ async function insertCalendar(room_id) {
 
     let result = await response.text();
     let applications = JSON.parse(result);
-    console.log(applications);
 
     let events = applications.map(function(application) {
         let day = application.booking_date.slice(0, 2);
