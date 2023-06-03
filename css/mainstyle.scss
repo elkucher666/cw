@@ -291,12 +291,23 @@ body {
         .calendar {
             .legend {
                 .occupied, .partially_occupied {
+                    display: flex;
+                    align-items: center;
+                    margin: calc(20 * $display) 0;
                     .blockoccupied, .blockpartoccupied {
-                        width: calc(10 * $display);
-                        height: calc(10 * $display);
+                        width: calc(40 * $display);
+                        height: calc(40 * $display);
                     }
                     .legendoccupied, .legendpartoccupied {
                         font-family: $font;
+                        font-size: calc(25 * $display);
+                        margin: 0 calc(20 * $display);
+                    }
+                    .blockoccupied {
+                        background-color: $red;
+                    }
+                    .blockpartoccupied {
+                        background-color: #727272;
                     }
 
                 }
