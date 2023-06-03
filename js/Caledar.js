@@ -480,10 +480,13 @@
 
 document.addEventListener("DOMContentLoaded", insertCalendar);
 
-function insertCalendar() {
+async function insertCalendar() {
+    
 
-   // календари
-	document.querySelector('#calendar_insertion').bitroidCalendarEv({
+
+
+
+	$('#calendar_insertion').bitroidCalendarEv({
 	    lang: "ru",
 	    //sundayFirst: false,
 	    years: "2022-2030",
