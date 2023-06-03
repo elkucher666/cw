@@ -269,7 +269,14 @@ body {
   z-index: 0;
   margin: 150px 0px 0px 0px;
 }
-.catalog .worktimeroom .calendarev-container-calendar {
+.catalog .worktimeroom .calendar .legend .occupied .blockoccupied, .catalog .worktimeroom .calendar .legend .occupied .blockpartoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .blockoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .blockpartoccupied {
+  width: 0.5208333333vw;
+  height: 0.5208333333vw;
+}
+.catalog .worktimeroom .calendar .legend .occupied .legendoccupied, .catalog .worktimeroom .calendar .legend .occupied .legendpartoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .legendoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .legendpartoccupied {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+.catalog .worktimeroom .calendar .calendarev-container-calendar {
   display: block;
   font-family: "IBM Plex Sans", sans-serif;
   position: relative;
@@ -277,12 +284,12 @@ body {
   min-height: 5vw;
   margin: 5px 100px;
 }
-.catalog .worktimeroom .calendarev-container-calendar table {
+.catalog .worktimeroom .calendar .calendarev-container-calendar table {
   border: 0;
   border-collapse: collapse !important;
   border-spacing: 0 !important;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head {
   display: flex;
   justify-content: center;
   position: relative;
@@ -290,34 +297,34 @@ body {
   max-width: 100%;
   width: 100%;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .prev {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .prev {
   left: 0px;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .next {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .next {
   right: 0px;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .prev, .catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .next {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .prev, .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .next {
   color: #1A1819;
   display: flex;
   position: absolute;
   top: 30%;
   transition: 0.3s all ease;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .prev img, .catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .next img {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .prev img, .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .next img {
   width: 1vw;
   height: inherit;
   padding: 0.5vw 1vw;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .prev :hover, .catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .next :hover {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .prev :hover, .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .next :hover {
   color: #1A1819;
   cursor: pointer;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects {
   display: flex;
   position: relative;
   padding: 1vw 2vw;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select {
   display: table-cell;
   width: auto;
   position: relative;
@@ -328,18 +335,18 @@ body {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select ::-ms-expand {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select ::-ms-expand {
   display: none;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select .calendarev-years {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select .calendarev-years {
   text-align: center;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body {
   display: table;
   position: relative;
   border-collapse: collapse;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body th {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body th {
   padding: 10px;
   font-size: calc(0.5208333333vw + 8px);
   text-transform: uppercase;
@@ -348,7 +355,7 @@ body {
   text-align: center;
   width: auto;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day {
   font-size: calc(0.5208333333vw + 8px);
   font-weight: 400;
   padding: 10px;
@@ -359,24 +366,24 @@ body {
   height: 20px;
   border: none;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day:hover {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day:hover {
   cursor: pointer;
   font-weight: 900;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-current {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-current {
   background-color: rgba(125, 125, 125, 0.4705882353);
   /*:hover {
       background-color: #ECECEC;
   }*/
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event {
   background-color: #d4535c;
   color: #ffffff;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event:hover > .event-popup {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event:hover > .event-popup {
   display: block;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event .event-popup {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event .event-popup {
   display: none;
   position: absolute;
   bottom: 100%;
@@ -388,7 +395,7 @@ body {
   z-index: 5;
   width: 150px;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event .event-popup :before {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-event .event-popup :before {
   content: "";
   display: block;
   position: absolute;
@@ -397,11 +404,11 @@ body {
   bottom: -10px;
   left: 17px;
 }
-.catalog .worktimeroom .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-selected {
+.catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-selected {
   border: 0.2vw solid #1A1819;
   font-size: calc(0.5208333333vw + 8px);
 }
-.catalog .worktimeroom .calendarev-events-container {
+.catalog .worktimeroom .calendar .calendarev-events-container {
   display: block;
   position: relative;
   width: 50%;
@@ -409,7 +416,7 @@ body {
   border: none;
   border-left: 2px solid #1A1819;
 }
-.catalog .worktimeroom .calendarev-events-container .event-block {
+.catalog .worktimeroom .calendar .calendarev-events-container .event-block {
   display: block;
   padding: 10px 75px;
   height: auto;
@@ -419,12 +426,12 @@ body {
   width: -moz-max-content;
   width: max-content;
 }
-.catalog .worktimeroom .calendarev-events-container .event-block h3 {
+.catalog .worktimeroom .calendar .calendarev-events-container .event-block h3 {
   font-size: calc(1.0416666667vw + 5px);
   margin: 0.1vw;
   padding: 0;
 }
-.catalog .worktimeroom .calendarev-events-container .event-block article {
+.catalog .worktimeroom .calendar .calendarev-events-container .event-block article {
   font-size: calc(0.78125vw + 5px);
   font-weight: 500;
 }
@@ -688,19 +695,19 @@ body {
     flex-direction: column;
     align-items: center;
   }
-  .catalog .worktimeroom .my-class {
+  .catalog .worktimeroom .calendar {
     width: 50%;
   }
-  .catalog .worktimeroom .my-class .calendarev-container-calendar {
+  .catalog .worktimeroom .calendar .calendarev-container-calendar {
     margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .catalog .worktimeroom .my-class .calendarev-container-calendar .calendarev-calendar-head {
+  .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head {
     width: 80%;
   }
-  .catalog .worktimeroom .my-class .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select {
+  .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-head .calendarev-selects select {
     font-size: 2.34375vw;
   }
   .catalog .worktimeroom .calendarev-events-container {

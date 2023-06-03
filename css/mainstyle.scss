@@ -288,179 +288,194 @@ body {
         justify-content: flex-end;
         z-index: 0;
         margin: 150px 0px 0px 0px;
-        .calendarev-container-calendar {
-            display: block;
-            font-family: $font;
-            position: relative;
-            background: $white;
-            min-height: 5vw;
-            margin: 5px 100px;
-            table {
-                //width: 100%;
-                border: 0;
-                border-collapse: collapse !important;
-                border-spacing: 0 !important;
-            }
-            .calendarev-calendar-head {
-                display: flex;
-                justify-content: center;
-                position: relative;
-                padding: 1vw 0;
-                max-width: 100%;
-                width: 100%;
-                .prev {
-                    left: 0px;
-                }
-                .next {
-                    right: 0px;
-                }
-                .prev, .next {
-                    color: $black;
-                    display: flex;
-                    position: absolute;
-                    top: 30%;
-                    transition: 0.3s all ease;
-                    img {
-                        width: 1vw;
-                        height: inherit;
-                        padding: 0.5vw 1vw;
+        .calendar {
+            .legend {
+                .occupied, .partially_occupied {
+                    .blockoccupied, .blockpartoccupied {
+                        width: calc(10 * $display);
+                        height: calc(10 * $display);
                     }
-                    :hover {
-                        color: $black;
-			            cursor: pointer;
-                    }
-                }
-                .calendarev-selects {
-                    display: flex;
-                    position: relative;
-                    padding: 1vw 2vw;
-                    //margin: 0 40px;
-                    //max-width: 100%;
-                    select {
-                        display: table-cell;
-                        width: auto;	
-                        position: relative;
-                        font-size: calc(15 * $display + 6px);
-                        //padding: 1vw 2vw;
-                        border: none;
+                    .legendoccupied, .legendpartoccupied {
                         font-family: $font;
-                        font-weight: bolder;
-                        -webkit-appearance: none;
-                        -moz-appearance: none;
-                        ::-ms-expand {
-                            display: none;
-                        }
-                        .calendarev-years{
-                            text-align: center;
-                        }
                     }
+
                 }
             }
-            .calendarev-calendar-body {
-                display: table;
-                position: relative;
-                //width: 100%;
-                border-collapse: collapse;
-                th {
-                    padding: 10px;
-                    font-size: calc(10 * $display + 8px);
-                    text-transform: uppercase;
-                    font-weight: bolder;
-                    color: $black;
-                    text-align: center;
-                    width: auto;
-                }
-                .calendarev-day {
-                    font-size: calc(10 * $display + 8px);
-                    font-weight: 400;
-                    padding: 10px;
-                    text-align: center;
-                    background-color: none;
-                    position: relative;
-                    width: 20px;
-                    height: 20px;
-                    border: none;
-                    &:hover {
-                        cursor: pointer;
-                        font-weight: 900;
-                    }
-                }
-                .calendarev-day-current {
-                    background-color: #7d7d7d78;
-                    /*:hover {
-                        background-color: #ECECEC;
-                    }*/
-                }
-                .calendarev-day-event {
-                    background-color: $red;
-                    color: $white;
-                    &:hover > .event-popup {
-                        display: block;
-                    }
-                    .event-popup {
-                        display: none;
-                        position: absolute;
-                        bottom: 100%;
-                        left: 0;
-                        background-color: $red;
-                        font-size: calc(10 * $display + 8px);
-                        color: $white;
-                        padding: 10px;
-                        z-index: 5;
-                        width: 150px;
-                        :before {
-                            content: '';
-                            display: block;
-                            position: absolute;
-                            border: 5px solid transparent;	
-                            border-top: 20px solid $black;
-                            bottom: -10px;
-                            left: 17px;
-                        }
-                    }
-                }
-                .calendarev-day-selected {
-                    border: 0.2vw solid $black;
-                    //font-weight: 700;
-				    font-size: calc(10 * $display + 8px);
-                }
-
-            }
-            
-
-        }
-        .calendarev-events-container {
+            .calendarev-container-calendar {
                 display: block;
+                font-family: $font;
                 position: relative;
-                //min-width: 250px;
-                //height: 1;
-                width: 50%;
-                margin: 0px;
-                border: none;
-                border-left: 2px solid $black;
-                .event-block {
-                    display: block;
-                    //border: 1px solid black;
-                    padding: 10px 75px;
-                    height: auto;
-                    font-family: $font;
-                    font-weight: 700;
-                    color: $red;
-                    width: max-content;
-                    :nth-child(odd) {
-                        //background-color: #952828;
+                background: $white;
+                min-height: 5vw;
+                margin: 5px 100px;
+                table {
+                    //width: 100%;
+                    border: 0;
+                    border-collapse: collapse !important;
+                    border-spacing: 0 !important;
+                }
+                .calendarev-calendar-head {
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    padding: 1vw 0;
+                    max-width: 100%;
+                    width: 100%;
+                    .prev {
+                        left: 0px;
                     }
-                    h3 {
-                        font-size: calc(20 * $display + 5px);
-                        margin: 0.1vw;
-                        padding: 0;
+                    .next {
+                        right: 0px;
                     }
-                    article {
-                        font-size: calc(15 * $display + 5px);
-                        font-weight: 500;
+                    .prev, .next {
+                        color: $black;
+                        display: flex;
+                        position: absolute;
+                        top: 30%;
+                        transition: 0.3s all ease;
+                        img {
+                            width: 1vw;
+                            height: inherit;
+                            padding: 0.5vw 1vw;
+                        }
+                        :hover {
+                            color: $black;
+                            cursor: pointer;
+                        }
+                    }
+                    .calendarev-selects {
+                        display: flex;
+                        position: relative;
+                        padding: 1vw 2vw;
+                        //margin: 0 40px;
+                        //max-width: 100%;
+                        select {
+                            display: table-cell;
+                            width: auto;	
+                            position: relative;
+                            font-size: calc(15 * $display + 6px);
+                            //padding: 1vw 2vw;
+                            border: none;
+                            font-family: $font;
+                            font-weight: bolder;
+                            -webkit-appearance: none;
+                            -moz-appearance: none;
+                            ::-ms-expand {
+                                display: none;
+                            }
+                            .calendarev-years{
+                                text-align: center;
+                            }
+                        }
                     }
                 }
+                .calendarev-calendar-body {
+                    display: table;
+                    position: relative;
+                    //width: 100%;
+                    border-collapse: collapse;
+                    th {
+                        padding: 10px;
+                        font-size: calc(10 * $display + 8px);
+                        text-transform: uppercase;
+                        font-weight: bolder;
+                        color: $black;
+                        text-align: center;
+                        width: auto;
+                    }
+                    .calendarev-day {
+                        font-size: calc(10 * $display + 8px);
+                        font-weight: 400;
+                        padding: 10px;
+                        text-align: center;
+                        background-color: none;
+                        position: relative;
+                        width: 20px;
+                        height: 20px;
+                        border: none;
+                        &:hover {
+                            cursor: pointer;
+                            font-weight: 900;
+                        }
+                    }
+                    .calendarev-day-current {
+                        background-color: #7d7d7d78;
+                        /*:hover {
+                            background-color: #ECECEC;
+                        }*/
+                    }
+                    .calendarev-day-event {
+                        background-color: $red;
+                        color: $white;
+                        &:hover > .event-popup {
+                            display: block;
+                        }
+                        .event-popup {
+                            display: none;
+                            position: absolute;
+                            bottom: 100%;
+                            left: 0;
+                            background-color: $red;
+                            font-size: calc(10 * $display + 8px);
+                            color: $white;
+                            padding: 10px;
+                            z-index: 5;
+                            width: 150px;
+                            :before {
+                                content: '';
+                                display: block;
+                                position: absolute;
+                                border: 5px solid transparent;	
+                                border-top: 20px solid $black;
+                                bottom: -10px;
+                                left: 17px;
+                            }
+                        }
+                    }
+                    .calendarev-day-selected {
+                        border: 0.2vw solid $black;
+                        //font-weight: 700;
+                        font-size: calc(10 * $display + 8px);
+                    }
+    
+                }
+                
+    
             }
+            .calendarev-events-container {
+                    display: block;
+                    position: relative;
+                    //min-width: 250px;
+                    //height: 1;
+                    width: 50%;
+                    margin: 0px;
+                    border: none;
+                    border-left: 2px solid $black;
+                    .event-block {
+                        display: block;
+                        //border: 1px solid black;
+                        padding: 10px 75px;
+                        height: auto;
+                        font-family: $font;
+                        font-weight: 700;
+                        color: $red;
+                        width: max-content;
+                        :nth-child(odd) {
+                            //background-color: #952828;
+                        }
+                        h3 {
+                            font-size: calc(20 * $display + 5px);
+                            margin: 0.1vw;
+                            padding: 0;
+                        }
+                        article {
+                            font-size: calc(15 * $display + 5px);
+                            font-weight: 500;
+                        }
+                    }
+            }
+        }
+
     }
     
 }
@@ -733,7 +748,7 @@ body {
             display: flex;
             flex-direction: column;
             align-items: center;
-            .my-class {
+            .calendar {
                 width: 50%;
                 .calendarev-container-calendar {
                     margin: 0;

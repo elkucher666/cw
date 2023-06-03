@@ -8,11 +8,7 @@ async function loadRooms() {
 
     let result = await response.text();
     let rooms = JSON.parse(result);
-
-
-    console.dir(rooms);
-
-
+    
     let addresses = [];
 
     let room_elements = [];
@@ -82,7 +78,7 @@ function myFunction() {
   if (scrolled > 50){
     document.getElementById("top_bar").style.top = '8vw';
   }else{
-    document.getElementById("top_bar").style.top = '0px';
+    document.getElementById("top_bar").style.top = '-8vw';
   }
   
 }
