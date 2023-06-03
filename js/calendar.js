@@ -481,9 +481,12 @@
 document.addEventListener("DOMContentLoaded", insertCalendar);
 
 async function insertCalendar() {
-    
+    // let response = await fetch('./queries/get_approved_application.php', {
+    //     method: 'POST'
+    // });
 
-
+    // let result = await response.text();
+    // let applications = JSON.parse(result);
 
 
 	$('#calendar_insertion').bitroidCalendarEv({
