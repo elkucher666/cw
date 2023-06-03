@@ -21,6 +21,9 @@ async function loadRooms() {
         let room_element = document.createElement("div");
         room_element.dataset.address = room.address;
         room_element.classList.add("room");
+        room_element.addEventListener("click", function() {
+            insertCalendar(room.id)
+        });
 
         let image = document.createElement("img");
         image.classList.add("image");
