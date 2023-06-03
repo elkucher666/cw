@@ -10,7 +10,7 @@
 
 define('HOST', 'localhost');
 define('USER', 'root');
-define('PASSWORD', '');
+define('PASSWORD', 'mysql');
 define('DATABASE', 'ppcp');
 
 /*
