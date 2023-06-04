@@ -170,13 +170,13 @@ body {
   border: 0.1041666667vw solid;
 }
 .hellomess .messege::before {
-  left: -calc(0.78125vw);
+  left: -0.78125vw;
   top: -15%;
   width: 1.3020833333vw;
   height: 4.6875vw;
 }
 .hellomess .messege::after {
-  right: -10%;
+  right: -2.6041666667vw;
   bottom: -10%;
   width: 4.1666666667vw;
   height: 2.8125vw;
@@ -699,7 +699,7 @@ body {
   margin: 2vw;
 }
 
-@media (max-width: 57.2916666667vw) {
+@media (max-width: 1100px) {
   .header .LogoImg {
     padding: 0.7291666667vw 0%;
   }
@@ -836,7 +836,7 @@ body {
     background-color: #d4535c;
   }
 }
-@media (max-width: 41.6666666667vw) {
+@media (max-width: 800px) {
   .header {
     padding: auto;
     height: -moz-max-content;

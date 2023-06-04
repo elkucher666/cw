@@ -175,13 +175,13 @@ body {
             border: calc(2*$display) solid;
         }
         &::before {
-            left: -calc(15*$display);
+            left: calc(-15 * $display);
             top: -15%;
-            width: calc(25*$display);
-            height: calc(75* 1.2 *$display);
+            width: calc(25 * $display);
+            height: calc(75 * 1.2 * $display);
         }
         &::after {
-            right: -10%;
+            right: calc(-50 * $display);
             bottom: -10%;
             width: calc(80*$display);
             height: calc(45 * 1.2 * $display);
@@ -742,7 +742,7 @@ body {
         }
     }
 }
-@media (max-width: calc(1100*$display)) {
+@media (max-width: 1100px) {
     .header {
         .LogoImg{
             padding: calc(4 * $display + calc(10*$display)) 0%;
@@ -894,7 +894,7 @@ body {
 
 
 }
-@media (max-width: calc(800*$display)) {
+@media (max-width: 800px) {
     .header {
         padding: auto;
         height: max-content;
