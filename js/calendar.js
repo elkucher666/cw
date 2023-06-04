@@ -125,8 +125,8 @@
 
                     html  = '<div class="calendarev-container-calendar">';
                     html += '<div class="calendarev-calendar-head">';
-                    html += '<span class="prev"><img src=img/prev.png></span>';
-                    html += '<span class="next"><img src=img/next.png></span>';
+                    html += '<span class="prev"><img src=./../img/prev.png></span>';
+                    html += '<span class="next"><img src=./../img/next.png></span>';
                     html += '<div class="calendarev-selects">';
 
                     // head month
@@ -481,7 +481,7 @@ async function insertCalendar(room_id) {
     let formData = new FormData();
     formData.append("id", room_id);
 
-    let response = await fetch('./queries/get_approved_application.php', {
+    let response = await fetch('./../queries/get_approved_application.php', {
         method: 'POST',
         body: formData
     });

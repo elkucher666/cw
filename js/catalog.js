@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", loadRooms);
 
 async function loadRooms() {
 
-    let response = await fetch('./queries/get_room.php', {
+    let response = await fetch('./../queries/get_room.php', {
         method: 'POST'
     });
 
