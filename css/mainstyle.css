@@ -273,25 +273,20 @@ body {
   display: flex;
   align-items: center;
 }
-.catalog .worktimeroom .calendar .legend .occupied, .catalog .worktimeroom .calendar .legend .partially_occupied {
+.catalog .worktimeroom .calendar .legend .occupied {
   display: flex;
   align-items: center;
   margin: 1.0416666667vw 0;
 }
-.catalog .worktimeroom .calendar .legend .occupied .blockoccupied, .catalog .worktimeroom .calendar .legend .occupied .blockpartoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .blockoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .blockpartoccupied {
+.catalog .worktimeroom .calendar .legend .occupied .blockoccupied {
   width: 1.875vw;
   height: 1.875vw;
+  background-color: #d4535c;
 }
-.catalog .worktimeroom .calendar .legend .occupied .legendoccupied, .catalog .worktimeroom .calendar .legend .occupied .legendpartoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .legendoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .legendpartoccupied {
+.catalog .worktimeroom .calendar .legend .occupied .legendoccupied {
   font-family: "IBM Plex Sans", sans-serif;
   font-size: 1.0416666667vw;
   margin: 0 1.3020833333vw;
-}
-.catalog .worktimeroom .calendar .legend .occupied .blockoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .blockoccupied {
-  background-color: #d4535c;
-}
-.catalog .worktimeroom .calendar .legend .occupied .blockpartoccupied, .catalog .worktimeroom .calendar .legend .partially_occupied .blockpartoccupied {
-  background-color: #727272;
 }
 .catalog .worktimeroom .calendar .calendarev-container-calendar {
   display: block;

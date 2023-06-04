@@ -292,26 +292,20 @@ body {
             display: flex;
             align-items: center;
             .legend {
-                .occupied, .partially_occupied {
+                .occupied {
                     display: flex;
                     align-items: center;
                     margin: calc(20 * $display) 0;
-                    .blockoccupied, .blockpartoccupied {
+                    .blockoccupied {
                         width: calc(30 * 1.2 * $display);
                         height: calc(30 * 1.2 * $display);
+                        background-color: $red;
                     }
-                    .legendoccupied, .legendpartoccupied {
+                    .legendoccupied {
                         font-family: $font;
                         font-size: calc(20 * $display);
                         margin: 0 calc(25 * $display);
                     }
-                    .blockoccupied {
-                        background-color: $red;
-                    }
-                    .blockpartoccupied {
-                        background-color: #727272;
-                    }
-
                 }
             }
             .calendarev-container-calendar {
