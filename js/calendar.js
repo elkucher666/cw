@@ -40,11 +40,6 @@
 
             return this.each(function(){
                 var $calendar = $(this);
-
-                //prevent overwrite
-                if($calendar.data("isActive")) {
-                    return;
-                }
                 $calendar.data("isActive", true);
 
 
@@ -194,19 +189,19 @@
                             // current day
                             if(moment(timeNowLocal).date(i).format("D.M.YYYY") === timeNow.format("D.M.YYYY")) {
                             	if (eventhtml != "") {
-                                	html += '<td class="calendarev-day calendarev-day-current '+classevent+'" data-event="'+dataevent+'">' + i + '<span class="event-popup">' + eventhtml + '</span></td>';
+                                	html += '<td class="calendarev-day calendarev-day-current '+classevent+'" data-event="'+dataevent+'">' + i + '</td>';
                                 }	else {
                                 	html += '<td class="calendarev-day calendarev-day-current '+classevent+'">' + i + '</td>';
                             	}
                             } else if(timeSelected && moment(timeNowLocal).date(i).format("D.M.YYYY") === timeSelected.format("D.M.YYYY")) {
                             	if (eventhtml != "") {
-                            		html += '<td class="calendarev-day calendarev-day-selected '+classevent+'" data-event="'+dataevent+'">' + i + '<span class="event-popup">' + eventhtml + '</span></td>';
+                            		html += '<td class="calendarev-day calendarev-day-selected '+classevent+'" data-event="'+dataevent+'">' + i + '</td>';
                             	}	else {
 	                                html += '<td class="calendarev-day calendarev-day-selected '+classevent+'">' + i + '</td>';
 	                            }
                             } else {
                             	if (eventhtml != "") {
-                            		html += '<td class="calendarev-day '+classevent+'" data-event="'+dataevent+'">' + i + '<span class="event-popup">' + eventhtml + '</span></td>';
+                            		html += '<td class="calendarev-day '+classevent+'" data-event="'+dataevent+'">' + i + '</td>';
                             	}	else {
                                 	html += '<td class="calendarev-day '+classevent+'">' + i + '</td>';
                                 }
@@ -278,19 +273,19 @@
                             // current day
                             if(moment(timeNowLocal).date(i).format("D.M.YYYY") === timeNow.format("D.M.YYYY")) {
                                 if (eventhtml != "") {
-                                	html += '<td class="calendarev-day calendarev-day-current '+classevent+'" data-event="'+dataevent+'">' + i + '<span class="event-popup">' + eventhtml + '</span></td>';
+                                	html += '<td class="calendarev-day calendarev-day-current '+classevent+'" data-event="'+dataevent+'">' + i + '</td>';
                                 }	else {
                                 	html += '<td class="calendarev-day calendarev-day-current '+classevent+'">' + i + '</td>';
                                 }
                             } else if(timeSelected && moment(timeNowLocal).date(i).format("D.M.YYYY") === timeSelected.format("D.M.YYYY")) {
                             	if (eventhtml != "") {
-                            		html += '<td class="calendarev-day calendarev-day-selected '+classevent+'" data-event="'+dataevent+'">' + i + '<span class="event-popup">' + eventhtml + '</span></td>';
+                            		html += '<td class="calendarev-day calendarev-day-selected '+classevent+'" data-event="'+dataevent+'">' + i + '</td>';
                             	}	else {
                                 	html += '<td class="calendarev-day calendarev-day-selected '+classevent+'">' + i + '</td>';
                             	}
                             } else {
                             	if (eventhtml != "") {
-                            		html += '<td class="calendarev-day '+classevent+'" data-event="'+dataevent+'">' + i + '<span class="event-popup">' + eventhtml + '</span></td>';
+                            		html += '<td class="calendarev-day '+classevent+'" data-event="'+dataevent+'">' + i + '</td>';
                             	}	else {
                                 	html += '<td class="calendarev-day '+classevent+'">' + i + '</td>';
                             	}
@@ -478,15 +473,36 @@
 
 
 
-document.addEventListener("DOMContentLoaded", insertCalendar);
+// document.addEventListener("DOMContentLoaded", insertCalendar);
 
-async function insertCalendar() {
-    // let response = await fetch('./queries/get_approved_application.php', {
-    //     method: 'POST'
-    // });
+async function insertCalendar(room_id) {
+    document.querySelector(".calendar .legend").classList.remove("none");
 
-    // let result = await response.text();
-    // let applications = JSON.parse(result);
+    let formData = new FormData();
+    formData.append("id", room_id);
+
+    let response = await fetch('./queries/get_approved_application.php', {
+        method: 'POST',
+        body: formData
+    });
+
+    let result = await response.text();
+    let applications = JSON.parse(result);
+
+    let events = applications.map(function(application) {
+        let day = application.booking_date.slice(0, 2);
+        let month = application.booking_date.slice(3, 5);
+        let year = application.booking_date.slice(6);
+        let event_title = application.booking_start + " - " + application.booking_end;
+        
+        return {
+            day,
+            month,
+            year,
+            event_title
+        }
+    });
+
 
 
 	$('#calendar_insertion').bitroidCalendarEv({
@@ -494,32 +510,7 @@ async function insertCalendar() {
 	    //sundayFirst: false,
 	    years: "2022-2030",
 	    showEventBlock: true,
-	    events : [
-	    	{
-	    		day : "03",
-	    		month : "04",
-	    		year : "2023",
-	    		event_description : "Вокальная мастерская",
-	    		event_title : "16:00 - 18:00 Вокальная мастерская",
-	    		event_body : "Уроки пения"
-	    	},
-	    	{
-	    		day : "03",
-	    		month : "04",
-	    		year : "2023",
-	    		event_description : "Театральная мастерская",
-	    		event_title : "18:00 - 19:00 Театральная мастерская",
-	    		event_body : "Уроки театра"
-	    	},
-	    	{
-	    		day : "20",
-	    		month : "04",
-	    		year : "2023",
-	    		event_description : "Хореографическая мастерская",
-	    		event_title : "18:00 - 19:00 Хореографическая мастерская",
-	    		event_body : "Уроки хореографии"
-	    	}
-	    ],
+	    events,
 	    containers : {
 	    	events : ".calendarev-events-container"
 	    }
