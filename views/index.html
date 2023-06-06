@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Cache-Control" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-store">
         <title>Творческий цех</title>
         <link rel="shortcut icon" href="../img/LogoWeb.png">
         <link rel="stylesheet" type="text/css" href="../css/mainstyle.css">
@@ -77,36 +77,25 @@
                 <div class="timeform">
                     с
                     <select id="timebegin" class="timebegin">
-                        <option value="0">14:00</option>
-                        <option value="1">15:00</option>
-                        <option value="2">16:00</option>
-                        <option value="3">17:00</option>
-                        <option value="4">18:00</option>
-                        <option value="5">19:00</option>
-                        <option value="6">20:00</option>
+                       
                     </select>
                     по
                     <select id="timeend" class="timeend">
-                        <option value="0">15:00</option>
-                        <option value="1">16:00</option>
-                        <option value="2">17:00</option>
-                        <option value="3">18:00</option>
-                        <option value="4">19:00</option>
-                        <option value="5">20:00</option>
-                        <option value="6">21:00</option>
+                        
                     </select>
                 </div>
                 <div class="groupformstep">
                     <div class="formstep">
-                        ФИО:<input id="FIO">
+                        ФИО:<input id="FIO"pattern="^[а-я ,.'-]+$">
                     </div>
                     <div class="formstep">
-                        Возраст:<input id="Old">
+                        Возраст:<input id="Old" pattern="^\d+$">
                     </div>
                     <div class="formstep">
                         Институт:
                         <select id="Univer">
                             <option value="">Выберите институт</option>
+                            <option>Другое</option>
                             <option>ИИТ</option>
                             <option>ИЯЭиП</option>
                             <option>ЮИ</option>
@@ -120,6 +109,7 @@
                     <div class="formstep">
                         Курс:<select id="Curs">
                             <option value="">Выберите курс</option>
+                            <option>Другое</option>
                             <option >1 курс</option>
                             <option>2 курс</option>
                             <option>3 курс</option>
@@ -129,7 +119,7 @@
                         </select>
                     </div>
                     <div class="formstep">
-                        Номер тел.:<input id="Phone">
+                        Номер тел.:<input id="Phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}">
                     </div>
                     <div class="formstep">
                         Контакты:<input id="socialnet">

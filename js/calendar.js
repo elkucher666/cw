@@ -494,15 +494,33 @@ async function insertCalendar(room_id) {
         let month = application.booking_date.slice(3, 5);
         let year = application.booking_date.slice(6);
         let event_title = application.booking_start + " - " + application.booking_end;
-        
+        let start = +application.booking_start.slice(0, 2);
+        let end = +application.booking_end.slice(0, 2);
+
+
         return {
             day,
             month,
             year,
-            event_title
+            event_title,
+            start,
+            end
         }
     });
 
+    
+    Object.defineProperty(window, "current_events",
+    {
+        get() {
+            return events.filter(function(event) {
+                let day = +document.querySelector('.calendarev-day-selected').innerText;
+                let month = +document.querySelector('.calendarev-month').value + 1;
+                let year = +document.querySelector('.calendarev-years').value;
+
+                return event.day == day && event.month == month && event.year == year;
+            });
+        }
+    });
 
 
 	$('#calendar_insertion').bitroidCalendarEv({
