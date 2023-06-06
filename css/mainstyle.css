@@ -21,10 +21,18 @@ body {
   justify-content: space-around;
   align-items: center;
 }
-.header .LogoImg {
+.header .adminbut {
+  background-color: #ffffff;
+  border: none;
+  height: 100%;
+  width: -moz-max-content;
+  width: max-content;
+  margin: 0.5208333333vw;
+  cursor: pointer;
+}
+.header .adminbut .LogoImg {
   padding: 1% 0%;
-  height: 1%;
-  width: 7%;
+  height: 6.25vw;
 }
 .header .linename {
   margin-right: 10%;
@@ -836,10 +844,6 @@ body {
     padding: auto;
     height: -moz-max-content;
     height: max-content;
-    justify-content: center;
-  }
-  .header .LogoImg {
-    display: none;
   }
   .header .linename {
     margin: 0;

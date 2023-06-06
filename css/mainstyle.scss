@@ -27,10 +27,17 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    .LogoImg {
-        padding: 1% 0%;
-        height: 1%;
-        width: 7%;
+    .adminbut {
+        background-color: $white;
+        border: none;
+        height: 100%;
+        width: max-content;
+        margin: calc(10 * $display);
+        cursor: pointer;
+        .LogoImg {
+            padding: 1% 0%;
+            height: calc(100 * 1.2 * $display);
+        }
     }
     .linename {
         margin-right: 10%;
@@ -892,10 +899,6 @@ body {
     .header {
         padding: auto;
         height: max-content;
-        justify-content: center;
-        .LogoImg {
-            display: none;
-        }
         .linename {
             margin: 0;
             .name {
