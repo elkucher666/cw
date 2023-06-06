@@ -44,12 +44,11 @@ async function loadStreet() {
     let time_buttons = document.querySelectorAll(".buttime");
 
     for (let time_button of time_buttons) {
-        buttime.addEventListener("click", function() {
-
+        time_button.addEventListener("click", function() {
             document.querySelectorAll(".buttime").forEach(function (elem) {
                 elem.classList.remove("selected");
             });
-            buttime.classList.add("selected");
+            time_button.classList.add("selected");
             
         });
     }
