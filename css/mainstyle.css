@@ -12,7 +12,6 @@ body {
   position: fixed;
   z-index: 2;
   width: 100%;
-  height: -moz-min-content;
   height: min-content;
   top: 0;
   left: 0;
@@ -36,9 +35,7 @@ body {
 }
 .header .linename {
   margin-right: 10%;
-  height: -moz-min-content;
   height: min-content;
-  width: -moz-fit-content;
   width: fit-content;
 }
 .header .linename .name {
@@ -75,7 +72,7 @@ body {
 .top_bar {
   margin: 0vw 0vw;
   position: fixed;
-  top: 0;
+  top: -8vw;
   height: 6.875vw;
   width: 100%;
   display: flex;
@@ -86,13 +83,14 @@ body {
   z-index: 1;
   transition: 0.5s;
 }
+.top_bar.visible {
+  top: 8vw;
+}
 .top_bar .selectedimg {
   width: 25%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 .top_bar .selectedimg::after {
   content: "";
@@ -105,10 +103,8 @@ body {
 .top_bar .selectedimg img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 .top_bar .selectedroom, .top_bar .paramselectroom {
   font-family: "IBM Plex Sans", sans-serif;
@@ -443,7 +439,6 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 700;
   color: #d4535c;
-  width: -moz-max-content;
   width: max-content;
 }
 .catalog .worktimeroom .calendarev-events-container .event-block h3 {
@@ -503,7 +498,7 @@ body {
 }
 
 #booking {
-  display: none;
+  display: flex;
   z-index: 10;
   width: 100%;
   height: 100%;
@@ -536,7 +531,7 @@ body {
 #booking form .nameform {
   font-size: 1.5625vw;
 }
-#booking form .dataform {
+#booking form .dateform {
   margin: 1vw;
 }
 #booking form .timeform {
@@ -589,6 +584,7 @@ body {
   font-size: 1.3020833333vw;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 #booking form .formstep .container input, #booking form .formstepcheck .container input {
@@ -622,6 +618,8 @@ body {
   height: 1.25vw;
   border: solid #d4535c;
   border-width: 0 0.2604166667vw 0.2604166667vw 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 #booking form .formstep .container:hover input ~ .checkmark, #booking form .formstepcheck .container:hover input ~ .checkmark {
@@ -680,9 +678,7 @@ body {
 .footer .container {
   border: 0.15625vw solid #1A1819;
   margin: 1.0416666667vw;
-  height: -moz-min-content;
   height: min-content;
-  width: -moz-fit-content;
   width: fit-content;
 }
 .footer .container .contactinfo {
@@ -758,7 +754,7 @@ body {
   form .nameform {
     font-size: 1.8229166667vw;
   }
-  form .dataform {
+  form .dateform {
     margin: 5vw;
   }
   form .timeform {
@@ -842,7 +838,6 @@ body {
 @media (max-width: 800px) {
   .header {
     padding: auto;
-    height: -moz-max-content;
     height: max-content;
   }
   .header .linename {

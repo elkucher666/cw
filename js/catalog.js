@@ -78,16 +78,17 @@ async function loadRooms() {
     
 
 }
-window.onscroll = function() {myFunction()};
 
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+window.addEventListener("scroll", changeTopBarAppearanceOnScroll);
+
+function changeTopBarAppearanceOnScroll() {
+  var win_scroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
+  var scrolled = (win_scroll / height) * 100;
   if (scrolled > 50){
-    document.getElementById("top_bar").style.top = '8vw';
+    document.getElementById("top_bar").classList.add("visible");
   }else{
-    document.getElementById("top_bar").style.top = '-8vw';
+    document.getElementById("top_bar").classList.remove("visible");
   }
   
 }
