@@ -70,10 +70,11 @@ body {
         }
     }
 }
+
 .top_bar {
     margin: calc(0*$display) calc(0*$display);
     position: fixed;
-    top: 0;
+    top: -8vw;
     height: calc(110 * 1.2 *$display);
     width: 100%;
     display: flex;
@@ -83,6 +84,12 @@ body {
     background-color: $white;
     z-index: 1;
     transition: 0.5s;
+
+    &.visible {
+        top: 8vw;
+    }
+
+
     .selectedimg {
         width: 25%;
         height: 100%;
@@ -534,7 +541,7 @@ body {
 }
 
 #booking {
-    display: none;
+    display: flex;
     z-index: 10;
     width: 100%;
     height: 100%;
@@ -543,7 +550,7 @@ body {
     background-color: #1a1819c6;
     justify-content: center;
     align-items: center;
-    form{
+    form {
         position: fixed;
         z-index: 10;
         background-color: $white;
@@ -566,7 +573,7 @@ body {
         .nameform {
             font-size:  calc(30 * $display);
         }
-        .dataform {
+        .dateform {
             margin: 1vw;
         }
         .timeform {
@@ -790,7 +797,7 @@ body {
         }
     }
 
-    form{
+    form {
         font-size: calc(35 * $display);
         width: 70%;
         height: 90%;
@@ -804,7 +811,7 @@ body {
         .nameform {
             font-size:  calc(35 * $display);
         }
-        .dataform {
+        .dateform {
             margin: 5vw;
         }
         .timeform {
