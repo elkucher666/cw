@@ -202,9 +202,98 @@ body {
                     &:last-child {
                         width: 10px;
                     }
+                    .butaddroom {
+                        width: max-content;
+                        .linebut {
+                            position: relative;
+                            z-index: 2;
+                            .namebut {
+                                color: $white;
+                                font-family: $font;
+                                font-weight: 700;
+                                font-size: calc(25 * $display);
+                                margin: -1px 30px;
+                                white-space: nowrap;
+                                padding: 1px 30px;
+                                border: 2px solid $white;
+                                z-index: 1;
+                                position: relative;
+                                .decor-6 {
+                                    position: relative;
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                        z-index: -2;
+                                        width: 1.2ch;
+                                        height: 2em;
+                                        background-color: $red;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
     
         }
     }
+    .menustreet {
+        display: flex;
+        .addressses {
+            display: flex;
+            width: 100%;
+            > * {
+                flex: 1;
+            }
+            &:last-child {
+                width: calc(20 * $display);
+            }
+            .tab {
+                padding: 2%;
+                border: none;
+                border-bottom: calc(2*$display) solid $black;
+                transition: 0.5s;
+                background-color: $black;
+                font-family: $font;
+                font-style: normal;
+                font-weight: 700;
+                font-size: calc(30 * $display + calc(10*$display));
+                line-height: 100%;
+                cursor: pointer;
+                color: $white;
+    
+                &:hover {
+                    background-color: $grey;
+                }
+    
+                &.selected {
+                    border-bottom: thick solid $white;
+                    border-width: 0.5vw;
+                
+                }
+            }
+        }
+        .butaddstreet {
+            color: $white;
+            width: calc(50 * $display);
+            height: 100%;
+            transition: 0.5s;
+            line-height: 100%;
+            font-family: $font;
+            font-weight: 200;
+            padding: 2%;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(40 * $display + calc(10*$display));
+            &:hover {
+                background-color: $grey;
+            }
+        }
+    }
+    
 }

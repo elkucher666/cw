@@ -8,6 +8,7 @@
         <script type="text/javascript" src="./../js/jquery.min.js"></script>
         <script type="text/javascript" src="./../js/moment-with-locales.min.js"></script> <!-- библиотека moment-with-locales.min.js -->
         <script type="text/javascript" src="./../js/bitroidCalendarEv1.js"></script> <!-- плагин CalendarEvents -->
+        <script src="./../js/streetadmin.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Montserrat+Alternates&display=swap" rel="stylesheet">
@@ -75,16 +76,16 @@
                 </div>
             </div>
             <div class="groupbuttime">
-                <button class="today">
+                <button class="buttime">
                     СЕГОДНЯ
                 </button>
-                <button class="week">
+                <button class="buttime">
                     НЕДЕЛЯ
                 </button>
-                <button class="month">
+                <button class="buttime">
                     МЕСЯЦ
                 </button>
-                <button class="alltime">
+                <button class="buttime">
                     ВСЁ ВРЕМЯ
                 </button>
             </div>
@@ -205,6 +206,46 @@
                 </tbody>
             </table>
             
+            <div class="menustreet">
+                <div class="addressses"></div>
+                <div class="butaddstreet">+</div>
+            </div>
+
+            <table class="aplication">
+                <tbody>
+                    <tr class="namerow">
+                        <th>№</th>
+                        <th>НАЗВАНИЕ</th>
+                        <th>АДРЕС</th>
+                        <th>ИНФОРМАЦИЯ</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>
+                            <button class="accept">
+                                <img src="./../img/ButNo.png" alt="" class="activnobut">
+                            </button>
+                            <button class="rejection">
+                                <img src="./../img/ButYes.png" alt="" class="activeyesbut">
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <button class="butaddroom">
+                                <div class="linebut">
+                                    <div class="namebut">ДОБАВ<span class="decor-6">И</span>ТЬ</div>
+                                </div>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </body>
 </html>

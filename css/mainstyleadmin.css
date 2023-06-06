@@ -195,4 +195,89 @@ body {
 }
 .content .aplication tbody tr td:last-child {
   width: 10px;
+}
+.content .aplication tbody tr td .butaddroom {
+  width: -moz-max-content;
+  width: max-content;
+}
+.content .aplication tbody tr td .butaddroom .linebut {
+  position: relative;
+  z-index: 2;
+}
+.content .aplication tbody tr td .butaddroom .linebut .namebut {
+  color: #ffffff;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 700;
+  font-size: 1.3020833333vw;
+  margin: -1px 30px;
+  white-space: nowrap;
+  padding: 1px 30px;
+  border: 2px solid #ffffff;
+  z-index: 1;
+  position: relative;
+}
+.content .aplication tbody tr td .butaddroom .linebut .namebut .decor-6 {
+  position: relative;
+}
+.content .aplication tbody tr td .butaddroom .linebut .namebut .decor-6::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -2;
+  width: 1.2ch;
+  height: 2em;
+  background-color: #d4535c;
+}
+.content .menustreet {
+  display: flex;
+}
+.content .menustreet .addressses {
+  display: flex;
+  width: 100%;
+}
+.content .menustreet .addressses > * {
+  flex: 1;
+}
+.content .menustreet .addressses:last-child {
+  width: 1.0416666667vw;
+}
+.content .menustreet .addressses .tab {
+  padding: 2%;
+  border: none;
+  border-bottom: 0.1041666667vw solid #1A1819;
+  transition: 0.5s;
+  background-color: #1A1819;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2.0833333333vw;
+  line-height: 100%;
+  cursor: pointer;
+  color: #ffffff;
+}
+.content .menustreet .addressses .tab:hover {
+  background-color: #302D2E;
+}
+.content .menustreet .addressses .tab.selected {
+  border-bottom: thick solid #ffffff;
+  border-width: 0.5vw;
+}
+.content .menustreet .butaddstreet {
+  color: #ffffff;
+  width: 2.6041666667vw;
+  height: 100%;
+  transition: 0.5s;
+  line-height: 100%;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 200;
+  padding: 2%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6041666667vw;
+}
+.content .menustreet .butaddstreet:hover {
+  background-color: #302D2E;
 }/*# sourceMappingURL=mainstyleadmin.css.map */
