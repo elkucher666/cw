@@ -22,7 +22,6 @@ async function loadStreet() {
 
 
         button.addEventListener("click", function() {
-
             document.querySelectorAll(".tab").forEach(function (elem) {
                 elem.classList.remove("selected");
             });
@@ -40,14 +39,18 @@ async function loadStreet() {
             
         });
     }
-    
-    let buttime = document.querySelector('.buttime');
-    buttime.addEventListener("click", function() {
 
-        document.querySelectorAll(".buttime").forEach(function (elem) {
-            elem.classList.remove("selected");
+
+    let time_buttons = document.querySelectorAll(".buttime");
+
+    for (let time_button of time_buttons) {
+        buttime.addEventListener("click", function() {
+
+            document.querySelectorAll(".buttime").forEach(function (elem) {
+                elem.classList.remove("selected");
+            });
+            buttime.classList.add("selected");
+            
         });
-        buttime.classList.add("selected");
-        
-    });
+    }
 }
