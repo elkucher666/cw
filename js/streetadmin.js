@@ -40,21 +40,14 @@ async function loadStreet() {
             
         });
     }
-    document.addEventListener('DOMContentLoaded', {
-        let timebutton = document.querySelector('button');
-        timebutton.addEventListener('click', function() {
-            document.querySelectorAll(".buttime").forEach(function (elem) {
-                elem.classList.remove("selected");
-            });
-            timebutton.classList.add("selected");
-
-
-            // room_elements.forEach(function(room) {
-            //     room.remove();
-            // });
-        });
-    );
-    }
-
     
-}    
+    let buttime = document.querySelector('.buttime');
+    buttime.addEventListener("click", function() {
+
+        document.querySelectorAll(".buttime").forEach(function (elem) {
+            elem.classList.remove("selected");
+        });
+        buttime.classList.add("selected");
+        
+    });
+}
