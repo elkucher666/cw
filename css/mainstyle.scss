@@ -225,7 +225,7 @@ body {
             font-size: calc(30 * $display + calc(10*$display));
             line-height: 100%;
             cursor: pointer;
-
+            text-transform: uppercase;
             &:hover {
                 background-color: #d9d9d9;
             }

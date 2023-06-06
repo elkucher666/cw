@@ -218,6 +218,7 @@ body {
   font-size: 2.0833333333vw;
   line-height: 100%;
   cursor: pointer;
+  text-transform: uppercase;
 }
 .catalog .addresses .tab:hover {
   background-color: #d9d9d9;
