@@ -1,23 +1,16 @@
 document.addEventListener("DOMContentLoaded", loadRooms);  
 
-// Загружаем все помещения из базы данных
-async function loadRoomsToJSON(){
+// Загружаем все помещения
+async function loadRooms() {
     let url = './../queries/get_room.php';
     let options = {
         method: 'GET',
     };
-    
-    return await fetch(url, options)
-        .then(response => response.json)
-        .then(rooms => {
-            return rooms;
-        });
-}
 
-// Загружаем все помещения
-async function loadRooms() {
     // Список всех помещений
-    let rooms = await loadRoomsToJSON();
+    let response = await fetch(url, options);
+    let result = await response.text();
+    let rooms = JSON.parse(result);
 
     // Массив всех адресов
     let addresses = [];
