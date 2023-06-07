@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", loadRooms);  
+window.addEventListener("scroll", changeTopBarAppearanceOnScroll);
 
 // Загружаем все помещения
 async function loadRooms() {
@@ -18,7 +19,9 @@ async function loadRooms() {
     // Массив всех карточек
     let room_cards = [];
 
+    // Последняя нажатая Кнопка/Карточка
     let last_button = null;
+    let last_card = null;
     
     for (let room of rooms) {
         // Формируем список всех адресов
@@ -33,11 +36,17 @@ async function loadRooms() {
         room_card.dataset.address = room.address;
         room_card.classList.add("room");
         room_card.addEventListener("click", function() {
+            // При нажатии кнопки - отчищаем предыдущую выделенную(нажатую) кнопку
+            if (last_card == null) {
+                last_card = room_card;
+            } else {
+                last_card.classList.remove("selected");
+                last_card = room_card;
+                last_card.classList.add("selected");
+            }
+
+            // Формируем карточку
             window.current_room_id = room.id;
-            room_cards.forEach(function(room_card) {
-                room_card.classList.remove("selected");
-            })
-            this.classList.add("selected");
             insertCalendar(room.id);
             document.querySelector("#top_bar").classList.remove("none");
             document.querySelector("#room_image").src = '/../' + room.image;
@@ -72,25 +81,22 @@ async function loadRooms() {
         let button = document.createElement("button");
         button.textContent = address;
         button.classList.add("tab");
-        button.addEventListener("click", function(e) {
-            // При нажатии кнопки - отчищаем предыдущую выделенную кнопку
+        button.addEventListener("click", function() {
+            // При нажатии кнопки - отчищаем предыдущую выделенную(нажатую) кнопку
             if (last_button == null) {
                 last_button = button;
             } else {
-                button.classList.remove("selected");
+                last_button.classList.remove("selected");
                 last_button = button;
                 last_button.classList.add("selected");
             }
-            // document.querySelectorAll(".tab").forEach(function (elem) {
-            //     elem.classList.remove("selected");
-            // });
 
             // Удаляем все карточки
             room_cards.forEach(function(room) {
                 room.remove();
-                // console.log(room);
             });
             
+            // Формируем и отображаем помещения соответсвующие выбранному адресу
             let visible_rooms = room_cards.filter((room) => room.dataset.address == address);
             visible_rooms.forEach(function(room) {
                 document.querySelector(".tabcontent").append(room);
@@ -106,8 +112,8 @@ async function loadRooms() {
     document.querySelector(".tabcontent .room:first-child").click();
 }
 
-window.addEventListener("scroll", changeTopBarAppearanceOnScroll);
-
+// При скролле достаточно вниз
+// Формируем вернее меню с выбранным помещением
 function changeTopBarAppearanceOnScroll() {
     var win_scroll = document.body.scrollTop || document.documentElement.scrollTop;
     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
