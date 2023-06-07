@@ -511,6 +511,7 @@ async function insertCalendar(room_id) {
     
     Object.defineProperty(window, "current_events",
     {
+        configurable: true,
         get() {
             return events.filter(function(event) {
                 let day = +document.querySelector('.calendarev-day-selected').innerText;

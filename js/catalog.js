@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", loadRooms);
 
 
 async function loadRooms() {
-
     let response = await fetch('./../queries/get_room.php', {
         method: 'POST'
     });
@@ -24,6 +23,10 @@ async function loadRooms() {
         room_element.classList.add("room");
         room_element.addEventListener("click", function() {
             window.current_room_id = room.id;
+            room_elements.forEach(function(room_element) {
+                room_element.classList.remove("selected");
+            })
+            this.classList.add("selected");
             insertCalendar(room.id);
             document.querySelector("#top_bar").classList.remove("none");
             document.querySelector("#room_image").src = '/../' + room.image;
@@ -76,7 +79,11 @@ async function loadRooms() {
         });
     }
 
-    
+    let first_tab = document.querySelector(".tab:first-child");
+    first_tab.click();
+
+    let first_room = first_tab.querySelector(".room:first-child");
+    first_room.click();
 
 }
 
