@@ -82,7 +82,7 @@ async function loadRooms() {
     let first_tab = document.querySelector(".tab:first-child");
     first_tab.click();
 
-    let first_room = first_tab.querySelector(".room:first-child");
+    let first_room = document.querySelector(".tabcontent .room:first-child");
     first_room.click();
 
 }
