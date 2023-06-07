@@ -4,7 +4,8 @@ async function onLoad() {
     addFiltersLogic();
     fetchApplications();
     fetchRooms();
-    addFormLogic();
+    addAddingFormLogic();
+    addEditFormLogic();
 }
 
 
@@ -28,7 +29,7 @@ function addFiltersLogic() {
 }
 
 
-function addFormLogic() {
+function addAddingFormLogic() {
     document.querySelector("#add_room_button").addEventListener("click", function() {
         document.querySelector("#back_form").classList.remove("none");
     });
@@ -56,6 +57,36 @@ function addFormLogic() {
     
     document.querySelector('#close').addEventListener("click", function(e) {
         document.querySelector('#back_form').classList.add("none");
+    });
+}
+
+function addEditFormLogic() {
+    let edit_form = document.querySelector("#edit_form");
+    document.querySelector("#edit_room_form_button").addEventListener("click", async function() {
+        let inputs = [edit_form.querySelector("input[name='name']"), edit_form.querySelector("input[name='address']"), edit_form.querySelector("input[name='description']"), edit_form.querySelector("input[name='image']")];
+
+        for (let input of inputs) {
+            if (!input.checkValidity()) {
+                return;
+            }
+        }
+
+        let formData = new FormData(document.querySelector("#edit_form"));
+        
+        
+        let response = await fetch('./../queries/change_room.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        let result = await response.text();
+
+        fetchRooms();
+        document.querySelector("#edit_back_form").classList.add("none");
+    });
+    
+    document.querySelector('#edit_close').addEventListener("click", function(e) {
+        document.querySelector('#edit_back_form').classList.add("none");
     });
 }
 
@@ -290,6 +321,48 @@ async function fetchRooms() {
         room_image.src = room.image;
         
         image.append(room_image);
+
+
+        let formData = new FormData();
+        formData.append("id", room.id);
+
+        
+        let button_edit = document.createElement("button");
+        button_edit.classList.add("edit");
+        let edit_image = document.createElement("img");
+        edit_image.src = "./../img/edit_image.png"; 
+
+        let button_delete = document.createElement("button");
+        button_delete.classList.add("delete");
+        let delete_image = document.createElement("img");
+        delete_image.src = "./../img/delete_image.png";
+
+        button_delete.append(delete_image);
+        button_edit.append(edit_image);
+
+        button_delete.addEventListener("click", async function() {
+            let formData = new FormData();
+            formData.append("id", id.textContent);
+
+            let response = await fetch('./../queries/delete_room.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            let result = await response.text();
+            fetchRooms();
+        });
+
+        button_edit.addEventListener("click", function() {
+            document.querySelector("#edit_back_form [name='id']").value = id.textContent;
+            document.querySelector("#edit_back_form [name='name']").value = name.textContent;
+            document.querySelector("#edit_back_form [name='address']").value = address.textContent;
+            document.querySelector("#edit_back_form [name='description']").value = description.textContent;
+            
+            document.querySelector("#edit_back_form").classList.remove("none");
+        });
+
+        editing.append(button_delete, button_edit);
 
 
         table_row.append(id, name, address, description, image, editing);

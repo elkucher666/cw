@@ -116,8 +116,8 @@
 
         </div>
 
-        <div id="back_form" class="none" onsubmit="event.preventDefault()">
-            <form id="application_form" class="edit_form">
+        <div id="back_form" class="none">
+            <form id="application_form" class="edit_form" onsubmit="event.preventDefault()">
                 <img id="close" src="./../img/reject_image.png">
                 <div class="nameform">ДОБАВЛЕНИЕ КОМНАТЫ</div>
                 <div class="groupformstep">
@@ -141,25 +141,26 @@
                 </button>
             </form>
         </div>
-        <div id="back_form" class="none">
-            <form id="edit_form" method="post" action="">
-                <img id="close" src="./../img/reject_image.png">
+        <div id="edit_back_form" class="none">
+            <form id="edit_form" class="edit_form" onsubmit="event.preventDefault()">
+                <img id="edit_close" src="./../img/reject_image.png">
                 <div class="nameform">РЕДАКТИРОВАНИЕ КОМНАТЫ</div>
                 <div class="groupformstep">
+                    <input name="id" class="none">
                     <div class="formstep">
-                        Название комнаты:<input name="fullname"pattern="^[А-яёЁ ,.'-]+$" required>
+                        Название комнаты:<input name="name" required>
                     </div>
                     <div class="formstep">
-                        Адрес:<input name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}" required>
+                        Адрес:<input name="address" required>
                     </div>
                     <div class="formstep">
-                        Описание:<input name="social_network" required>
+                        Описание:<input name="description" required>
                     </div>
                     <div class="formstep">
-                        Изображение:<input class="input_img" type="file" accept="image/*" name="image" required>
+                        Изображение:<input class="input_img" type="file" accept="image/*" name="image">
                     </div>
                 </div>
-                <button class="orderform">
+                <button class="orderform" id="edit_room_form_button">
                     <div class="linebut">
                         <div class="namebut">ИЗМЕ<span class="decor-5">Н</span>ИТЬ</div>
                     </div>
