@@ -209,44 +209,14 @@ body {
                     &:last-child {
                         width: 10px;
                     }
-                    .butaddroom {
-                        width: max-content;
-                        .linebut {
-                            position: relative;
-                            z-index: 2;
-                            .namebut {
-                                color: $white;
-                                font-family: $font;
-                                font-weight: 700;
-                                font-size: calc(25 * $display);
-                                margin: -1px 30px;
-                                white-space: nowrap;
-                                padding: 1px 30px;
-                                border: 2px solid $white;
-                                z-index: 1;
-                                position: relative;
-                                .decor-6 {
-                                    position: relative;
-                                    &::before {
-                                        content: "";
-                                        position: absolute;
-                                        top: 50%;
-                                        transform: translateY(-50%);
-                                        z-index: -2;
-                                        width: 1.2ch;
-                                        height: 2em;
-                                        background-color: $red;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    
 
                 }
             }
     
         }
     }
+    
     .menustreet {
         display: flex;
         .addressses {
@@ -283,26 +253,43 @@ body {
         }
 
     }
-    
-}
-.butaddstreet {
-    color: $white;
-    width: calc(50 * $display);
-    height: 100%;
-    transition: 0.5s;
-    line-height: 100%;
-    font-family: $font;
-    font-weight: 200;
-    padding: 2%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(40 * $display + calc(10*$display));
-    &:hover {
-        background-color: $grey;
+    .butaddroom {
+        width: max-content;
+        background-color: $black;
+        border: none;
+        margin: 2% 42%;
+        .linebut {
+            position: relative;
+            z-index: 2;
+            .namebut {
+                color: $white;
+                font-family: $font;
+                font-weight: 700;
+                font-size: calc(25 * $display);
+                margin: -1px 30px;
+                white-space: nowrap;
+                padding: 1px 30px;
+                border: 2px solid $white;
+                z-index: 1;
+                position: relative;
+                .decor-6 {
+                    position: relative;
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        z-index: -2;
+                        width: 1.2ch;
+                        height: 2em;
+                        background-color: $red;
+                    }
+                }
+            }
+        }
     }
 }
+
 #back_form {
     display: flex;
     z-index: 10;
@@ -355,30 +342,25 @@ body {
                 box-shadow: inset ;
                 background-color: $grey;
             }
-            /*input[type=file] {
-                width: 350px;
-                max-width: 100%;
-                color: #444;
-                padding: 5px;
-                background: #fff;
-                border-radius: 10px;
-                border: 1px solid #555;
+            input[type=file] {
+                color: $white;
+                background: $grey;
             }
               
             input[type=file]::file-selector-button {
                 margin-right: 20px;
                 border: none;
-                background: #084cdf;
-                padding: 10px 20px;
-                border-radius: 10px;
+                background: $red;
+                padding: 3px;
                 color: #fff;
                 cursor: pointer;
+                font-family: $font;
                 transition: background .2s ease-in-out;
             }
               
             input[type=file]::file-selector-button:hover {
-                background: #0d45a5;
-            }*/
+                background: #782b30;
+            }
             .container {
                 display: flex;
                 position: relative;
