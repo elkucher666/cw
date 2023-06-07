@@ -191,6 +191,9 @@ body {
 .content .aplication tbody tr button img {
   width: 50%;
 }
+.content .aplication tbody tr img {
+  width: 20px;
+}
 .content .aplication tbody tr td {
   border: 0px;
   padding: 15px 0px;
@@ -243,9 +246,6 @@ body {
 .content .menustreet .addressses > * {
   flex: 1;
 }
-.content .menustreet .addressses:last-child {
-  width: 1.0416666667vw;
-}
 .content .menustreet .addressses .tab {
   padding: 2%;
   border: none;
@@ -268,7 +268,8 @@ body {
   border-bottom: thick solid #ffffff;
   border-width: 0.5vw;
 }
-.content .menustreet .butaddstreet {
+
+.butaddstreet {
   color: #ffffff;
   width: 2.6041666667vw;
   height: 100%;
@@ -283,6 +284,148 @@ body {
   justify-content: center;
   font-size: 2.6041666667vw;
 }
-.content .menustreet .butaddstreet:hover {
+.butaddstreet:hover {
   background-color: #302D2E;
+}
+
+#back_form {
+  display: flex;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(26, 24, 25, 0.7764705882);
+  justify-content: center;
+  align-items: center;
+}
+#back_form form {
+  position: fixed;
+  z-index: 10;
+  background-color: #1A1819;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5625vw;
+}
+#back_form form #close {
+  width: 1.5625vw;
+  height: 1.5625vw;
+  position: sticky;
+  left: 100%;
+  cursor: pointer;
+}
+#back_form form .nameform {
+  font-size: 1.5625vw;
+  color: #ffffff;
+}
+#back_form form .formstep {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  /*input[type=file] {
+      width: 350px;
+      max-width: 100%;
+      color: #444;
+      padding: 5px;
+      background: #fff;
+      border-radius: 10px;
+      border: 1px solid #555;
+  }
+
+  input[type=file]::file-selector-button {
+      margin-right: 20px;
+      border: none;
+      background: #084cdf;
+      padding: 10px 20px;
+      border-radius: 10px;
+      color: #fff;
+      cursor: pointer;
+      transition: background .2s ease-in-out;
+  }
+
+  input[type=file]::file-selector-button:hover {
+      background: #0d45a5;
+  }*/
+}
+#back_form form .formstep input {
+  width: 20vw;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.3020833333vw;
+  height: 2vw;
+  margin: 1vw;
+  border: none;
+  border-bottom: 0.2vw solid #ffffff;
+  box-shadow: inset;
+  background-color: #302D2E;
+}
+#back_form form .formstep .container {
+  display: flex;
+  position: relative;
+  padding-left: 0.78125vw;
+  margin: 0.625vw;
+  cursor: pointer;
+  font-size: 1.3020833333vw;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#back_form form .formstep .container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+#back_form form .formstep .container input:checked ~ .checkmark {
+  background-color: #302D2E;
+}
+#back_form form .formstep .container input:checked ~ .checkmark:after {
+  display: block;
+}
+#back_form form .formstepcheck {
+  justify-content: center;
+}
+#back_form form button {
+  border: none;
+  margin: 2vw 3vw;
+  padding: 0.5vw;
+  width: 20vw;
+  background-color: #1A1819;
+  cursor: pointer;
+  z-index: 0;
+}
+#back_form form button .linebut {
+  border: 0.1041666667vw solid #ffffff;
+  position: relative;
+}
+#back_form form button .linebut .namebut {
+  margin: 0.5vw;
+  color: #ffffff;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5625vw;
+  line-height: 100%;
+  z-index: 3;
+}
+#back_form form button .linebut .namebut .decor-5 {
+  position: relative;
+}
+#back_form form button .linebut .namebut .decor-5::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: -1;
+  width: 1.2ch;
+  height: 2.5em;
+  background-color: #d4535c;
 }/*# sourceMappingURL=mainstyleadmin.css.map */

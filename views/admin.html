@@ -5,13 +5,9 @@
         <title>Творческий цех</title>
         <link rel="shortcut icon" href="../img/LogoWeb.png">
         <link rel="stylesheet" type="text/css" href="../css/mainstyleadmin.css">
-        <script type="text/javascript" src="./../js/jquery.min.js"></script>
-        <script type="text/javascript" src="./../js/moment-with-locales.min.js"></script> <!-- библиотека moment-with-locales.min.js -->
-        <script type="text/javascript" src="./../js/bitroidCalendarEv1.js"></script> <!-- плагин CalendarEvents -->
         <script src="./../js/streetadmin.js"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jura:wght@300&family=Montserrat+Alternates&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     </head>
     <body style="margin: 0;">
@@ -88,7 +84,6 @@
             
             <div class="menustreet">
                 <div class="addressses"></div>
-                <div class="butaddstreet">+</div>
             </div>
 
             <table class="aplication">
@@ -116,16 +111,42 @@
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <button class="butaddroom">
-                                <div class="linebut">
-                                    <div class="namebut">ДОБАВ<span class="decor-6">И</span>ТЬ</div>
-                                </div>
-                            </button>
+                            
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <button class="butaddroom">
+                <div class="linebut">
+                    <div class="namebut">ДОБАВ<span class="decor-6">И</span>ТЬ</div>
+                </div>
+            </button>
 
+        </div>
+        <div id="back_form" class="none">
+            <form id="application_form" method="post" action="./../queries/send_application.php">
+                <img id="close" src="./../img/CloseBut.png">
+                <div class="nameform">ДОБАВЛЕНИЕ КОМНАТЫ</div>
+                <div class="groupformstep">
+                    <div class="formstep">
+                        Название комнаты:<input name="fullname"pattern="^[А-яёЁ ,.'-]+$" required>
+                    </div>
+                    <div class="formstep">
+                        Адрес:<input name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}" required>
+                    </div>
+                    <div class="formstep">
+                        Описание:<input name="social_network" required>
+                    </div>
+                    <div class="formstep">
+                        Изображение:<input class="input_img" type="file" accept="image/*" name="image" required>
+                    </div>
+                </div>
+                <button class="orderform">
+                    <div class="linebut">
+                        <div class="namebut">ДО<span class="decor-5">Б</span>АВИТЬ</div>
+                    </div>
+                </button>
+            </form>
         </div>
     </body>
 </html>
