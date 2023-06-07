@@ -213,6 +213,8 @@ async function fetchRooms() {
 
     address_filter.append(address_all_option)
 
+    document.querySelector(".addressses").innerHTML = "";
+
     for (let address of addresses) {
         let button = document.createElement("button");
         button.textContent = address;

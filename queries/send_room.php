@@ -15,7 +15,7 @@ $query_string = "SELECT max(`id`) from `room`";
 
 $file_name = $_FILES["image"]["name"];
 
-$image = "./../img/" . (mysqli_query($connect, $query_string)->fetch_assoc()["max(`id`)"] + 1) . substr($file_name, strrpos($file_name, ".", -1));
+$image = "./../img/rooms_images/" . (mysqli_query($connect, $query_string)->fetch_assoc()["max(`id`)"] + 1) . substr($file_name, strrpos($file_name, ".", -1));
 
 move_uploaded_file($_FILES["image"]["tmp_name"], $image);
 
