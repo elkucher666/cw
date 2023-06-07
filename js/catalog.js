@@ -23,6 +23,7 @@ async function loadRooms() {
         room_element.dataset.address = room.address;
         room_element.classList.add("room");
         room_element.addEventListener("click", function() {
+            window.current_room_id = room.id;
             insertCalendar(room.id);
             document.querySelector("#top_bar").classList.remove("none");
             document.querySelector("#room_image").src = '/../' + room.image;

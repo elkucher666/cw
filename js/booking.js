@@ -75,13 +75,13 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.order').addEventListener("click", function(e){
         if (document.querySelector('.calendarev-day-selected')) {
             let day = document.querySelector('.calendarev-day-selected').innerText;
-            let month = document.querySelector('.calendarev-month').value + 1;
+            let month = +document.querySelector('.calendarev-month').value + 1;
             let year = document.querySelector('.calendarev-years').value;
             
             day = (day < 10) ? "0" + day : day;
             month = (month < 10) ? "0" + month : month;
 
-            date = day + '.' + month + '.' + year;
+            let date = day + '.' + month + '.' + year;
 
             if (new Date() > new Date(date)) {
                 alert("Вы не можете записаться на прошедший день");
@@ -146,4 +146,27 @@ document.addEventListener("DOMContentLoaded", function() {
         document.querySelector('#booking').classList.add("none");
         document.querySelector('.dateform').innerHTML = '';
     });
-});  
+
+
+    document.querySelector("#application_form").addEventListener("formdata", function(event) {
+        const formData = event.formData;
+        formData.append("application_date", toDateString(new Date()));
+        formData.append("id_room", window.current_room_id);
+        formData.append("booking_date", document.querySelector('.dateform').innerText);
+    })
+});
+
+function toDateString(date) {
+    let result = "";
+
+    function beautify(number) {
+        if (number < 10) {
+            return "0" + number;
+        } else {
+            return number;
+        }
+    }
+
+    result +=  date.getDate() + "." + beautify(date.getMonth() + 1) + "." + date.getFullYear() +" "+ date.getHours() + ":" + beautify(date.getMinutes());
+    return result;
+}

@@ -9,18 +9,11 @@ function getPOST($key) {
         return null;
     }
 }
-
 $query_string = "INSERT INTO `application` (`fullname`, `age`, `institute`, `course`, `phone`, `social_network`, `id_room`, `booking_start`, `booking_end`, `booking_date`,`application_date`) VALUES ('".getPOST('fullname')."', '".getPOST('age')."', '".getPOST('institute')."', '".getPOST('course')."', '".getPOST('phone')."', '".getPOST('social_network')."', '".getPOST('id_room')."', '".getPOST('booking_start')."', '".getPOST('booking_end')."', '".getPOST('booking_date')."', '".getPOST('application_date')."')";
+
 
 mysqli_query($connect, $query_string);
 
 
-$a = [
-    "key" => "value",
-    "ke" => "value",
-];
-
-print_r(json_encode($a));
-
-
+header('Location: ./../views/index.html');
 ?>
