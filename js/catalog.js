@@ -47,6 +47,10 @@ async function loadRooms() {
 
             // Формируем карточку
             window.current_room_id = room.id;
+            room_cards.forEach(function(room_card) {
+                room_card.classList.remove("selected");
+            })
+            this.classList.add("selected");
             insertCalendar(room.id);
             document.querySelector("#top_bar").classList.remove("none");
             document.querySelector("#room_image").src = '/../' + room.image;
@@ -106,6 +110,12 @@ async function loadRooms() {
         // Добавляем кнопку в конец блока с адресами
         document.querySelector(".addresses").append(button);
     }
+
+    let first_tab = document.querySelector(".tab:first-child");
+    first_tab.click();
+
+    let first_room = document.querySelector(".room:first-child");
+    first_room.click();
 
     // Открываем первое помещение первого адреса
     document.querySelector(".tab:first-child").click();

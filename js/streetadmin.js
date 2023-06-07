@@ -50,6 +50,37 @@ async function onLoad() {
 
     fetchApplications();
     fetchRooms();
+
+    document.querySelector("#add_room_button").addEventListener("click", function() {
+        document.querySelector("#back_form").classList.remove("none");
+    });
+
+    document.querySelector("#add_room_form_button").addEventListener("click", async function() {
+        let inputs = [document.querySelector("input[name='name']"), document.querySelector("input[name='address']"), document.querySelector("input[name='description']"), document.querySelector("input[name='image']")];
+
+        for (let input of inputs) {
+            if (!input.checkValidity()) {
+                return;
+            }
+        }
+
+        let formData = new FormData(document.querySelector("#application_form"));
+        
+        let response = await fetch('./../queries/send_room.php', {
+            method: 'POST',
+            body: formData
+        });
+
+        let result = await response.text();
+        fetchRooms();
+        document.querySelector("#back_form").classList.add("none");
+    });
+    
+    document.querySelector('#close').addEventListener("click", function(e) {
+        document.querySelector('#back_form').classList.add("none");
+    });
+
+
 }
 
 async function fetchApplications() {

@@ -21,6 +21,11 @@ body {
   justify-content: space-around;
   align-items: center;
 }
+
+.none {
+  display: none !important;
+}
+
 .header .LogoImg {
   padding: 1% 0%;
   height: 1%;
