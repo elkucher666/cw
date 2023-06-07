@@ -1,35 +1,14 @@
 document.addEventListener("DOMContentLoaded", onLoad);
 
 async function onLoad() {
-
-    let response = await fetch('./../queries/get_room.php', {
-        method: 'POST'
-    });
-    let result = await response.text();
-    let rooms = JSON.parse(result);
-
-    let addresses = [];
-    for (let room of rooms) {
-        if (!addresses.includes(room.address)) {
-            addresses.push(room.address);
-        }
-    }
-    for (let address of addresses) {
-        let button = document.createElement("button");
-        button.textContent = address;
-        button.classList.add("tab");
-        document.querySelector(".addressses").append(button);
+    addFiltersLogic();
+    fetchApplications();
+    fetchRooms();
+    addFormLogic();
+}
 
 
-        button.addEventListener("click", function() {
-            document.querySelectorAll(".tab").forEach(function (elem) {
-                elem.classList.remove("selected");
-            });
-            button.classList.add("selected");
-        });
-    }
-
-
+function addFiltersLogic() {
     let time_buttons = document.querySelectorAll(".buttime");
 
     for (let time_button of time_buttons) {
@@ -42,15 +21,14 @@ async function onLoad() {
         });
     }
 
-
     document.querySelector("#apply_filter").addEventListener("click", fetchApplications);
     document.querySelectorAll(".buttime").forEach(function (button) {
         button.addEventListener("click", fetchApplications);
     });
+}
 
-    fetchApplications();
-    fetchRooms();
 
+function addFormLogic() {
     document.querySelector("#add_room_button").addEventListener("click", function() {
         document.querySelector("#back_form").classList.remove("none");
     });
@@ -79,8 +57,6 @@ async function onLoad() {
     document.querySelector('#close').addEventListener("click", function(e) {
         document.querySelector('#back_form').classList.add("none");
     });
-
-
 }
 
 async function fetchApplications() {
@@ -222,6 +198,44 @@ async function fetchRooms() {
     let rooms = JSON.parse(result);
 
 
+    let addresses = [];
+    for (let room of rooms) {
+        if (!addresses.includes(room.address)) {
+            addresses.push(room.address);
+        }
+    }
+    for (let address of addresses) {
+        let button = document.createElement("button");
+        button.textContent = address;
+        button.classList.add("tab");
+        document.querySelector(".addressses").append(button);
+
+
+        button.addEventListener("click", function() {
+            if (this.classList.contains("selected")) {
+                document.querySelectorAll("tr:not(.namerow)").forEach( function(row) {
+                    row.classList.remove("none");
+                });
+                this.classList.remove("selected");
+                return;
+            }
+
+            document.querySelectorAll(".tab").forEach(function(elem) {
+                elem.classList.remove("selected");
+            });
+            button.classList.add("selected");
+
+            document.querySelectorAll("tr:not(.namerow)").forEach( function(row) {
+                row.classList.add("none");
+            });
+
+            document.querySelectorAll(`tr[data-address='${address}']:not(.namerow)`).forEach( function(row) {
+                row.classList.remove("none")
+            });
+        });
+    }
+
+
     let table_body = document.querySelector("#rooms_table tbody");
     table_body.innerHTML = "";
 
@@ -242,6 +256,7 @@ async function fetchRooms() {
 
     for (let room of rooms) {
         let table_row = document.createElement("tr");
+        table_row.dataset.address = room.address;
 
         let id = document.createElement("td");
         let name = document.createElement("td");
@@ -249,8 +264,6 @@ async function fetchRooms() {
         let description = document.createElement("td");
         let image = document.createElement("td");
         let editing = document.createElement("td");
-        
-        
         
         id.textContent = room.id;
         name.textContent = room.name;
@@ -262,38 +275,6 @@ async function fetchRooms() {
         
         image.append(room_image);
 
-        
-        // let formData = new FormData();
-        // formData.append("id", application.id);
-
-        // let button_reject = document.createElement("button");
-        // button_reject.classList.add("reject");
-        // let reject_image = document.createElement("img");
-        // reject_image.src = "./../img/reject_image.png";
-
-        // let button_accept = document.createElement("button");
-        // button_accept.classList.add("accept");
-        // let accept_image = document.createElement("img");
-        // accept_image.src = "./../img/accept_image.png";                
-
-        // button_reject.append(reject_image);
-        // button_accept.append(accept_image);
-
-        // button_reject.addEventListener("click", async function() {
-        //     await fetch('./../queries/reject.php', {
-        //         method: 'POST',
-        //         body: formData
-        //     });
-        //     fetchApplications();
-        // });
-
-        // button_accept.addEventListener("click", async function() {
-        //     await fetch('./../queries/accept.php', {
-        //         method: 'POST',
-        //         body: formData
-        //     });
-        //     fetchApplications();
-        // });
 
         table_row.append(id, name, address, description, image, editing);
         table_body.append(table_row);
