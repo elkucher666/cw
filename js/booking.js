@@ -153,6 +153,9 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append("application_date", toDateString(new Date()));
         formData.append("id_room", window.current_room_id);
         formData.append("booking_date", document.querySelector('.dateform').innerText);
+
+        formData.set("booking_start", formData.get("booking_start") + ":00");
+        formData.set("booking_end", formData.get("booking_end") + ":00");
     })
 });
 
@@ -167,6 +170,6 @@ function toDateString(date) {
         }
     }
 
-    result +=  date.getDate() + "." + beautify(date.getMonth() + 1) + "." + date.getFullYear() +" "+ date.getHours() + ":" + beautify(date.getMinutes());
+    result +=  beautify(date.getDate()) + "." + beautify(date.getMonth() + 1) + "." + date.getFullYear() +" "+ date.getHours() + ":" + beautify(date.getMinutes());
     return result;
 }
