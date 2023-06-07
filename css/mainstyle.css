@@ -388,7 +388,7 @@ body {
   position: relative;
   width: 1.0416666667vw;
   height: 1.25vw;
-  border: none;
+  border: 0.2vw solid #1a181900;
 }
 .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day:hover {
   cursor: pointer;

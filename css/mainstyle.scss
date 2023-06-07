@@ -413,7 +413,7 @@ body {
                         position: relative;
                         width: calc(20*$display);
                         height: calc(20 * 1.2 * $display);
-                        border: none;
+                        border: 0.2vw solid #1a181900;
                         &:hover {
                             cursor: pointer;
                             font-weight: 900;
@@ -457,6 +457,8 @@ body {
                         border: 0.2vw solid $black;
                         //font-weight: 700;
                         font-size: calc(10 * $display + calc(8*$display));
+                        z-index: 1000;
+                        position: absolute;
                     }
     
                 }
