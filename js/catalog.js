@@ -53,7 +53,7 @@ async function loadRooms() {
             this.classList.add("selected");
             insertCalendar(room.id);
             document.querySelector("#top_bar").classList.remove("none");
-            document.querySelector("#room_image").src = '/../' + room.image;
+            document.querySelector("#room_image").src = room.image;
             document.querySelector("#room_name").textContent = room.name;
             document.querySelector("#room_address").textContent = room.address;
             document.querySelector("#room_description").textContent = room.description;
