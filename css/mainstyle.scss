@@ -250,6 +250,7 @@ body {
             overflow-y: hidden;
             white-space: nowrap;
             width: 100%;
+            align-items: flex-end;
             &::-webkit-scrollbar {
                 display: none;
             }
@@ -265,6 +266,7 @@ body {
             cursor: pointer;
             img {
                 width: calc(600 * $display);
+                transition: 0.5s;
             }
 
             .name {
@@ -293,6 +295,11 @@ body {
     
             &:last-child {
                 margin-right: 34%;
+            }
+            &.selected {
+                img {
+                    width: calc(700 * $display);
+                }
             }
         }
         

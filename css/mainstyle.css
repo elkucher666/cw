@@ -12,6 +12,7 @@ body {
   position: fixed;
   z-index: 2;
   width: 100%;
+  height: -moz-min-content;
   height: min-content;
   top: 0;
   left: 0;
@@ -24,6 +25,7 @@ body {
   background-color: #ffffff;
   border: none;
   height: 100%;
+  width: -moz-max-content;
   width: max-content;
   margin: 0.5208333333vw;
   cursor: pointer;
@@ -34,7 +36,9 @@ body {
 }
 .header .linename {
   margin-right: 10%;
+  height: -moz-min-content;
   height: min-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .header .linename .name {
@@ -88,8 +92,10 @@ body {
 .top_bar .selectedimg {
   width: 25%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 .top_bar .selectedimg::after {
   content: "";
@@ -102,8 +108,10 @@ body {
 .top_bar .selectedimg img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 .top_bar .selectedroom, .top_bar .paramselectroom {
   font-family: "IBM Plex Sans", sans-serif;
@@ -232,6 +240,7 @@ body {
   overflow-y: hidden;
   white-space: nowrap;
   width: 100%;
+  align-items: flex-end;
 }
 .catalog .rooms .tabcontent::-webkit-scrollbar {
   display: none;
@@ -244,6 +253,7 @@ body {
 }
 .catalog .rooms .room img {
   width: 31.25vw;
+  transition: 0.5s;
 }
 .catalog .rooms .room .name {
   margin: 1vw;
@@ -266,6 +276,9 @@ body {
 }
 .catalog .rooms .room:last-child {
   margin-right: 34%;
+}
+.catalog .rooms .room.selected img {
+  width: 36.4583333333vw;
 }
 .catalog .worktimeroom {
   display: flex;
@@ -441,6 +454,7 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   font-weight: 700;
   color: #d4535c;
+  width: -moz-max-content;
   width: max-content;
 }
 .catalog .worktimeroom .calendarev-events-container .event-block h3 {
@@ -586,7 +600,6 @@ body {
   font-size: 1.3020833333vw;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 #booking form .formstep .container input, #booking form .formstepcheck .container input {
@@ -620,8 +633,6 @@ body {
   height: 1.25vw;
   border: solid #d4535c;
   border-width: 0 0.2604166667vw 0.2604166667vw 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
 #booking form .formstep .container:hover input ~ .checkmark, #booking form .formstepcheck .container:hover input ~ .checkmark {
@@ -680,7 +691,9 @@ body {
 .footer .container {
   border: 0.15625vw solid #1A1819;
   margin: 1.0416666667vw;
+  height: -moz-min-content;
   height: min-content;
+  width: -moz-fit-content;
   width: fit-content;
 }
 .footer .container .contactinfo {
@@ -840,6 +853,7 @@ body {
 @media (max-width: 800px) {
   .header {
     padding: auto;
+    height: -moz-max-content;
     height: max-content;
   }
   .header .linename {
