@@ -204,16 +204,30 @@ async function fetchRooms() {
             addresses.push(room.address);
         }
     }
+
+    let address_filter = document.querySelector("select[name='address']");
+    address_filter.innerHTML = "";
+    let address_all_option = document.createElement("option");
+    address_all_option.textContent = "Все";
+    address_all_option.value = "";
+
+    address_filter.append(address_all_option)
+
     for (let address of addresses) {
         let button = document.createElement("button");
         button.textContent = address;
         button.classList.add("tab");
         document.querySelector(".addressses").append(button);
 
+        let address_option = document.createElement("option")
+        address_option.textContent = address;
+        address_option.value = address;
+        address_filter.append(address_option);
+
 
         button.addEventListener("click", function() {
             if (this.classList.contains("selected")) {
-                document.querySelectorAll("tr:not(.namerow)").forEach( function(row) {
+                document.querySelectorAll("#rooms_table tr:not(.namerow)").forEach( function(row) {
                     row.classList.remove("none");
                 });
                 this.classList.remove("selected");
@@ -225,11 +239,11 @@ async function fetchRooms() {
             });
             button.classList.add("selected");
 
-            document.querySelectorAll("tr:not(.namerow)").forEach( function(row) {
+            document.querySelectorAll("#rooms_table tr:not(.namerow)").forEach( function(row) {
                 row.classList.add("none");
             });
 
-            document.querySelectorAll(`tr[data-address='${address}']:not(.namerow)`).forEach( function(row) {
+            document.querySelectorAll(`#rooms_table tr[data-address='${address}']:not(.namerow)`).forEach( function(row) {
                 row.classList.remove("none")
             });
         });
