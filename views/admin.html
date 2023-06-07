@@ -28,39 +28,39 @@
                         <div class="periodfilt">
                             Дата брони:
                             <div class="date">
-                                <input id="datebeg" type="date">
+                                <input type="date" name="booking_date">
                             </div>
                         </div>
                         <div class="typerooms">
                             Дата заявки:
                             <div class="date">
-                                <input id="datebeg" type="date">
+                                <input type="date" name="application_date">
                             </div>
                         </div>
                     </div>
                     <div class="filtercol">
                         <div class="telephone">
                             Телефон:
-                            <input class="tel" type="text">    
+                            <input class="tel" type="text" name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}">    
                         </div>
                         <div class="fio">
                             ФИО:
-                            <input class="fio" type="text">
+                            <input class="fio" type="text" name="fullname" pattern="^[А-яёЁ ,.'-]+$">
                         </div>
                     </div>
                     <div class="filtercol">
                         <div class="status">
                             Статус:
-                            <select id="statusroom">
+                            <select name="approved">
                                 <option value="">Все</option>
-                                <option value="">Одобреные</option>
-                                <option value="">Неодобреные</option>
-                                <option value="">На расмотрение</option>
+                                <option value="1">Одобреные</option>
+                                <option value="0">Неодобреные</option>
+                                <option value="2">На расмотрение</option>
                             </select>
                         </div>
                         <div class="statuspeople">
                             Адрес:
-                            <select id="statuspeople">
+                            <select name="address">
                                 <option value="">Все</option>
                                 <option value="">Преподаватель</option>
                                 <option value="">Студент</option>
@@ -70,8 +70,8 @@
                 </div>
                 <div class="filterrow">
                     <div class="filtbutgroup">
-                        <button id="yfilter" class="butsfilter">Применить</button>
-                        <button id="nfilter" class="butsfilter">Отчистить</button>
+                        <button id="apply_filter" class="butsfilter">Применить</button>
+                        <button id="nullify_filter" class="butsfilter">Отчистить</button>
                     </div>
                 </div>
             </div>
