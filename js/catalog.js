@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", loadRooms);
 
 async function loadRooms() {
     let response = await fetch('./../queries/get_room.php', {
-        method: 'POST'
+        method: 'GET'
     });
 
     let result = await response.text();
@@ -90,13 +90,14 @@ async function loadRooms() {
 window.addEventListener("scroll", changeTopBarAppearanceOnScroll);
 
 function changeTopBarAppearanceOnScroll() {
-  var win_scroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (win_scroll / height) * 100;
-  if (scrolled > 50){
-    document.getElementById("top_bar").classList.add("visible");
-  }else{
-    document.getElementById("top_bar").classList.remove("visible");
-  }
+    var win_scroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (win_scroll / height) * 100;
+    
+    if (scrolled > 50) {
+        document.getElementById("top_bar").classList.add("visible");
+    } else {
+        document.getElementById("top_bar").classList.remove("visible");
+    }
   
 }
