@@ -49,7 +49,7 @@ async function onLoad() {
     });
 
     fetchApplications();
-    
+    fetchRooms();
 }
 
 async function fetchApplications() {
@@ -83,14 +83,14 @@ async function fetchApplications() {
         let applications = JSON.parse(result);
 
 
-        let table_body = document.querySelector(".aplication tbody");
+        let table_body = document.querySelector("#applications_table tbody");
         table_body.innerHTML = "";
 
         let namerow = document.createElement("tr");
         namerow.classList.add("namerow");
 
 
-        let table_headers = ["Id", "ДАТА БРОНИ", "ВРЕМЯ", "ФИО", "ТЕЛЕФОН", "ПОМЕЩЕНИЕ/АДРЕС", "ДАТА ЗАЯВКИ", "СТАТУС"]
+        let table_headers = ["ID", "ДАТА БРОНИ", "ВРЕМЯ", "ФИО", "ТЕЛЕФОН", "ПОМЕЩЕНИЕ/АДРЕС", "ДАТА ЗАЯВКИ", "СТАТУС"]
         
         namerow.append(...table_headers.map(function(header) {
             let header_element = document.createElement("th");
@@ -101,7 +101,6 @@ async function fetchApplications() {
         table_body.append(namerow);
 
 
-        let i = 1;
         for (let application of applications) {
             let table_row = document.createElement("tr");
 
@@ -177,8 +176,95 @@ async function fetchApplications() {
             }
 
 
-            table_row.append(id, booking_date, booking_time, fullname, phone, room_and_address, application_date, status)
+            table_row.append(id, booking_date, booking_time, fullname, phone, room_and_address, application_date, status);
             table_body.append(table_row);
         }
+    }
+}
+
+async function fetchRooms() {
+    let response = await fetch('./../queries/get_room.php', {
+        method: 'GET'
+    });
+
+    let result = await response.text();
+    let rooms = JSON.parse(result);
+
+
+    let table_body = document.querySelector("#rooms_table tbody");
+    table_body.innerHTML = "";
+
+    let namerow = document.createElement("tr");
+    namerow.classList.add("namerow");
+
+
+    let table_headers = ["ID", "НАЗВАНИЕ", "АДРЕС", "ИНФОРМАЦИЯ", "ИЗОБРАЖЕНИЕ", "РЕДАКТИРОВАНИЕ"]
+    
+    namerow.append(...table_headers.map(function(header) {
+        let header_element = document.createElement("th");
+        header_element.textContent = header;
+        return header_element;
+    }));
+
+    table_body.append(namerow);
+
+
+    for (let room of rooms) {
+        let table_row = document.createElement("tr");
+
+        let id = document.createElement("td");
+        let name = document.createElement("td");
+        let address = document.createElement("td");
+        let description = document.createElement("td");
+        let image = document.createElement("td");
+        let editing = document.createElement("td");
+        
+        
+        
+        id.textContent = room.id;
+        name.textContent = room.name;
+        address.textContent = room.address;
+        description.textContent = room.description;
+        
+        let room_image = document.createElement("img");
+        room_image.src = room.image;
+        
+        image.append(room_image);
+
+        
+        // let formData = new FormData();
+        // formData.append("id", application.id);
+
+        // let button_reject = document.createElement("button");
+        // button_reject.classList.add("reject");
+        // let reject_image = document.createElement("img");
+        // reject_image.src = "./../img/reject_image.png";
+
+        // let button_accept = document.createElement("button");
+        // button_accept.classList.add("accept");
+        // let accept_image = document.createElement("img");
+        // accept_image.src = "./../img/accept_image.png";                
+
+        // button_reject.append(reject_image);
+        // button_accept.append(accept_image);
+
+        // button_reject.addEventListener("click", async function() {
+        //     await fetch('./../queries/reject.php', {
+        //         method: 'POST',
+        //         body: formData
+        //     });
+        //     fetchApplications();
+        // });
+
+        // button_accept.addEventListener("click", async function() {
+        //     await fetch('./../queries/accept.php', {
+        //         method: 'POST',
+        //         body: formData
+        //     });
+        //     fetchApplications();
+        // });
+
+        table_row.append(id, name, address, description, image, editing);
+        table_body.append(table_row);
     }
 }
