@@ -47,6 +47,8 @@ async function onLoad() {
     document.querySelectorAll(".buttime").forEach(function (button) {
         button.addEventListener("click", fetchApplications);
     });
+
+    fetchApplications();
     
 }
 
@@ -79,7 +81,104 @@ async function fetchApplications() {
 
         let result = await response.text();
         let applications = JSON.parse(result);
-        console.log(applications);
 
+
+        let table_body = document.querySelector(".aplication tbody");
+        table_body.innerHTML = "";
+
+        let namerow = document.createElement("tr");
+        namerow.classList.add("namerow");
+
+
+        let table_headers = ["Id", "ДАТА БРОНИ", "ВРЕМЯ", "ФИО", "ТЕЛЕФОН", "ПОМЕЩЕНИЕ/АДРЕС", "ДАТА ЗАЯВКИ", "СТАТУС"]
+        
+        namerow.append(...table_headers.map(function(header) {
+            let header_element = document.createElement("th");
+            header_element.textContent = header;
+            return header_element;
+        }));
+
+        table_body.append(namerow);
+
+
+        let i = 1;
+        for (let application of applications) {
+            let table_row = document.createElement("tr");
+
+            let id = document.createElement("td");
+            let booking_date = document.createElement("td");
+            let booking_time = document.createElement("td");
+            let fullname = document.createElement("td");
+            let phone = document.createElement("td");
+            let room_and_address = document.createElement("td");
+            let application_date = document.createElement("td");
+            let status = document.createElement("td");
+            
+            
+            
+            id.textContent = application.id;
+            booking_date.textContent = application.booking_date;
+            booking_time.textContent = application.booking_start + " - " + application.booking_end;
+            fullname.textContent = application.fullname;
+            phone.textContent = application.phone;
+            room_and_address.textContent = application.name + ", " + application.address;
+            application_date.textContent = application.application_date;
+            
+            if (application.approved == "2") {
+                let formData = new FormData();
+                formData.append("id", application.id);
+
+                let button_reject = document.createElement("button");
+                button_reject.classList.add("reject");
+                let reject_image = document.createElement("img");
+                reject_image.src = "./../img/reject_image.png";
+
+                let button_accept = document.createElement("button");
+                button_accept.classList.add("accept");
+                let accept_image = document.createElement("img");
+                accept_image.src = "./../img/accept_image.png";                
+
+                button_reject.append(reject_image);
+                button_accept.append(accept_image);
+
+                button_reject.addEventListener("click", async function() {
+                    await fetch('./../queries/reject.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    fetchApplications();
+                });
+
+                button_accept.addEventListener("click", async function() {
+                    await fetch('./../queries/accept.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    fetchApplications();
+                });
+
+                status.append(button_reject, button_accept);
+            }
+
+            if (application.approved == "1") {
+                let accept_image = document.createElement("img");
+                accept_image.src = "./../img/accept_image.png";
+                accept_image.classList.add("accept");
+
+                status.append(accept_image);
+            }
+
+            if (application.approved == "0") {
+                let reject_image = document.createElement("img");
+                reject_image.src = "./../img/reject_image.png";
+                reject_image.classList.add("reject");
+
+                status.append(reject_image);
+            }
+
+
+            table_row.append(id, booking_date, booking_time, fullname, phone, room_and_address, application_date, status)
+            table_body.append(table_row);
+        }
     }
 }
