@@ -305,7 +305,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#back_form form {
+#back_form #edit_form {
   position: fixed;
   z-index: 10;
   background-color: #1A1819;
@@ -318,24 +318,24 @@ body {
   font-weight: 700;
   font-size: 1.5625vw;
 }
-#back_form form #close {
+#back_form #edit_form #close {
   width: 1.5625vw;
   height: 1.5625vw;
   position: sticky;
   left: 100%;
   cursor: pointer;
 }
-#back_form form .nameform {
+#back_form #edit_form .nameform {
   font-size: 1.5625vw;
   color: #ffffff;
 }
-#back_form form .formstep {
+#back_form #edit_form .formstep {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   color: #ffffff;
 }
-#back_form form .formstep input {
+#back_form #edit_form .formstep input {
   width: 20vw;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
@@ -348,11 +348,11 @@ body {
   box-shadow: inset;
   background-color: #302D2E;
 }
-#back_form form .formstep input[type=file] {
+#back_form #edit_form .formstep input[type=file] {
   color: #ffffff;
   background: #302D2E;
 }
-#back_form form .formstep input[type=file]::file-selector-button {
+#back_form #edit_form .formstep input[type=file]::file-selector-button {
   margin-right: 20px;
   border: none;
   background: #d4535c;
@@ -362,10 +362,10 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   transition: background 0.2s ease-in-out;
 }
-#back_form form .formstep input[type=file]::file-selector-button:hover {
+#back_form #edit_form .formstep input[type=file]::file-selector-button:hover {
   background: #782b30;
 }
-#back_form form .formstep .container {
+#back_form #edit_form .formstep .container {
   display: flex;
   position: relative;
   padding-left: 0.78125vw;
@@ -376,23 +376,23 @@ body {
   -moz-user-select: none;
   user-select: none;
 }
-#back_form form .formstep .container input {
+#back_form #edit_form .formstep .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-#back_form form .formstep .container input:checked ~ .checkmark {
+#back_form #edit_form .formstep .container input:checked ~ .checkmark {
   background-color: #302D2E;
 }
-#back_form form .formstep .container input:checked ~ .checkmark:after {
+#back_form #edit_form .formstep .container input:checked ~ .checkmark:after {
   display: block;
 }
-#back_form form .formstepcheck {
+#back_form #edit_form .formstepcheck {
   justify-content: center;
 }
-#back_form form button {
+#back_form #edit_form button {
   border: none;
   margin: 2vw 3vw;
   padding: 0.5vw;
@@ -401,11 +401,11 @@ body {
   cursor: pointer;
   z-index: 0;
 }
-#back_form form button .linebut {
+#back_form #edit_form button .linebut {
   border: 0.1041666667vw solid #ffffff;
   position: relative;
 }
-#back_form form button .linebut .namebut {
+#back_form #edit_form button .linebut .namebut {
   margin: 0.5vw;
   color: #ffffff;
   font-family: "IBM Plex Sans", sans-serif;
@@ -415,10 +415,10 @@ body {
   line-height: 100%;
   z-index: 3;
 }
-#back_form form button .linebut .namebut .decor-5 {
+#back_form #edit_form button .linebut .namebut .decor-5 {
   position: relative;
 }
-#back_form form button .linebut .namebut .decor-5::before {
+#back_form #edit_form button .linebut .namebut .decor-5::before {
   content: "";
   position: absolute;
   top: 50%;

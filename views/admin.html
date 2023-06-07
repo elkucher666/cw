@@ -148,5 +148,30 @@
                 </button>
             </form>
         </div>
+        <div id="back_form" class="none">
+            <form id="edit_form" method="post" action="">
+                <img id="close" src="./../img/CloseBut.png">
+                <div class="nameform">РЕДАКТИРОВАНИЕ КОМНАТЫ</div>
+                <div class="groupformstep">
+                    <div class="formstep">
+                        Название комнаты:<input name="fullname"pattern="^[А-яёЁ ,.'-]+$" required>
+                    </div>
+                    <div class="formstep">
+                        Адрес:<input name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}" required>
+                    </div>
+                    <div class="formstep">
+                        Описание:<input name="social_network" required>
+                    </div>
+                    <div class="formstep">
+                        Изображение:<input class="input_img" type="file" accept="image/*" name="image" required>
+                    </div>
+                </div>
+                <button class="orderform">
+                    <div class="linebut">
+                        <div class="namebut">ИЗМЕ<span class="decor-5">Н</span>ИТЬ</div>
+                    </div>
+                </button>
+            </form>
+        </div>
     </body>
 </html>
