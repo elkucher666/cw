@@ -108,6 +108,7 @@ body {
                     padding-inline-start: 0;
                     display: flex;
                     flex-direction: row;
+                    text-transform: uppercase;
                 }
                 .tel, .fio {
                     width: calc(600 * $display);
@@ -223,6 +224,7 @@ body {
     #rooms_table {
         tbody {
             tr {
+
                 td {
                     padding: 5px 0px;
                     &:nth-child(2) {
@@ -231,12 +233,23 @@ body {
                     &:nth-child(3) {
                         text-transform: uppercase;
                     }
-                }
-                img {
-                    width: 100%;
-                    height: calc(100 * $display);
-                    object-fit: cover;
-                    object-position: center;
+                    img {
+                        width: 100%;
+                        height: calc(100 * $display);
+                        object-fit: cover;
+                        object-position: center;
+                    }
+                    button {
+                        background-color: $grey;
+                        border: none;
+                        width: 50px;
+                        margin: 0px calc(10 * $display);
+                        img {
+                            width: calc(40 * $display);
+                            height: auto;
+                            
+                        }
+                    }
                 }
             }
     
@@ -317,7 +330,7 @@ body {
     }
 }
 
-#back_form {
+#edit_back_form, #back_form {
     display: flex;
     z-index: 10;
     width: 100%;
@@ -327,8 +340,7 @@ body {
     background-color: #1a1819c6;
     justify-content: center;
     align-items: center;
-    //#application_form, 
-    .edit_form {
+    #application_form, #edit_form {
         position: fixed;
         z-index: 10;
         background-color: $black;
@@ -341,7 +353,7 @@ body {
         font-weight: 700;
         font-size: calc(30 * $display);
         //width: max-content;
-        #close {
+        #close, #edit_close {
             width: calc(30*$display);
             height: calc(30 * $display);
             position: sticky;

@@ -107,6 +107,7 @@ body {
           padding-inline-start: 0;
   display: flex;
   flex-direction: row;
+  text-transform: uppercase;
 }
 .content .filter .filterrow .filtercol .tel, .content .filter .filterrow .filtercol .fio {
   width: 31.25vw;
@@ -216,13 +217,23 @@ body {
 .content #rooms_table tbody tr td:nth-child(3) {
   text-transform: uppercase;
 }
-.content #rooms_table tbody tr img {
+.content #rooms_table tbody tr td img {
   width: 100%;
   height: 5.2083333333vw;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center;
      object-position: center;
+}
+.content #rooms_table tbody tr td button {
+  background-color: #302D2E;
+  border: none;
+  width: 50px;
+  margin: 0px 0.5208333333vw;
+}
+.content #rooms_table tbody tr td button img {
+  width: 2.0833333333vw;
+  height: auto;
 }
 .content .menustreet {
   display: flex;
@@ -294,7 +305,7 @@ body {
   background-color: #d4535c;
 }
 
-#back_form {
+#edit_back_form, #back_form {
   display: flex;
   z-index: 10;
   width: 100%;
@@ -305,7 +316,7 @@ body {
   justify-content: center;
   align-items: center;
 }
-#back_form .edit_form {
+#edit_back_form #application_form, #edit_back_form #edit_form, #back_form #application_form, #back_form #edit_form {
   position: fixed;
   z-index: 10;
   background-color: #1A1819;
@@ -318,24 +329,24 @@ body {
   font-weight: 700;
   font-size: 1.5625vw;
 }
-#back_form .edit_form #close {
+#edit_back_form #application_form #close, #edit_back_form #application_form #edit_close, #edit_back_form #edit_form #close, #edit_back_form #edit_form #edit_close, #back_form #application_form #close, #back_form #application_form #edit_close, #back_form #edit_form #close, #back_form #edit_form #edit_close {
   width: 1.5625vw;
   height: 1.5625vw;
   position: sticky;
   left: 100%;
   cursor: pointer;
 }
-#back_form .edit_form .nameform {
+#edit_back_form #application_form .nameform, #edit_back_form #edit_form .nameform, #back_form #application_form .nameform, #back_form #edit_form .nameform {
   font-size: 1.5625vw;
   color: #ffffff;
 }
-#back_form .edit_form .formstep {
+#edit_back_form #application_form .formstep, #edit_back_form #edit_form .formstep, #back_form #application_form .formstep, #back_form #edit_form .formstep {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   color: #ffffff;
 }
-#back_form .edit_form .formstep input {
+#edit_back_form #application_form .formstep input, #edit_back_form #edit_form .formstep input, #back_form #application_form .formstep input, #back_form #edit_form .formstep input {
   width: 20vw;
   font-family: "IBM Plex Sans", sans-serif;
   font-style: normal;
@@ -349,11 +360,11 @@ body {
   background-color: #302D2E;
   color: #ffffff;
 }
-#back_form .edit_form .formstep input[type=file] {
+#edit_back_form #application_form .formstep input[type=file], #edit_back_form #edit_form .formstep input[type=file], #back_form #application_form .formstep input[type=file], #back_form #edit_form .formstep input[type=file] {
   color: #ffffff;
   background: #302D2E;
 }
-#back_form .edit_form .formstep input[type=file]::file-selector-button {
+#edit_back_form #application_form .formstep input[type=file]::file-selector-button, #edit_back_form #edit_form .formstep input[type=file]::file-selector-button, #back_form #application_form .formstep input[type=file]::file-selector-button, #back_form #edit_form .formstep input[type=file]::file-selector-button {
   margin-right: 20px;
   border: none;
   background: #d4535c;
@@ -363,10 +374,10 @@ body {
   font-family: "IBM Plex Sans", sans-serif;
   transition: background 0.2s ease-in-out;
 }
-#back_form .edit_form .formstep input[type=file]::file-selector-button:hover {
+#edit_back_form #application_form .formstep input[type=file]::file-selector-button:hover, #edit_back_form #edit_form .formstep input[type=file]::file-selector-button:hover, #back_form #application_form .formstep input[type=file]::file-selector-button:hover, #back_form #edit_form .formstep input[type=file]::file-selector-button:hover {
   background: #782b30;
 }
-#back_form .edit_form .formstep .container {
+#edit_back_form #application_form .formstep .container, #edit_back_form #edit_form .formstep .container, #back_form #application_form .formstep .container, #back_form #edit_form .formstep .container {
   display: flex;
   position: relative;
   padding-left: 0.78125vw;
@@ -377,23 +388,23 @@ body {
   -moz-user-select: none;
   user-select: none;
 }
-#back_form .edit_form .formstep .container input {
+#edit_back_form #application_form .formstep .container input, #edit_back_form #edit_form .formstep .container input, #back_form #application_form .formstep .container input, #back_form #edit_form .formstep .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
 }
-#back_form .edit_form .formstep .container input:checked ~ .checkmark {
+#edit_back_form #application_form .formstep .container input:checked ~ .checkmark, #edit_back_form #edit_form .formstep .container input:checked ~ .checkmark, #back_form #application_form .formstep .container input:checked ~ .checkmark, #back_form #edit_form .formstep .container input:checked ~ .checkmark {
   background-color: #302D2E;
 }
-#back_form .edit_form .formstep .container input:checked ~ .checkmark:after {
+#edit_back_form #application_form .formstep .container input:checked ~ .checkmark:after, #edit_back_form #edit_form .formstep .container input:checked ~ .checkmark:after, #back_form #application_form .formstep .container input:checked ~ .checkmark:after, #back_form #edit_form .formstep .container input:checked ~ .checkmark:after {
   display: block;
 }
-#back_form .edit_form .formstepcheck {
+#edit_back_form #application_form .formstepcheck, #edit_back_form #edit_form .formstepcheck, #back_form #application_form .formstepcheck, #back_form #edit_form .formstepcheck {
   justify-content: center;
 }
-#back_form .edit_form button {
+#edit_back_form #application_form button, #edit_back_form #edit_form button, #back_form #application_form button, #back_form #edit_form button {
   border: none;
   margin: 2vw 3vw;
   padding: 0.5vw;
@@ -402,11 +413,11 @@ body {
   cursor: pointer;
   z-index: 0;
 }
-#back_form .edit_form button .linebut {
+#edit_back_form #application_form button .linebut, #edit_back_form #edit_form button .linebut, #back_form #application_form button .linebut, #back_form #edit_form button .linebut {
   border: 0.1041666667vw solid #ffffff;
   position: relative;
 }
-#back_form .edit_form button .linebut .namebut {
+#edit_back_form #application_form button .linebut .namebut, #edit_back_form #edit_form button .linebut .namebut, #back_form #application_form button .linebut .namebut, #back_form #edit_form button .linebut .namebut {
   margin: 0.5vw;
   color: #ffffff;
   font-family: "IBM Plex Sans", sans-serif;
@@ -416,10 +427,10 @@ body {
   line-height: 100%;
   z-index: 3;
 }
-#back_form .edit_form button .linebut .namebut .decor-5 {
+#edit_back_form #application_form button .linebut .namebut .decor-5, #edit_back_form #edit_form button .linebut .namebut .decor-5, #back_form #application_form button .linebut .namebut .decor-5, #back_form #edit_form button .linebut .namebut .decor-5 {
   position: relative;
 }
-#back_form .edit_form button .linebut .namebut .decor-5::before {
+#edit_back_form #application_form button .linebut .namebut .decor-5::before, #edit_back_form #edit_form button .linebut .namebut .decor-5::before, #back_form #application_form button .linebut .namebut .decor-5::before, #back_form #edit_form button .linebut .namebut .decor-5::before {
   content: "";
   position: absolute;
   top: 50%;
