@@ -11,7 +11,4 @@ unlink($image);
 $query_string = "DELETE FROM `room` WHERE `room`.`id` = $id";
 mysqli_query($connect, $query_string);
 
-
-
-
 ?>
