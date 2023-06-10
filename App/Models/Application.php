@@ -142,7 +142,7 @@ class Application extends \Core\Model
 
         // Фильтрация в определённых временных отрезках по дате заявке
         if (strcmp(Application::$filter['application_date'], '') != 0){
-            $sql .= " AND a.application_date LIKE :application_date";
+            $sql .= " AND a.created_at LIKE :application_date";
             $filt[':application_date'] = Application::$filter['application_date'];
         }
 

@@ -379,7 +379,7 @@ async function fetchApplications() {
             fullname.textContent = application.fullname;
             phone.textContent = application.phone;
             room_and_address.textContent = application.name + ", " + application.address;
-            application_date.textContent = application.application_date;
+            application_date.textContent = application.created_at;
             
             // Если заявка не просмотрена
             if (application.approved == "0") {
