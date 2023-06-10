@@ -238,14 +238,14 @@ body {
 .content .menustreet {
   display: flex;
 }
-.content .menustreet .addressses {
+.content .menustreet .addresses {
   display: flex;
   width: 100%;
 }
-.content .menustreet .addressses > * {
+.content .menustreet .addresses > * {
   flex: 1;
 }
-.content .menustreet .addressses .tab {
+.content .menustreet .addresses .tab {
   padding: 2%;
   border: none;
   border-bottom: 0.1041666667vw solid #1A1819;
@@ -260,10 +260,10 @@ body {
   cursor: pointer;
   color: #ffffff;
 }
-.content .menustreet .addressses .tab:hover {
+.content .menustreet .addresses .tab:hover {
   background-color: #302D2E;
 }
-.content .menustreet .addressses .tab.selected {
+.content .menustreet .addresses .tab.selected {
   border-bottom: thick solid #ffffff;
   border-width: 0.5vw;
 }
