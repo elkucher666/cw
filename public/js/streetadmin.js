@@ -336,7 +336,7 @@ async function fetchApplications() {
     formData.append("address", filters['address'].value);
     formData.append("time_interval", time_interval.value);
     let application_options = {
-        method: 'POST',
+        method: 'GET',
         body: formData,
     };
 

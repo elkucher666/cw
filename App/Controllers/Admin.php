@@ -34,7 +34,7 @@ class Admin extends \Core\Controller
         // echo "<br>7". $_POST['time_interval'];
 
         // TODO: Написать обработку запроса в Application
-        echo print_r(json_encode(Application::getAll()));
+        // echo print_r(json_encode(Application::getAll()));
         return print_r(json_encode(Application::getAll()));
     }
 
