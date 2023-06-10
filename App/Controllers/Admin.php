@@ -25,6 +25,28 @@ class Admin extends \Core\Controller
     }
 
     public function filter(){
+        // TODO: Добавить валидацию
+        Application::$filter['phone'] = $_POST['phone']; 
+        Application::$filter['fullname'] = $_POST['fullname']; 
+        Application::$filter['booking_date'] = $_POST['booking_date'];
+        Application::$filter['application_date'] = $_POST['application_date']; 
+        Application::$filter['approved'] = $_POST['approved']; 
+        Application::$filter['address'] = $_POST['address']; 
+        Application::$filter['time_interval'] = $_POST['time_interval']; 
+        
+        $applications = Application::filter();
+        // foreach($applications as $app) {
+        //     echo $app . "\n";
+        // }
+
+        Application::$filter['phone'] = "";
+        Application::$filter['fullname'] = "";
+        Application::$filter['booking_date'] = "";
+        Application::$filter['application_date'] = "";
+        Application::$filter['approved'] = "";
+        Application::$filter['address'] = "";
+        Application::$filter['time_interval'] = "";
+
         // echo "<br>1". $_POST['phone'];
         // echo "<br>2". $_POST['fullname'];
         // echo "<br>3". $_POST['booking_date'];
@@ -35,7 +57,7 @@ class Admin extends \Core\Controller
 
         // TODO: Написать обработку запроса в Application
         // echo print_r(json_encode(Application::getAll()));
-        return print_r(json_encode(Application::getAll()));
+        return print_r(json_encode($applications));
     }
 
     public function delete(){

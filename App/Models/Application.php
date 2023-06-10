@@ -29,7 +29,7 @@ class Application extends \Core\Model
         "fullname" => "",
         "booking_date" => "",
         "application_date" => "",
-        "approved" => 0,
+        "approved" => "",
         "address" => "",
         "time_interval" => "",
     ];
@@ -119,10 +119,58 @@ class Application extends \Core\Model
     }
 
 
-    public static function filter($filter){
-        $db = static::getDB();
-        $stmt = $db->query('delete from room WHERE id=$id');
-        return $stmt->execute();
+    public static function filter(){
+        $sql = "SELECT * FROM application as a, room as r WHERE a.id_room = r.id";
+        
+        $filt = array();
+        // Выводим в определённых временных отрезках
+        if (strcmp(Application::$filter['time_interval'], 'today') == 0){
+            $sql .= " AND DAY(a.booking_date) = DAY(NOW())";
+        } else if (strcmp(Application::$filter['time_interval'], "current_week") == 0){
+            $sql .= " AND WEEK(a.booking_date,1) = WEEK(NOW(),1)";
+        } else if (strcmp(Application::$filter['time_interval'], "current_month") == 0){
+            $sql .= " AND MONTH(a.booking_date) = MONTH(NOW())";
+        }
+
+        // Фильтрация в определённых временных отрезках по дате бронирования
+        if (strcmp(Application::$filter['booking_date'], '') != 0){
+            $sql .= " AND a.booking_date LIKE :booking_date";
+            $filt[':booking_date'] = Application::$filter['booking_date'];
+        }
+
+        // Фильтрация в определённых временных отрезках по дате заявке
+        if (strcmp(Application::$filter['application_date'], '') != 0){
+            $sql .= " AND a.application_date LIKE :application_date";
+            $filt[':application_date'] = Application::$filter['application_date'];
+        }
+
+        // Фильтрация по ФИО
+        if (strcmp(Application::$filter['fullname'], '') != 0) {
+            $sql .= " AND a.fullname LIKE :fullname";
+            $filt[':fullname'] = '%'.Application::$filter['fullname'].'%';
+        }
+
+        // Фильтрация по телефону
+        if (strcmp(Application::$filter['phone'], '') != 0) {
+            $sql .= " AND a.phone LIKE :phone";
+            $filt[':phone'] = '%'.Application::$filter['phone'].'%';
+        }
+
+        // Фильтрация по адресу
+        if (strcmp(Application::$filter['address'], '') != 0) {
+            $sql .= " AND r.address = :address";
+            $filt[':address'] = Application::$filter['address'];
+        }
+
+        // Фильтрация по состоянию
+        if (strcmp(Application::$filter['approved'], '') != 0) {
+            $sql .= " AND a.approved = :approved";
+            $filt[':approved'] = Application::$filter['approved'];
+        }
+        
+        $query = static::getDB()->prepare($sql);
+        $query->execute($filt);
+        return $query->fetchAll();
     }
     /*
 <?php
