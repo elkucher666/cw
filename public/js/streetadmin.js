@@ -371,9 +371,9 @@ async function fetchApplications() {
             let room_and_address = document.createElement("td");
             let application_date = document.createElement("td");
             let status = document.createElement("td");
-            
+
             // Заполняем таблицу данными
-            id.textContent = application.id;
+            id.textContent = application[0];
             booking_date.textContent = application.booking_date;
             booking_time.textContent = application.booking_start + " - " + application.booking_end;
             fullname.textContent = application.fullname;

@@ -35,9 +35,6 @@ class Admin extends \Core\Controller
         Application::$filter['time_interval'] = $_POST['time_interval']; 
         
         $applications = Application::filter();
-        // foreach($applications as $app) {
-        //     echo $app . "\n";
-        // }
 
         Application::$filter['phone'] = "";
         Application::$filter['fullname'] = "";
@@ -47,16 +44,6 @@ class Admin extends \Core\Controller
         Application::$filter['address'] = "";
         Application::$filter['time_interval'] = "";
 
-        // echo "<br>1". $_POST['phone'];
-        // echo "<br>2". $_POST['fullname'];
-        // echo "<br>3". $_POST['booking_date'];
-        // echo "<br>4". $_POST['application_date'];
-        // echo "<br>5". $_POST['approved'];
-        // echo "<br>6". $_POST['address'];
-        // echo "<br>7". $_POST['time_interval'];
-
-        // TODO: Написать обработку запроса в Application
-        // echo print_r(json_encode(Application::getAll()));
         return print_r(json_encode($applications));
     }
 
