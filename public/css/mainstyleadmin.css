@@ -440,9 +440,8 @@ body {
   height: 2.5em;
   background-color: #d4535c;
 }/*# sourceMappingURL=mainstyleadmin.css.map */
-.delete{
-  cursor: pointer;
-}
-.edit {
+
+/* Настраиваем курсор для кнопок */
+.delete, .edit, .reject, .accept {
   cursor: pointer;
 }
