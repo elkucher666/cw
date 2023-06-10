@@ -110,8 +110,10 @@ class Application extends \Core\Model
     
     public static function delete($id){
         $db = static::getDB();
-        $stmt = $db->query('delete from room WHERE id=$id');
-        return $stmt->execute();
+
+        $sql = "delete from room WHERE id=?";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(array($id));
     }
     
     public function a(){
@@ -237,13 +239,13 @@ print_r(json_encode($result));
 
     public static function reject($id) {
         $db = static::getDB();
-        $stmt = $db->query('UPDATE application SET approved=0 WHERE id=$id');
+        $stmt = $db->query('UPDATE application SET approved=0 WHERE id=:id');
         return $stmt->execute();
     }
 
     public static function accept($id) {
         $db = static::getDB();
-        $stmt = $db->query('UPDATE application SET approved=1 WHERE id=$id');
+        $stmt = $db->query('UPDATE application SET approved=1 WHERE id=:id');
         return $stmt->execute();
     }
 
