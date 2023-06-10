@@ -80,9 +80,7 @@ class Application extends \Core\Model
         */
     }
 
-    public static function delete($id){
-        // TODO: Сделать удаление
-    }
+   
 
     public static function byID(int $id) : Application|null {
         $sql = "SELECT * FROM application WHERE id=:id";
@@ -111,9 +109,22 @@ class Application extends \Core\Model
         $application->approved = $result["approved"];
         return $application;
     }
-
+    
+    public static function delete($id){
+        $db = static::getDB();
+        $stmt = $db->query('delete from room WHERE id=:id');
+        return $stmt->execute();
+    }
+    
     public function a(){
 
+    }
+
+
+    public static function filter($filter){
+        $db = static::getDB();
+        $stmt = $db->query('delete from room WHERE id=$id');
+        return $stmt->execute();
     }
     /*
 <?php
