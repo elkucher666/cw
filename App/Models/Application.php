@@ -112,8 +112,9 @@ class Application extends \Core\Model
     
     public static function delete($id){
         $db = static::getDB();
-        $stmt = $db->query('delete from room WHERE id=:id');
-        return $stmt->execute();
+        $sql = "delete from room WHERE id=?";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(array($id));
     }
     
     public function a(){
@@ -123,7 +124,8 @@ class Application extends \Core\Model
 
     public static function filter($filter){
         $db = static::getDB();
-        $stmt = $db->query('delete from room WHERE id=$id');
+        $stmt = $db->query('SELECT a.id, a.booking_date, a.booking_start, a.booking_end, a.fullname, a.phone, r.address, r.name, a.created_at, a.approved FROM application as a, room as r WHERE a.id_room=r.id"');
+        
         return $stmt->execute();
     }
     /*
@@ -191,13 +193,13 @@ print_r(json_encode($result));
 
     public static function reject($id) {
         $db = static::getDB();
-        $stmt = $db->query('UPDATE application SET approved=0 WHERE id=$id');
+        $stmt = $db->query('UPDATE application SET approved=0 WHERE id=:id');
         return $stmt->execute();
     }
 
     public static function accept($id) {
         $db = static::getDB();
-        $stmt = $db->query('UPDATE application SET approved=1 WHERE id=$id');
+        $stmt = $db->query('UPDATE application SET approved=1 WHERE id=:id');
         return $stmt->execute();
     }
 
