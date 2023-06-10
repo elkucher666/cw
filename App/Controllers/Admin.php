@@ -48,7 +48,7 @@ class Admin extends \Core\Controller
     }
 
     public function delete(){
-        Application::delete($this->route_params["id"]);
+        Room::delete($this->route_params["id"]);
     }
 
     public function accept(){
@@ -63,29 +63,18 @@ class Admin extends \Core\Controller
         // TODO: Добавить валидацию
         // TODO: Добавить загрузку данных на сервер
 
-        // $room = new Room();
-
-        // $room->id = 3;
-        // $room->address = $_POST["address"];
-        // $room->name = $_POST["name"];
-        // $room->info = $_POST["description"];
-        // $room->image = $_POST["image"];
-
-        return ;
+        $room = new Room();
+        $room->address = $_POST["address"];
+        $room->name = $_POST["name"];
+        $room->info = $_POST["description"];
+        $room->image = $_POST["image"];
+        $room->add();
     }
 
     public function edit(){
         // TODO: Добавить валидацию
         // TODO: Добавить загрузку данных на сервер
 
-        // $room = new Room();
-
-        // $room->id = 3;
-        // $room->address = $_POST["address"];
-        // $room->name = $_POST["name"];
-        // $room->info = $_POST["description"];
-        // $room->image = $_POST["image"];
-
-        return ;
+        return Room::edit($_POST['id']);
     }
 }

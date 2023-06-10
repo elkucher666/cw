@@ -18,26 +18,51 @@ class Room extends \Core\Model
     public $info; //text
     public $image; //text
 
+    
     /**
      * Get all the users as an associative array
      *
      * @return array
      */
+
+
+     public function add(){
+        $sql = "INSERT INTO room (address, name, description, image) VALUES (:address, :name, :description, :image)";
+        $query = static::getDB()->prepare($sql);
+        $query->bindValue(":address", $this->address);
+        $query->bindValue(":name", $this->name);
+        $query->bindValue(":description", $this->description);
+        $query->bindValue(":image", $this->image);
+        return $query->execute();
+
+    }
+
+    public function edit() {
+        $sql= "UPDATE room SET address=:address, name=:name, description=:description, image=:image WHERE id=:id";
+        $query = static::getDB()->prepare($sql);
+        $query->bindValue(":address", $this->address);
+        $query->bindValue(":name", $this->name);
+        $query->bindValue(":description", $this->description);
+        $query->bindValue(":image", $this->image);
+        return $query->execute();
+    }
+   
+
     public static function getAll() {
         $db = static::getDB();
         $stmt = $db->query('SELECT * FROM room');
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public static function update($id, $address, $name, $description, $image ) {
-        $db = static::getDB();
-        $stmt = $db->query('UPDATE room SET address=$address, name=$name, description=$description, image=$image WHERE id=$id');
-        return $stmt->execute();
-    }
     
-    public static function delete($id) {
+    public static function delete($id){
         $db = static::getDB();
-        $stmt = $db->query('DELETE FROM room WHERE id=$id');
-        return $stmt->execute(); 
+        $sql = "delete from room WHERE id=?";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(array($id));
     }
+
+    
+
+
 }

@@ -108,18 +108,6 @@ class Application extends \Core\Model
         return $application;
     }
     
-    public static function delete($id){
-        $db = static::getDB();
-
-        $sql = "delete from room WHERE id=?";
-        $stmt = $db->prepare($sql);
-        return $stmt->execute(array($id));
-    }
-    
-    public function a(){
-
-    }
-
 
     public static function filter(){
         $sql = "SELECT * FROM application as a, room as r WHERE a.id_room = r.id";
@@ -182,15 +170,18 @@ class Application extends \Core\Model
     // }
     
     public static function reject($id) {
+        
         $db = static::getDB();
-        $stmt = $db->query('UPDATE application SET approved=0 WHERE id=:id');
-        return $stmt->execute();
+        $sql = "UPDATE application SET approved=0 WHERE id=?";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(array($id));
     }
 
     public static function accept($id) {
         $db = static::getDB();
-        $stmt = $db->query('UPDATE application SET approved=1 WHERE id=:id');
-        return $stmt->execute();
+        $sql = "UPDATE application SET approved=1 WHERE id=?";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(array($id));
     }
 
     public static function append($booking_start, $booking_end, $fullname, $age, $institute, $course, $phone, $social_network, $created_at, $id_room, $booking_date) {
