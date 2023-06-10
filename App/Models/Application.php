@@ -80,8 +80,6 @@ class Application extends \Core\Model
         */
     }
 
-   
-
     public static function byID(int $id) : Application|null {
         $sql = "SELECT * FROM application WHERE id=:id";
         $query = static::getDB()->prepare($sql);
@@ -112,6 +110,7 @@ class Application extends \Core\Model
     
     public static function delete($id){
         $db = static::getDB();
+
         $sql = "delete from room WHERE id=?";
         $stmt = $db->prepare($sql);
         return $stmt->execute(array($id));
