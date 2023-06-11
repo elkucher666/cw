@@ -137,7 +137,6 @@ function addAddingFormLogic() {
         let result = await response.text();
         let answer = JSON.parse(result);
 
-        // TODO: обработать результат и вывести его пользователю
         if (answer['success'] == undefined)
             return alert(answer['fail']);
 
@@ -205,13 +204,15 @@ function addEditFormLogic() {
         let result = await response.text();
         let answer = JSON.parse(result);
 
-        // TODO: обработать результат и вывести его пользователю
+        if (answer['success'] == undefined)
+            return alert(answer['fail']);
         
         // Обновляем список помещений
         fetchRooms();
 
         // Скрываем форму редактирования
         document.querySelector("#edit_back_form").classList.add("none");
+        return alert(answer['success']);
     });
     
     // Скрываем форму редактирования при нажатии на кнопку закрыть
@@ -541,15 +542,19 @@ async function fetchRooms() {
 
         // Добавляем событие нажатия на кнопку удалить
         button_delete.addEventListener("click", async function() {
-            let response = await fetch(delete_url + room.id, post_options);
-            let result = await response.text();
-            let answer = JSON.parse(result);
-            
-            // TODO: Сделать потверждение на удаления
-            // TODO: Вывести результат удаления
 
-            // Обновляем таблицу помещений
-            fetchRooms();
+            if (confirm('Вы уверены, что желаете удалить помещение?')){
+                let response = await fetch(delete_url + room.id, post_options);
+                let result = await response.text();
+                let answer = JSON.parse(result);
+                
+                if (answer['success'] == undefined)
+                    return alert(answer['fail']);
+
+                // Обновляем таблицу помещений
+                fetchRooms();
+                return alert(answer['success']);
+            }
         });
 
         // Добавляем событие нажатия на кнопку редактирования
