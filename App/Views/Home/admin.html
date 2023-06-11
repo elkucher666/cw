@@ -97,12 +97,12 @@
 </div>
 
 <div id="back_form" class="none">
-    <form id="application_form" class="edit_form" onsubmit="event.preventDefault()">
+    <form id="application_form" enctype="multipart/form-data" class="edit_form" onsubmit="event.preventDefault()">
         <img id="close" src="img/reject_image.png">
-        <div class="nameform">ДОБАВЛЕНИЕ КОМНАТЫ</div>
+        <div class="nameform">ДОБАВЛЕНИЕ ПОМЕЩЕНИЯ</div>
         <div class="groupformstep">
             <div class="formstep">
-                Название комнаты:<input name="name" required>
+                Название помещения:<input name="name" required>
             </div>
             <div class="formstep">
                 Адрес:<input name="address" required>
@@ -122,13 +122,13 @@
     </form>
 </div>
 <div id="edit_back_form" class="none">
-    <form id="edit_form" class="edit_form" onsubmit="event.preventDefault()">
+    <form id="edit_form" enctype="multipart/form-data" class="edit_form" onsubmit="event.preventDefault()">
         <img id="edit_close" src="img/reject_image.png">
-        <div class="nameform">РЕДАКТИРОВАНИЕ КОМНАТЫ</div>
+        <div class="nameform">РЕДАКТИРОВАНИЕ ПОМЕЩЕНИЯ</div>
         <div class="groupformstep">
             <input name="id" class="none">
             <div class="formstep">
-                Название комнаты:<input name="name" required>
+                Название помещения:<input name="name" required>
             </div>
             <div class="formstep">
                 Адрес:<input name="address" required>
