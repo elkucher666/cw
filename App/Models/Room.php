@@ -18,14 +18,6 @@ class Room extends \Core\Model
     public $info; //text
     public $image; //text
 
-    
-    /**
-     * Get all the users as an associative array
-     *
-     * @return array
-     */
-
-
      public function save(){
         $sql = "INSERT INTO room (address, name, info, image) VALUES (:address, :name, :description, :image)";
         $query = static::getDB()->prepare($sql);
