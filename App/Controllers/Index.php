@@ -13,6 +13,37 @@ use \App\Models\Room;
  */
 class Index extends \Core\Controller
 {
+
+    // Список допущенных институтов
+    public $institute_list = [
+        "Другое",
+        "ИИТ",
+        "ИЯЭиП",
+        "ЮИ",
+        "МИ",
+        "ИРиИТС",
+        "ИФЭиУ",
+        "ПИ",
+        "ИОНиМО",
+        "ГПИ",
+        "ИФМиЗ",
+        "ИРГ",
+        "ИПИ",
+        "Морской Колледж",
+        "Аспирантура",
+    ];
+
+    // Список допущенных курсов
+    public $course_list = [
+        "Другое",
+        "1 курс",
+        "2 курс",
+        "3 курс",
+        "4 курс",
+        "1 курс магистратура",
+        "2 курс магистратура",
+    ];
+
     public function indexAction()
     {
         View::renderTemplate('Home/index.html');
@@ -25,6 +56,39 @@ class Index extends \Core\Controller
 
     public function applicationPost() {
         // TODO: Добавить валидацию
+
+        // Валидация по полю ФИО
+        if ($_POST["fullname"] == null)
+            return print_r(json_encode(array('fail' => 'ФИО не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST["fullname"]) < 2)
+            return print_r(json_encode(array('fail' => 'Минимальная длина ФИО - 2 символа.'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST["fullname"]) > 120)
+            return print_r(json_encode(array('fail' => 'ФИО не может быть больше 120 символов.'), JSON_UNESCAPED_UNICODE));
+        if (!preg_match("/^[А-яёЁ ,.'-]+$/", $_POST["fullname"]))
+            return print_r(json_encode(array('fail' => 'ФИО должен содеражть только буквы.'), JSON_UNESCAPED_UNICODE));
+        
+        // Валидация по полю ВОЗРАСТ
+        if ($_POST["age"] == null)
+            return print_r(json_encode(array('fail' => 'Возраст не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if (!is_int((int)$_POST["age"]))
+            return print_r(json_encode(array('fail' => 'Возраст должен быть числом.'), JSON_UNESCAPED_UNICODE));
+        if (((int) $_POST["age"]) < 16 )
+            return print_r(json_encode(array('fail' => 'Вы должны быть старше 16 лет.'), JSON_UNESCAPED_UNICODE));
+        if (((int) $_POST["age"]) > 100 )
+            return print_r(json_encode(array('fail' => 'Вам серьёзно столько лет?'), JSON_UNESCAPED_UNICODE));
+
+        // Валидация по полю ИНСТИТУТ
+        if ($_POST["institute"] == null || strcmp($_POST["institute"], "Выберите институт") == 0)
+            return print_r(json_encode(array('fail' => 'Выберите институт.'), JSON_UNESCAPED_UNICODE));
+        if (!in_array($_POST["institute"], $this->institute_list))
+            return print_r(json_encode(array('fail' => 'Институт не входит в допущенный массив.'), JSON_UNESCAPED_UNICODE));
+        
+        // Валидация по полю КУРС
+        if ($_POST["course"] == null)
+            return print_r(json_encode(array('fail' => 'Курс не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if (!in_array($_POST["course"], $this->course_list))
+            return print_r(json_encode(array('fail' => 'Курс не входит в допущенный массив.'), JSON_UNESCAPED_UNICODE));
+
         $application = new Application();
 
         $application->age = $_POST['age'];
