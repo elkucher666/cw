@@ -142,7 +142,7 @@ class Admin extends \Core\Controller
         $room->info = $_POST["info"];
 
         // Если изображения есть, то меняем его
-        if ($_FILES['image'] != null){
+        if ($_FILES['image']['size'] != 0){
             // Валидация для ИЗОБРАЖЕНИЕ
             if ($_FILES['image']['size'] > 1024 * 1024 * 20)
                 return print_r(json_encode(array('fail' => 'Размер изображения не может превышать 20 Мегабайт.'), JSON_UNESCAPED_UNICODE));
