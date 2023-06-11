@@ -92,9 +92,9 @@ async function loadRooms() {
             }
 
             // Удаляем все карточки
-            // room_cards.forEach(function(room) {
-            //     room.remove();
-            // });
+            room_cards.forEach(function(room) {
+                room.remove();
+            });
             
             // Формируем и отображаем помещения соответсвующие выбранному адресу
             let visible_rooms = room_cards.filter((room) => room.dataset.address == address);
