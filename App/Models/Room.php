@@ -27,12 +27,12 @@ class Room extends \Core\Model
 
 
      public function save(){
-        $sql = "INSERT INTO room (address, name, description, image) VALUES (:address, :name, :description, :image)";
+        $sql = "INSERT INTO room (address, name, info, image) VALUES (:address, :name, :description, :image)";
         $query = static::getDB()->prepare($sql);
 
         $query->bindValue(":address", $this->address);
         $query->bindValue(":name", $this->name);
-        $query->bindValue(":description", $this->description);
+        $query->bindValue(":description", $this->info);
         $query->bindValue(":image", $this->image);
 
         return $query->execute();
@@ -40,7 +40,7 @@ class Room extends \Core\Model
     }
 
     public function edit($id) {
-        $sql= "UPDATE room SET address=:address, name=:name, description=:description, image=:image WHERE id=:id";
+        $sql= "UPDATE room SET address=:address, name=:name, info=:description, image=:image WHERE id=:id";
         $query = static::getDB()->prepare($sql);
         $query->bindValue(":id", $id);
         
