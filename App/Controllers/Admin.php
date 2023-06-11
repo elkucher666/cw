@@ -143,24 +143,27 @@ class Admin extends \Core\Controller
 
         // Если изображения есть, то меняем его
         if ($_FILES['image']['size'] != 0){
+
             // Валидация для ИЗОБРАЖЕНИЕ
             if ($_FILES['image']['size'] > 1024 * 1024 * 20)
                 return print_r(json_encode(array('fail' => 'Размер изображения не может превышать 20 Мегабайт.'), JSON_UNESCAPED_UNICODE));
             
-            // TODO: Удалить старое изображение с сервера
-
+                
             // Загружаем изображение на сервер
             $to = "img/" . uniqid(rand(), true) . $_FILES['image']['name'];
             if (!file_put_contents($to, file_get_contents($_FILES['image']['tmp_name']))) 
                 return  print_r(json_encode(array('fail' => 'Произошла незвестная ошибка, при загрузке файла на сервер.'), JSON_UNESCAPED_UNICODE));
-            
+                
+            // TODO: Удалить старое изображение с сервера
+            unlink($room->image);    
+
             // Добавляем новый путь в базу
             $room->image = $to;
         }
 
         // Обновляем данные
         if (!$room->update())
-            return  print_r(json_encode(array('fail' => 'Произошла незвестная ошибка, при загрузке файла на сервер.'), JSON_UNESCAPED_UNICODE));
+            return  print_r(json_encode(array('fail' => 'Произошла незвестная ошибка, при загрузке файла на сервер. Предыдущее изображение было удалено.'), JSON_UNESCAPED_UNICODE));
 
         return  print_r(json_encode(array('success' => 'Помещение успешно изменено в базе данных.'), JSON_UNESCAPED_UNICODE));
     }
