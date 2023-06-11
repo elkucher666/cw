@@ -6,11 +6,8 @@ use App\Models\Room;
 use \Core\View;
 use \App\Models\Application;
 
-/**
- * Home controller
- *
- * PHP version 7.0
- */
+// TODO: Добавить проверку авторизованности администратора
+// TODO: Добавить смену языка
 class Admin extends \Core\Controller
 {
 
@@ -153,8 +150,7 @@ class Admin extends \Core\Controller
             $to = "img/" . uniqid(rand(), true) . $_FILES['image']['name'];
             if (!file_put_contents($to, file_get_contents($_FILES['image']['tmp_name']))) 
                 return  print_r(json_encode(array('fail' => 'Произошла незвестная ошибка, при загрузке файла на сервер.'), JSON_UNESCAPED_UNICODE));
-                
-            // TODO: Удалить старое изображение с сервера
+
             unlink($room->image);    
 
             // Добавляем новый путь в базу
