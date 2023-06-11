@@ -445,3 +445,7 @@ body {
 .delete, .edit, .reject, .accept {
   cursor: pointer;
 }
+
+.LogoImg {
+  cursor: pointer;
+}
