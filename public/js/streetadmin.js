@@ -414,13 +414,13 @@ async function fetchApplications() {
                 
                 // Вешаем событие нажатия на кнопку отменить
                 button_reject.addEventListener("click", async function() {
-                    await fetch(reject_url + application.id, post_options);
+                    await fetch(reject_url + application[0], post_options);
                     fetchApplications();
                 });
 
                 // Вешаем событие нажатия на кнопки принять
                 button_accept.addEventListener("click", async function() {
-                    await fetch(accept_url + application.id, post_options);
+                    await fetch(accept_url + application[0], post_options);
                     fetchApplications();
                 });
 

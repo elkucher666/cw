@@ -25,7 +25,8 @@ class Admin extends \Core\Controller
     }
 
     public function filter(){
-        // TODO: Добавить валидацию
+
+        // Заполняем фильтры
         Application::$filter['phone'] = $_POST['phone']; 
         Application::$filter['fullname'] = $_POST['fullname']; 
         Application::$filter['booking_date'] = $_POST['booking_date'];
@@ -34,8 +35,10 @@ class Admin extends \Core\Controller
         Application::$filter['address'] = $_POST['address']; 
         Application::$filter['time_interval'] = $_POST['time_interval']; 
         
+        // Получаем результат фильтрации
         $applications = Application::filter();
 
+        // Обнуляем фильтры
         Application::$filter['phone'] = "";
         Application::$filter['fullname'] = "";
         Application::$filter['booking_date'] = "";
@@ -44,6 +47,7 @@ class Admin extends \Core\Controller
         Application::$filter['address'] = "";
         Application::$filter['time_interval'] = "";
 
+        // Возвращем результат
         return print_r(json_encode($applications));
     }
 
@@ -52,11 +56,11 @@ class Admin extends \Core\Controller
     }
 
     public function accept(){
-        return Application::accept($_POST['id']);
+        return Application::accept($this->route_params['id']);
     }
 
     public function reject(){
-        return Application::reject($_POST['id']);
+        return Application::reject($this->route_params['id']);
     }
 
     public function add(){

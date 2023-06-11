@@ -107,8 +107,6 @@ class Application extends \Core\Model
         $application->approved = $result["approved"];
         return $application;
     }
-    
-    
 
     public static function filter(){
         $sql = "SELECT * FROM application as a, room as r WHERE a.id_room = r.id";
@@ -171,9 +169,8 @@ class Application extends \Core\Model
     // }
     
     public static function reject($id) {
-        
         $db = static::getDB();
-        $sql = "UPDATE application SET approved=0 WHERE id=?";
+        $sql = "UPDATE application SET approved=2 WHERE id=?";
         $stmt = $db->prepare($sql);
         return $stmt->execute(array($id));
     }
