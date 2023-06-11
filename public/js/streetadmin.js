@@ -114,7 +114,7 @@ function addAddingFormLogic() {
         let inputs = [
             document.querySelector("input[name='name']"), 
             document.querySelector("input[name='address']"), 
-            document.querySelector("input[name='description']"), 
+            document.querySelector("input[name='info']"), 
             document.querySelector("input[name='image']")
         ];
 
@@ -146,7 +146,7 @@ function addAddingFormLogic() {
         // Отчищаем входные данные
         document.querySelector("input[name='name']").value = "";
         document.querySelector("input[name='address']").value = "";
-        document.querySelector("input[name='description']").value = "";
+        document.querySelector("input[name='info']").value = "";
         document.querySelector("input[name='image']").value = "";
 
         // Скрываем форму добавления
@@ -163,7 +163,7 @@ function addAddingFormLogic() {
         // Отчищаем входные данные
         document.querySelector("input[name='name']").value = "";
         document.querySelector("input[name='address']").value = "";
-        document.querySelector("input[name='description']").value = "";
+        document.querySelector("input[name='info']").value = "";
         document.querySelector("input[name='image']").value = "";
     });
 }
@@ -177,11 +177,12 @@ function addEditFormLogic() {
 
     // Вешаем вызов формы добавления при нажатии на кнопку ИЗМЕНИТЬ
     document.querySelector("#edit_room_form_button").addEventListener("click", async function() {
+
         // Выгружаем входные данные
         let inputs = [
             edit_form.querySelector("input[name='name']"), 
             edit_form.querySelector("input[name='address']"), 
-            edit_form.querySelector("input[name='description']"), 
+            edit_form.querySelector("input[name='info']"), 
             edit_form.querySelector("input[name='image']")
         ];
 
@@ -212,11 +213,30 @@ function addEditFormLogic() {
 
         // Скрываем форму редактирования
         document.querySelector("#edit_back_form").classList.add("none");
+
+        // Отчищаем данные
+        for (let input of inputs) {
+            input.value = "";
+        }
+
         return alert(answer['success']);
     });
     
     // Скрываем форму редактирования при нажатии на кнопку закрыть
     document.querySelector('#edit_close').addEventListener("click", function(e) {
+        // Выгружаем входные данные
+        let inputs = [
+            edit_form.querySelector("input[name='name']"), 
+            edit_form.querySelector("input[name='address']"), 
+            edit_form.querySelector("input[name='info']"), 
+            edit_form.querySelector("input[name='image']")
+        ];
+
+        // Отчищаем данные
+        for (let input of inputs) {
+            input.value = "";
+        }
+        
         document.querySelector('#edit_back_form').classList.add("none");
     });
 }
@@ -506,7 +526,7 @@ async function fetchRooms() {
         let id = document.createElement("td");
         let name = document.createElement("td");
         let address = document.createElement("td");
-        let description = document.createElement("td");
+        let info = document.createElement("td");
         let image = document.createElement("td");
         let editing = document.createElement("td");
         
@@ -514,7 +534,7 @@ async function fetchRooms() {
         id.textContent = room.id;
         name.textContent = room.name;
         address.textContent = room.address;
-        description.textContent = room.description;
+        info.textContent = room.info;
         
         // Формируем изображение помещения
         let room_image = document.createElement("img");
@@ -559,11 +579,12 @@ async function fetchRooms() {
 
         // Добавляем событие нажатия на кнопку редактирования
         button_edit.addEventListener("click", function() {
+            
             // Заполняем поля формы редактирования
             document.querySelector("#edit_back_form [name='id']").value = id.textContent;
             document.querySelector("#edit_back_form [name='name']").value = name.textContent;
             document.querySelector("#edit_back_form [name='address']").value = address.textContent;
-            document.querySelector("#edit_back_form [name='description']").value = description.textContent;
+            document.querySelector("#edit_back_form [name='info']").value = info.textContent;
 
             // Показываем форму для редактирования
             document.querySelector("#edit_back_form").classList.remove("none");
@@ -576,7 +597,7 @@ async function fetchRooms() {
         editing.append(button_delete, button_edit);
 
         // Заполняем оставшиеся ячейки
-        row.append(id, name, address, description, image, editing);
+        row.append(id, name, address, info, image, editing);
 
         // Добавляем строку в таблицу
         table_body.append(row);

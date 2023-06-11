@@ -82,7 +82,7 @@ class Admin extends \Core\Controller
             return print_r(json_encode(array('fail' => 'Название помещения не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
 
         // Валидация для поля ОПИСАНИЕ
-        if (iconv_strlen($_POST["description"]) > 255)
+        if (iconv_strlen($_POST["info"]) > 255)
             return print_r(json_encode(array('fail' => 'Описание не может быть больше 255 символов.'), JSON_UNESCAPED_UNICODE));
 
         // Валидация для ИЗОБРАЖЕНИЕ
@@ -95,7 +95,7 @@ class Admin extends \Core\Controller
         $room = new Room();
         $room->address = $_POST["address"];
         $room->name = $_POST["name"];
-        $room->info = $_POST["description"];
+        $room->info = $_POST["info"];
             
         // Загружаем изображение на сервер
         $to = "img/" . uniqid(rand(), true) . $_FILES['image']['name'];
@@ -127,20 +127,19 @@ class Admin extends \Core\Controller
         if (iconv_strlen($_POST["name"]) > 50)
             return print_r(json_encode(array('fail' => 'Название помещения не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
         
-
         // Валидация для поля ОПИСАНИЕ
-        if (iconv_strlen($_POST["description"]) > 255)
+        if (iconv_strlen($_POST["info"]) > 255)
             return print_r(json_encode(array('fail' => 'Описание не может быть больше 255 символов.'), JSON_UNESCAPED_UNICODE));
 
         // Получаем помещение по id
         $room = Room::byID($_POST["id"]);
         if ($room == null)
             return print_r(json_encode(array('fail' => 'Неизвестная ошибка получения данных по id.'), JSON_UNESCAPED_UNICODE));
-            
+        
         // Заполняем новые данные
         $room->address = $_POST["address"];
         $room->name = $_POST["name"];
-        $room->info = $_POST["description"];
+        $room->info = $_POST["info"];
 
         // Если изображения есть, то меняем его
         if ($_FILES['image'] != null){
@@ -154,7 +153,7 @@ class Admin extends \Core\Controller
             $to = "img/" . uniqid(rand(), true) . $_FILES['image']['name'];
             if (!file_put_contents($to, file_get_contents($_FILES['image']['tmp_name']))) 
                 return  print_r(json_encode(array('fail' => 'Произошла незвестная ошибка, при загрузке файла на сервер.'), JSON_UNESCAPED_UNICODE));
-
+            
             // Добавляем новый путь в базу
             $room->image = $to;
         }

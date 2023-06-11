@@ -31,14 +31,14 @@ class Room extends \Core\Model
 
     }
 
-    public function edit($id) {
-        $sql= "UPDATE room SET address=:address, name=:name, info=:description, image=:image WHERE id=:id";
+    public function update() : bool {
+        $sql= "UPDATE room SET address=:address, name=:name, info=:info, image=:image WHERE id=:id";
         $query = static::getDB()->prepare($sql);
-        $query->bindValue(":id", $id);
-        
+
+        $query->bindValue(":id", $this->id);
         $query->bindValue(":address", $this->address);
         $query->bindValue(":name", $this->name);
-        $query->bindValue(":description", $this->info);
+        $query->bindValue(":info", $this->info);
         $query->bindValue(":image", $this->image);
 
         return $query->execute();
@@ -58,14 +58,26 @@ class Room extends \Core\Model
     }
 
     public static function byID($id) : Room|null {
-        // TODO: Вернуть Room с заполненными данными
+        $sql = "SELECT * FROM room WHERE id=:id";
+        $query = static::getDB()->prepare($sql);
+        if ($query == false)
+            return null;
 
-        return null;
-    }
+        $query->bindValue(":id", $id);
+        $query->execute();
+        $result = $query->fetch();
 
-    public function update() : bool {
-        // TODO: Сделать обновления данных в базе с текущем ROOM
+        if ($result == false)
+            return null;
         
-        return false;
+        $room = new Room();
+        $room->id = $result['id'];
+        $room->address = $result['address'];
+        $room->name = $result['name'];
+        $room->info = $result['info'];
+        $room->image = $result['image'];
+        
+        return $room;
     }
+    
 }
