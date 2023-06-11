@@ -108,6 +108,7 @@ class Application extends \Core\Model
         return $application;
     }
     
+    
 
     public static function filter(){
         $sql = "SELECT * FROM application as a, room as r WHERE a.id_room = r.id";

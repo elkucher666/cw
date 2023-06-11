@@ -60,9 +60,20 @@ class Room extends \Core\Model
     
     public static function delete($id){
         $db = static::getDB();
-        $sql = "delete from room WHERE id=?";
+        $sql = "DELETE FROM room WHERE id=?";
         $stmt = $db->prepare($sql);
         return $stmt->execute(array($id));
     }
 
+    public static function byID($id) : Room|null {
+        // TODO: Вернуть Room с заполненными данными
+
+        return null;
+    }
+
+    public function update() : bool {
+        // TODO: Сделать обновления данных в базе с текущем ROOM
+        
+        return false;
+    }
 }
