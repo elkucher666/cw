@@ -68,21 +68,21 @@ class Admin extends \Core\Controller
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
             return print_r(json_encode(array('fail' => 'Адрес не может быть пустым.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["address"]) < 5)
+        if (iconv_strlen($_POST["address"]) < 5)
             return print_r(json_encode(array('fail' => 'Минимальная длина Адреса - 5 символов.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["address"]) > 50)
+        if (iconv_strlen($_POST["address"]) > 50)
             return print_r(json_encode(array('fail' => 'Адреса не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
         
         // Валидация для поля НАЗВАНИЕ ПОМЕЩЕНИЯ
         if ($_POST["name"] == null)
             return print_r(json_encode(array('fail' => 'Название помещения не может быть пустым.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["name"]) < 5)
+        if (iconv_strlen($_POST["name"]) < 5)
             return print_r(json_encode(array('fail' => 'Минимальная длина Названиz помещения - 5 символов.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["name"]) > 50)
+        if (iconv_strlen($_POST["name"]) > 50)
             return print_r(json_encode(array('fail' => 'Название помещения не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
 
         // Валидация для поля ОПИСАНИЕ
-        if (strlen($_POST["description"]) > 255)
+        if (iconv_strlen($_POST["description"]) > 255)
             return print_r(json_encode(array('fail' => 'Описание не может быть больше 255 символов.'), JSON_UNESCAPED_UNICODE));
 
         // Валидация для ИЗОБРАЖЕНИЕ
@@ -114,21 +114,22 @@ class Admin extends \Core\Controller
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
             return print_r(json_encode(array('fail' => 'Адрес не может быть пустым.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["address"]) < 5)
+        if (iconv_strlen($_POST["address"]) < 5)
             return print_r(json_encode(array('fail' => 'Минимальная длина Адреса - 5 символов.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["address"]) > 50)
+        if (iconv_strlen($_POST["address"]) > 50)
             return print_r(json_encode(array('fail' => 'Адреса не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
         
         // Валидация для поля НАЗВАНИЕ ПОМЕЩЕНИЯ
         if ($_POST["name"] == null)
             return print_r(json_encode(array('fail' => 'Название помещения не может быть пустым.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["name"]) < 5)
+        if (iconv_strlen($_POST["name"]) < 5)
             return print_r(json_encode(array('fail' => 'Минимальная длина Названиz помещения - 5 символов.'), JSON_UNESCAPED_UNICODE));
-        if (strlen($_POST["name"]) > 50)
+        if (iconv_strlen($_POST["name"]) > 50)
             return print_r(json_encode(array('fail' => 'Название помещения не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
+        
 
         // Валидация для поля ОПИСАНИЕ
-        if (strlen($_POST["description"]) > 255)
+        if (iconv_strlen($_POST["description"]) > 255)
             return print_r(json_encode(array('fail' => 'Описание не может быть больше 255 символов.'), JSON_UNESCAPED_UNICODE));
 
         // Получаем помещение по id
