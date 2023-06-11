@@ -135,8 +135,11 @@ function addAddingFormLogic() {
         // Отправляем запрос на добавление данных в базу
         let response = await fetch(add_url, options);
         let result = await response.text();
+        let answer = JSON.parse(result);
 
         // TODO: обработать результат и вывести его пользователю
+        if (answer['success'] == undefined)
+            return alert(answer['fail']);
 
         // Обновляем список помещений
         fetchRooms();
@@ -149,6 +152,9 @@ function addAddingFormLogic() {
 
         // Скрываем форму добавления
         document.querySelector("#back_form").classList.add("none");
+
+        // Выводим сообщение о результате
+        return answer['success'];
     });
     
     // При нажатии на кнопку закрыть - Скрываем и отчищаем форму
@@ -197,6 +203,7 @@ function addEditFormLogic() {
         // Отправляем запрос на добавление данных в базу
         let response = await fetch(edit_url, options);
         let result = await response.text();
+        let answer = JSON.parse(result);
 
         // TODO: обработать результат и вывести его пользователю
         
@@ -536,6 +543,7 @@ async function fetchRooms() {
         button_delete.addEventListener("click", async function() {
             let response = await fetch(delete_url + room.id, post_options);
             let result = await response.text();
+            let answer = JSON.parse(result);
             
             // TODO: Сделать потверждение на удаления
             // TODO: Вывести результат удаления

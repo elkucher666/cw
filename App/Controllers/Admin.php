@@ -60,21 +60,54 @@ class Admin extends \Core\Controller
     }
 
     public function add(){
-        // TODO: Добавить валидацию
-        // TODO: Добавить загрузку данных на сервер
+        // Валидация для поля АДРЕС
+        if ($_POST["address"] == null)
+            return print_r(json_encode(array('fail' => 'Адрес не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if (strlen($_POST["address"]) < 5)
+            return print_r(json_encode(array('fail' => 'Минимальная длина Адреса - 5 символов.'), JSON_UNESCAPED_UNICODE));
+        if (strlen($_POST["address"]) > 50)
+            return print_r(json_encode(array('fail' => 'Адреса не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
+        
+        // Валидация для поля НАЗВАНИЕ ПОМЕЩЕНИЯ
+        if ($_POST["name"] == null)
+            return print_r(json_encode(array('fail' => 'Название помещения не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if (strlen($_POST["name"]) < 5)
+            return print_r(json_encode(array('fail' => 'Минимальная длина Названиz помещения - 5 символов.'), JSON_UNESCAPED_UNICODE));
+        if (strlen($_POST["name"]) > 50)
+            return print_r(json_encode(array('fail' => 'Название помещения не может быть больше 50 символов.'), JSON_UNESCAPED_UNICODE));
 
+        // Валидация для поля ОПИСАНИЕ
+        if (strlen($_POST["description"]) > 255)
+            return print_r(json_encode(array('fail' => 'Описание не может быть больше 255 символов.'), JSON_UNESCAPED_UNICODE));
+
+        // Валидация для ИЗОБРАЖЕНИЕ
+        if ($_FILES['image'] == null)
+            return print_r(json_encode(array('fail' => 'Изображение не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if ($_FILES['image']['size'] > 1024 * 1024 * 20)
+            return print_r(json_encode(array('fail' => 'Размер изображения не может превышать 20 Мегабайт.'), JSON_UNESCAPED_UNICODE));
+            
+            
         $room = new Room();
         $room->address = $_POST["address"];
         $room->name = $_POST["name"];
         $room->info = $_POST["description"];
-        $room->image = $_POST["image"];
-        $room->add();
+            
+        // TODO: Добавить загрузку изображения на сервер
+        // TODO: Сделать проверку на имя загружаемого файла
+        $to = "img/" . uniqid(rand(), true) . $_FILES['image']['name'];
+        if (!file_put_contents($to, file_get_contents($_FILES['image']['tmp_name']))) 
+            return  print_r(json_encode(array('fail' => 'Произошла незвестная ошибка, при загрузке файла на сервер.'), JSON_UNESCAPED_UNICODE));
+        
+        $room->image = $to;
+        $room->save();
+
+        return print_r(json_encode(array('success' => 'Помещение успешно добавлено в базу данных.'), JSON_UNESCAPED_UNICODE));
     }
 
     public function edit(){
         // TODO: Добавить валидацию
         // TODO: Добавить загрузку данных на сервер
 
-        return Room::edit($_POST['id']);
+        // return Room::edit($_POST['id']);
     }
 }

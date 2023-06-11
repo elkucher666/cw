@@ -26,27 +26,31 @@ class Room extends \Core\Model
      */
 
 
-     public function add(){
+     public function save(){
         $sql = "INSERT INTO room (address, name, description, image) VALUES (:address, :name, :description, :image)";
         $query = static::getDB()->prepare($sql);
+
         $query->bindValue(":address", $this->address);
         $query->bindValue(":name", $this->name);
         $query->bindValue(":description", $this->description);
         $query->bindValue(":image", $this->image);
+
         return $query->execute();
 
     }
 
-    public function edit() {
+    public function edit($id) {
         $sql= "UPDATE room SET address=:address, name=:name, description=:description, image=:image WHERE id=:id";
         $query = static::getDB()->prepare($sql);
+        $query->bindValue(":id", $id);
+        
         $query->bindValue(":address", $this->address);
         $query->bindValue(":name", $this->name);
-        $query->bindValue(":description", $this->description);
+        $query->bindValue(":description", $this->info);
         $query->bindValue(":image", $this->image);
+
         return $query->execute();
     }
-   
 
     public static function getAll() {
         $db = static::getDB();
@@ -54,15 +58,11 @@ class Room extends \Core\Model
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    
     public static function delete($id){
         $db = static::getDB();
         $sql = "delete from room WHERE id=?";
         $stmt = $db->prepare($sql);
         return $stmt->execute(array($id));
     }
-
-    
-
 
 }
