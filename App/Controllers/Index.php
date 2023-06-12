@@ -55,7 +55,7 @@ class Index extends \Core\Controller
     }
 
     public function applicationPost() {
-
+        
         // Валидация по полю ФИО
         if ($_POST["fullname"] == null)
             return print_r(json_encode(array('fail' => 'ФИО не может быть пустым.'), JSON_UNESCAPED_UNICODE));
@@ -129,7 +129,7 @@ class Index extends \Core\Controller
         // Валидация корректной брони
         $booking_time_start = date("H:i", strtotime($_POST['booking_start']));
         $booking_time_end = date("H:i", strtotime($_POST['booking_end']));
-        if ($booking_time_start > $booking_time_end)
+        if (date("H:i", strtotime($_POST['booking_start'])) > date("H:i", strtotime($_POST['booking_end'])))
             return print_r(json_encode(array('fail' => 'Невозможно забронировать с '.$_POST['booking_start'].' на '.$_POST['booking_start']), JSON_UNESCAPED_UNICODE));
 
         // Валидация возможности брони
@@ -140,8 +140,6 @@ class Index extends \Core\Controller
 
         // Валидация по возможности забронировать на данное помещение, время и данную дату
         $apps = Application::byRoomIDandBookingDate($_POST['id_room'], date("Y-m-d", strtotime($_POST['booking_date'])));
-        if ($apps == null)
-            return print_r(json_encode(array('fail' => 'Ошибка получения помещения по id. Хватит нас уже взламывать.'), JSON_UNESCAPED_UNICODE));
         foreach($apps as $app){
             
             // Пропускаем все не подтверждённые заявки и заявки на рассмотрении
@@ -174,8 +172,7 @@ class Index extends \Core\Controller
         $application->approved = 0;
         $application->save();
         
-        // TODO: Убрать хардкод
-        return header('Location: /cw/public/');
+        return print_r(json_encode(array('success' => 'Ваша зявка отправлена на рассмотрения Администратору. В течение будних суток с вами свяжутся.'), JSON_UNESCAPED_UNICODE));
     }
 
     public function loadCalendarToRoom() {

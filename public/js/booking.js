@@ -1,3 +1,5 @@
+let url = "application/post";
+
 // Формируем вариант брони
 function createOption(value) {
     let option = document.createElement("option");
@@ -154,11 +156,38 @@ document.addEventListener("DOMContentLoaded", function() {
         formData.append("application_date", toDateString(new Date()));
         formData.append("id_room", window.current_room_id);
         
-        // Формируем временнные данные
+        // Формируем временные данные
         formData.append("booking_date", document.querySelector('.dateform').innerText);
         formData.set("booking_start", formData.get("booking_start") + ":00");
         formData.set("booking_end", formData.get("booking_end") + ":00");
-    })
+    });
+
+    document.querySelector("#application_form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        let formData = new FormData(document.querySelector("#application_form"));
+
+        // Формируем отправляемые данные
+        let options = {
+            method: "POST",
+            body: formData,
+        };
+
+        // Отправляем запрос на сервер
+        fetch(url, options)
+            .then(response => response.json())
+            .then(answer => {
+
+                // Выводим результат на экран
+                if (answer['success'] == undefined)
+                    return alert(answer['fail']);         
+                
+                document.querySelector('#booking').classList.add("none");
+                document.querySelector('.dateform').innerHTML = '';
+                return alert(answer['success']);
+            });
+
+        return false;
+    });
 });
 
 function toDateString(date) {
