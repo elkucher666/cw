@@ -175,6 +175,16 @@ class Application extends \Core\Model
         return $stmt->execute(array($id));
     }
 
+    public static function byRoomIDandBookingDate($id_room, $booking_date){
+        $db = static::getDB();
+        $sql = "SELECT * FROM application WHERE id_room=:id_room AND booking_date=:booking_date";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':id_room', $id_room);
+        $stmt->bindValue(':booking_date', $booking_date);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     public static function accept($id) {
         $db = static::getDB();
         $sql = "UPDATE application SET approved=1 WHERE id=?";
@@ -191,6 +201,8 @@ class Application extends \Core\Model
     public static function loadBooking($id) {
         $db = static::getDB();
         $stmt = $db->query('SELECT booking_date, booking_start, booking_end FROM application WHERE id_room='.$id.' and approved=1');
+        if ($stmt == false)
+            return null;
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
