@@ -35,13 +35,13 @@ class Index extends \Core\Controller
 
     // Список допущенных курсов
     public $course_list = [
-        "Другое",
-        "1 курс",
-        "2 курс",
-        "3 курс",
-        "4 курс",
-        "1 курс магистратура",
-        "2 курс магистратура",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
     ];
 
     public function indexAction()
@@ -55,8 +55,7 @@ class Index extends \Core\Controller
     }
 
     public function applicationPost() {
-        // TODO: Добавить валидацию
-
+        
         // Валидация по полю ФИО
         if ($_POST["fullname"] == null)
             return print_r(json_encode(array('fail' => 'ФИО не может быть пустым.'), JSON_UNESCAPED_UNICODE));
@@ -64,7 +63,7 @@ class Index extends \Core\Controller
             return print_r(json_encode(array('fail' => 'Минимальная длина ФИО - 2 символа.'), JSON_UNESCAPED_UNICODE));
         if (iconv_strlen($_POST["fullname"]) > 120)
             return print_r(json_encode(array('fail' => 'ФИО не может быть больше 120 символов.'), JSON_UNESCAPED_UNICODE));
-        if (!preg_match("/^[А-яёЁ ,.'-]+$/", $_POST["fullname"]))
+        if (!preg_match("/^[а-яА-ЯёЁa-zA-Z ]+$/", $_POST["fullname"]))
             return print_r(json_encode(array('fail' => 'ФИО должен содеражть только буквы.'), JSON_UNESCAPED_UNICODE));
         
         // Валидация по полю ВОЗРАСТ
@@ -84,11 +83,79 @@ class Index extends \Core\Controller
             return print_r(json_encode(array('fail' => 'Институт не входит в допущенный массив.'), JSON_UNESCAPED_UNICODE));
         
         // Валидация по полю КУРС
-        if ($_POST["course"] == null)
+        if ($_POST["course"] == null || strcmp($_POST["institute"], "") == 0)
             return print_r(json_encode(array('fail' => 'Курс не может быть пустым.'), JSON_UNESCAPED_UNICODE));
         if (!in_array($_POST["course"], $this->course_list))
             return print_r(json_encode(array('fail' => 'Курс не входит в допущенный массив.'), JSON_UNESCAPED_UNICODE));
 
+        // Валидация по полю ТЕЛЕФОН
+        if ($_POST["phone"] == null)
+            return print_r(json_encode(array('fail' => 'Телефон не может быть пустым.'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST["phone"]) > 20)
+            return print_r(json_encode(array('fail' => 'Телефон не может быть больше 20 символов.'), JSON_UNESCAPED_UNICODE));    
+        if (!preg_match("/((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,20}/", $_POST["phone"]))
+            return print_r(json_encode(array('fail' => 'Телефон должен соответстовать формату.'), JSON_UNESCAPED_UNICODE));
+
+        // Валидация по полю КОНТАКТЫ
+        if ($_POST["social_network"] == null)
+            return print_r(json_encode(array('fail' => 'Контакты не могут быть пустыми.'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST["social_network"]) > 120)
+            return print_r(json_encode(array('fail' => 'Контакты не могут быть больше 120 символов.'), JSON_UNESCAPED_UNICODE));
+        
+        // Валидация по полю booking_start
+        if ($_POST['booking_start'] == null)
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки.'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST['booking_start']) > 5)
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+        if (!preg_match("/[12]\d:00/", $_POST['booking_start']))
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+        
+        // Валидация по полю booking_end
+        if ($_POST['booking_end'] == null)
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки.'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST['booking_end']) > 5)
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+        if (!preg_match("/[12]\d:00/", $_POST['booking_end']))
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+
+        // Валидация по полю booking_date
+        if ($_POST['booking_date'] == null)
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+        if (iconv_strlen($_POST['booking_date']) > 10)
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+        if (!preg_match("/[0123]\d.[01]\d.\d\d\d\d/", $_POST['booking_date']))
+            return print_r(json_encode(array('fail' => 'Не известная ошибка формирования заявки. Вы пытаетесь нас взломать? Остановитесь! Прекратите!'), JSON_UNESCAPED_UNICODE));
+
+        // Валидация корректной брони
+        $booking_time_start = date("H:i", strtotime($_POST['booking_start']));
+        $booking_time_end = date("H:i", strtotime($_POST['booking_end']));
+        if (date("H:i", strtotime($_POST['booking_start'])) > date("H:i", strtotime($_POST['booking_end'])))
+            return print_r(json_encode(array('fail' => 'Невозможно забронировать с '.$_POST['booking_start'].' на '.$_POST['booking_start']), JSON_UNESCAPED_UNICODE));
+
+        // Валидация возможности брони
+        $booking_start = date("Y-m-d H:i", strtotime($_POST['booking_date'] . $_POST['booking_start']));
+        $today_time = date("Y-m-d H:i", time());
+        if ($booking_start <= $today_time)
+            return print_r(json_encode(array('fail' => 'Невозможно забронировать помещение на данную дату и данное время.'), JSON_UNESCAPED_UNICODE));
+
+        // Валидация по возможности забронировать на данное помещение, время и данную дату
+        $apps = Application::byRoomIDandBookingDate($_POST['id_room'], date("Y-m-d", strtotime($_POST['booking_date'])));
+        foreach($apps as $app){
+            
+            // Пропускаем все не подтверждённые заявки и заявки на рассмотрении
+            if ($app['approved'] != 1)
+                continue;
+            
+            // Узнаём время бронирования
+            $start = date("H:i", $app['booking_start']);
+            $end = date("H:i", $app['booking_end']);
+
+            // Сравниваем занятое время с занимаемым
+            if ($booking_time_start > $start && $booking_time_start < $end || $booking_time_end > $start && $booking_time_end < $end)
+                return print_r(json_encode(array('fail' => 'На данное время, дату и помещение уже существует подтверждённая бронь.'), JSON_UNESCAPED_UNICODE));
+        }
+        
+        // Создаём новую заявку
         $application = new Application();
 
         $application->age = $_POST['age'];
@@ -97,16 +164,15 @@ class Index extends \Core\Controller
         $application->course = $_POST['course']; 
         $application->phone = $_POST['phone'];
         $application->social_network = $_POST['social_network']; 
-        $application->id_room = $_POST['id_room']; 
+        $application->id_room = $_POST['id_room'];
         $application->booking_date = date("Y-m-d", strtotime($_POST['booking_date'])); 
         $application->booking_start = $_POST['booking_start']; 
         $application->booking_end = $_POST['booking_end']; 
-        $application->created_at =  date("Y-m-d H:i:s", strtotime($_POST['application_date']));
+        $application->created_at = date("Y-m-d H:i:s"); 
         $application->approved = 0;
         $application->save();
         
-        // TODO: Убрать хардкод
-        return header('Location: /php-mvc-master/public/');
+        return print_r(json_encode(array('success' => 'Ваша зявка отправлена на рассмотрения Администратору. В течение будних суток с вами свяжутся.'), JSON_UNESCAPED_UNICODE));
     }
 
     public function loadCalendarToRoom() {
