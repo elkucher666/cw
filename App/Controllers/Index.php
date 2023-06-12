@@ -63,7 +63,7 @@ class Index extends \Core\Controller
             return print_r(json_encode(array('fail' => 'Минимальная длина ФИО - 2 символа.'), JSON_UNESCAPED_UNICODE));
         if (iconv_strlen($_POST["fullname"]) > 120)
             return print_r(json_encode(array('fail' => 'ФИО не может быть больше 120 символов.'), JSON_UNESCAPED_UNICODE));
-        if (!preg_match("/^[а-яА-ЯёЁa-zA-Z ,.'-]+$/", $_POST["fullname"]))
+        if (!preg_match("/^[а-яА-ЯёЁa-zA-Z ]+$/", $_POST["fullname"]))
             return print_r(json_encode(array('fail' => 'ФИО должен содеражть только буквы.'), JSON_UNESCAPED_UNICODE));
         
         // Валидация по полю ВОЗРАСТ
