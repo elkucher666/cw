@@ -10,6 +10,21 @@ use \App\Models\Application;
 // TODO: Добавить смену языка
 class Admin extends \Core\Controller
 {
+    private $login = "admin";
+    private $pass = "k?8%Zd{oqDW7";
+    public function auth(){
+        if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) {
+            if ($_SERVER['PHP_AUTH_USER'] != $this->login || $_SERVER['PHP_AUTH_PW'] != $this->pass) {
+                header('WWW-Authenticate: Basic realm=\"Restricted Section\"');
+                header(' HTTP/1.0 401 Unauthorized');
+                die("Неправельное имя пользователя или пароль");
+            }
+        } else {
+            header('WWW-Authenticate: Basic realm=\"Restricted Section\"');
+            header(' HTTP/1.0 401 Unauthorized');
+            die("Пожалуйста, введите имя пользователя и пароль");
+        }
+    }
 
     /**
      * Show the index page
@@ -18,60 +33,13 @@ class Admin extends \Core\Controller
      */
     public function indexAction()
     {
-        // $realm = 'Запретная зона';
-
-        // $users = array('admin' => 'mypass', 'guest' => 'guest');
-
-        // // echo $_SERVER['PHP_AUTH_DIGEST'];
-        // if (empty($_SERVER['PHP_AUTH_DIGEST'])) {
-        //     header('HTTP/1.1 401 Unauthorized');
-        //     header('WWW-Authenticate: Digest realm="'.$realm.
-        //         '",qop="auth",nonce="'.uniqid().'",opaque="'.md5($realm).'"');
-
-        //     die('Текст, отправляемый в том случае, если пользователь нажал кнопку Cancel');
-        // }
-
-
-        // // анализируем переменную PHP_AUTH_DIGEST
-        // if (!($data = http_digest_parse($_SERVER['PHP_AUTH_DIGEST'])) ||
-        //     !isset($users[$data['username']]))
-        //     die('Неправильные данные!');
-
-
-        // // генерируем корректный ответ
-        // $A1 = md5($data['username'] . ':' . $realm . ':' . $users[$data['username']]);
-        // $A2 = md5($_SERVER['REQUEST_METHOD'].':'.$data['uri']);
-        // $valid_response = md5($A1.':'.$data['nonce'].':'.$data['nc'].':'.$data['cnonce'].':'.$data['qop'].':'.$A2);
-
-        // if ($data['response'] != $valid_response)
-        //     die('Неправильные данные!');
-
-        // // все хорошо, логин и пароль верны
-        // echo 'Вы вошли как: ' . $data['username'];
-
-
-        // // функция разбора заголовка http auth
-        // function http_digest_parse($txt)
-        // {
-        //     // защита от отсутствующих данных
-        //     $needed_parts = array('nonce'=>1, 'nc'=>1, 'cnonce'=>1, 'qop'=>1, 'username'=>1, 'uri'=>1, 'response'=>1);
-        //     $data = array();
-        //     $keys = implode('|', array_keys($needed_parts));
-
-        //     preg_match_all('@(' . $keys . ')=(?:([\'"])([^\2]+?)\2|([^\s,]+))@', $txt, $matches, PREG_SET_ORDER);
-
-        //     foreach ($matches as $m) {
-        //         $data[$m[1]] = $m[3] ? $m[3] : $m[4];
-        //         unset($needed_parts[$m[1]]);
-        //     }
-
-        //     return $needed_parts ? false : $data;
-        // }
+        $this->auth();
 
         View::renderTemplate('Home/admin.html');
     }
 
     public function filter(){
+        $this->auth();
 
         // Заполняем фильтры
         Application::$filter['phone'] = $_POST['phone']; 
@@ -99,18 +67,22 @@ class Admin extends \Core\Controller
     }
 
     public function delete(){
+        $this->auth();
         Room::delete($this->route_params["id"]);
     }
 
     public function accept(){
+        $this->auth();
         return Application::accept($this->route_params['id']);
     }
 
     public function reject(){
+        $this->auth();
         return Application::reject($this->route_params['id']);
     }
 
     public function add(){
+        $this->auth();
 
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
@@ -157,6 +129,7 @@ class Admin extends \Core\Controller
     }
 
     public function edit(){
+        $this->auth();
 
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
