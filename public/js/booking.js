@@ -10,20 +10,25 @@ function createOption(value) {
 }
 
 function generateOptions(busy_beginings, busy_endings) {
-    if (busy_beginings == null || busy_endings == null)
-        return alert('К сожалению сегодня уже нельзя забронировать помещения.');
+    // if (busy_beginings == null || busy_endings == null)
+    //     return alert('К сожалению сегодня уже нельзя забронировать помещения.');
     
     let begin_select = document.querySelector(".timebegin");
     let end_select = document.querySelector(".timeend");
 
+    // Отчищаем выбор
     begin_select.innerHTML = "";
     end_select.innerHTML = "";
 
+    // Заполняем опции
     for (let i = 14; i <= 21; i++) {
+
+        // Добавялем свободны опции
         if (!busy_beginings.includes(i)) {
             begin_select.append(createOption(i));
         }
 
+        // Добавляем занятые опции
         if (!busy_endings.includes(i)) {
             end_select.append(createOption(i))
         }
@@ -32,57 +37,72 @@ function generateOptions(busy_beginings, busy_endings) {
 
 // Получаем занятые варианты
 function getBusyOptions(begin, end) {
+    if (begin == undefined)
+        begin = 14;
+
+    // Массив занятых опций
+    let busy_beginings = [21];
+    let busy_endings = [14];
 
     // Время в часах сегодня
     var today = (new Date()).getHours();
-    if (today >= 20)
-        return null;
+    var today_day = (new Date()).getDate();
+    var booking_day = Number(document.getElementById('booking_date_id').innerText.substring(0,2));
 
-    // Массивы занятого времени
-    let busy_beginings = [21];
-    let busy_endings = [today];
-    
-    // TODO: Добавить проверку на уже прошедшее время
+    // Проверяем выбранные даты
+    if (today_day == booking_day) {
+        if (today >= 20)
+            return null;
 
+        // Исключаем запись на прошедшее время
+        let i = 14;
+        for (i; i <= today; i++){
+            busy_beginings.push(i);
+            busy_endings.push(i);
+        }
+        busy_endings.push(i);
+    }
+
+    // Исключаем не корректную бронь
     if (begin != undefined) {
-        for (let i = today; i <= begin; i++) {
+        for (let i = 14; i <= begin; i++) {
             busy_endings.push(i);
         }
     }
 
-    if (end != undefined) {
-        for (let i = end; i < 21; i++) {
-            busy_beginings.push(i);
-        }
-    }
+    // Исключаем не корректную бронь
+    // if (end != undefined) {
+    //     for (let i = end; i < 21; i++) {
+    //         busy_beginings.push(i);
+    //     }
+    // }
 
-
-    for (let event of window.current_events) {
-        if (begin != undefined && begin < event.start) {
-            for (let i = event.start+1; i <= 21; i++) {
+    // Исключаем не корректную бронь
+    for (let e of window.current_events) {
+        
+        if (begin != undefined && begin < e.start) {
+            for (let i = e.start+1; i <= 21; i++) {
                 busy_endings.push(i);
             }
         }
 
-        if (end != undefined && end > event.end) {
-            for (let i = today; i < event.end; i++) {
-                busy_beginings.push(i);
-            }
-        }
+        // if (end != undefined && end > e.end) {
+        //     for (let i = 14; i < e.end; i++) {
+        //         busy_beginings.push(i);
+        //     }
+        // }
 
-
-
-        for (let i = event.start; i <= event.end; i++) {
-            if (i != event.end) {
+        for (let i = e.start; i <= e.end; i++) {
+            if (i != e.end) {
                 busy_beginings.push(i)
             }
 
-            if (i != event.start) {
+            if (i != e.start) {
                 busy_endings.push(i);
             }
         }
     }
-
+    
     return [busy_beginings, busy_endings];
 }
 
@@ -122,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Вешаем события изменения на выбор начального времени
     document.querySelector(".timebegin").addEventListener("change", function() {
+
         // Выбираем 
         let begin_option = document.querySelector(".timebegin");
         let end_option = document.querySelector(".timeend");
@@ -146,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function() {
         let begin_value = +begin_option.value;
         let end_value = +end_option.value;
 
-        generateOptions(...getBusyOptions(null, end_value));
+        generateOptions(...getBusyOptions(begin_value, end_value));
 
 
         if (document.querySelector(`.timebegin option[value='${begin_value}']`)) {
