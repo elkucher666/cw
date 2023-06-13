@@ -68,7 +68,11 @@ class Admin extends \Core\Controller
 
     public function delete(){
         $this->auth();
-        Room::delete($this->route_params["id"]);
+
+        if (!Room::delete($this->route_params["id"]))
+            return print_r(json_encode(array('fail' => 'Помещение не было удалено из-за неизвестной ошибки.'), JSON_UNESCAPED_UNICODE));
+
+        return print_r(json_encode(array('success' => 'Помещение успешно удалено.'), JSON_UNESCAPED_UNICODE));
     }
 
     public function accept(){

@@ -570,7 +570,7 @@ async function fetchRooms() {
                 
                 if (answer['success'] == undefined)
                     return alert(answer['fail']);
-                //TODO: Помещение удаляется, но не обнавляется 
+                    
                 // Обновляем таблицу помещений
                 fetchRooms();
                 return alert(answer['success']);
