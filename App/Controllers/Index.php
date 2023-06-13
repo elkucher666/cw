@@ -147,8 +147,8 @@ class Index extends \Core\Controller
                 continue;
             
             // Узнаём время бронирования
-            $start = date("H:i", $app['booking_start']);
-            $end = date("H:i", $app['booking_end']);
+            $start = date("H:i", strtotime($app['booking_start']));
+            $end = date("H:i", strtotime($app['booking_end']));
 
             // Сравниваем занятое время с занимаемым
             if ($booking_time_start > $start && $booking_time_start < $end || $booking_time_end > $start && $booking_time_end < $end)

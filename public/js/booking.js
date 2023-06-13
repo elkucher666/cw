@@ -10,6 +10,9 @@ function createOption(value) {
 }
 
 function generateOptions(busy_beginings, busy_endings) {
+    if (busy_beginings == null || busy_endings == null)
+        return alert('К сожалению сегодня уже нельзя забронировать помещения.');
+    
     let begin_select = document.querySelector(".timebegin");
     let end_select = document.querySelector(".timeend");
 
@@ -29,12 +32,20 @@ function generateOptions(busy_beginings, busy_endings) {
 
 // Получаем занятые варианты
 function getBusyOptions(begin, end) {
+
+    // Время в часах сегодня
+    var today = (new Date()).getHours();
+    if (today >= 20)
+        return null;
+
+    // Массивы занятого времени
     let busy_beginings = [21];
-    let busy_endings = [14];
+    let busy_endings = [today];
+    
     // TODO: Добавить проверку на уже прошедшее время
 
     if (begin != undefined) {
-        for (let i = 14; i <= begin; i++) {
+        for (let i = today; i <= begin; i++) {
             busy_endings.push(i);
         }
     }
@@ -54,7 +65,7 @@ function getBusyOptions(begin, end) {
         }
 
         if (end != undefined && end > event.end) {
-            for (let i = 14; i < event.end; i++) {
+            for (let i = today; i < event.end; i++) {
                 busy_beginings.push(i);
             }
         }
@@ -77,6 +88,7 @@ function getBusyOptions(begin, end) {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+
     // Отслеживаем нажатие на кнопку ЗАБРОНИРОВАТЬ
     document.querySelector('.order').addEventListener("click", function(){
 
@@ -164,6 +176,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelector("#application_form").addEventListener("submit", function(event) {
         event.preventDefault();
+
         let formData = new FormData(document.querySelector("#application_form"));
 
         // Формируем отправляемые данные
