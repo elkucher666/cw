@@ -30,6 +30,7 @@ $router->add('', ['controller' => 'Index', 'action' => 'index']);
 $router->add('/', ['controller' => 'Index', 'action' => 'index']);
 $router->add('rooms/load', ['controller' => 'Index', 'action' => 'roomsLoader']);
 $router->add('rooms/load/calendar/{id:\d+}', ['controller' => 'Index', 'action' => 'loadCalendarToRoom']);
+$router->add('application/get_language', ['controller' => 'Index', 'action' => 'getLanguage']);
 $router->add('application/post', ['controller' => 'Index', 'action' => 'applicationPost']);
 
 $router->add('admin', ['controller' => 'Admin', 'action' => 'index']);

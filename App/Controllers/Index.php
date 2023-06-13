@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controllers;
-
 use App\Models\Application;
+use App\Models\Languages;
 use \Core\View;
 use \App\Models\Room;
 
@@ -46,7 +46,22 @@ class Index extends \Core\Controller
 
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html');
+        $language = Languages::getLanguage();
+        $lang= new Languages($language);
+        $data = [
+            'name' => $lang->get('NAME'),
+            'welcome' => $lang->get('WELCOME'),
+            'calendar' => $lang->get('CALENDAR'),
+            'calendar_legend' => $lang->get('CALENDAR_LEGEND'),
+            'btn_booking' => $lang->get('BTN_BOOKING'),
+            'error_select_message' => $lang->get('ERROR_SELECT_MESSAGE'),
+            'error_date_message' => $lang->get('ERROR_DATE_MESSAGE'),
+            'contact_information' => $lang->get('CONTACT_INFORMATION'),
+            'support_service' => $lang->get('SUPPORT_SERVICE')
+
+        ];
+
+        View::renderTemplate('Home/index.html', $data);
     }
 
     public function roomsLoader(){
@@ -178,5 +193,9 @@ class Index extends \Core\Controller
     public function loadCalendarToRoom() {
         $dates = Application::loadBooking($this->route_params["id"]);
         return print_r(json_encode($dates));
+    }
+
+    public function getLanguage() {
+        return json_encode(Languages::getLanguage());
     }
 }

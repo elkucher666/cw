@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Творческий цех{% endblock %}
+{% block title %}{{name}}{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
@@ -16,12 +16,14 @@
 
 {% block body %}
 
+
 <div class="header">
     <button class="adminbut">
         <img class="LogoImg" src="img/MainLogo2.png"> 
     </button>
     <div class="linename">
-        <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p>
+        <p class="name">{{name}}</p>
+        <!-- <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p> -->
     </div>
 
 <!-- <?php
@@ -44,8 +46,6 @@
     
 
 
-
-
 </div>
 <div class="top_bar none" id="top_bar">
     <div class="selectedimg">
@@ -59,8 +59,7 @@
 </div>
 <div class="content">
     <div class="hellomess">
-        <div class="messege">Здраствуте, дорогие посетители!
-            <br>На сайте “ТВОРЧЕСКИЙ ЦЕХ” вы можете узнать полную информацию о помещениях, а так же их забронировать.
+        <div class="messege">{{welcome}}
         </div>
     </div>
     <div id="catalogstr"></div>
@@ -77,7 +76,7 @@
                 <div class="legend none">
                     <div class="occupied">
                         <div class="blockoccupied"></div>
-                        <p class="legendoccupied">- мероприятия</p>
+                        <p class="legendoccupied">{{calentar_legend}}</p>
                     </div>
                 </div>
                 <div id="calendar_insertion"></div>
@@ -88,7 +87,11 @@
     <div id="book" class="buttons">
         <button class="order">
             <div class="linebut">
-                <p class="namebut">ЗАБР<span class="decor-4">О</span>НИРОВАТЬ</p>
+                
+                <!-- <p class="namebut">ЗАБР<span class="decor-4">О</span>НИРОВАТЬ</p> -->
+            
+                <p class="namebut">{{btn_booking}}</p>
+
             </div>
         </button>
     </div>
@@ -157,7 +160,8 @@
         </div>
         <button class="orderform">
             <div class="linebut">
-                <div class="namebut">ЗАБР<span class="decor-5">О</span>НИРОВАТЬ</div>
+                <!-- <div class="namebut">ЗАБР<span class="decor-5">О</span>НИРОВАТЬ</div> -->
+                <div class="namebut">{{btn_booking}}</div>
             </div>
         </button>
     </form>
@@ -165,9 +169,9 @@
 <div class="footer">
     <div class="container">
         <div class="contactinfo">
-            КОНТАКТНАЯ ИНФОРМАЦИЯ
+           {{contact_information}}
             <div class="contact">
-                <b>Служба подржки: </b>+7 (978) 888-88-88
+                <b>{{support_service}}: </b>+7 (978) 888-88-88
                 <br>
                 <b>E-mail: </b>TvorcheskiCheh@mail.ru
             </div>
