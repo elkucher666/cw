@@ -11,7 +11,7 @@
 
 
 
-// lang = document.write($default_lang);
+lang = "ru";
 // let mylang={{'calentar'}};
 
 (async function( $ ) {
@@ -478,12 +478,6 @@
 
 // Отображает календарь
 async function showCalendar(room_id) {
-    document.querySelector(".calendar .legend").classList.remove("none");
-    let lang_response = await fetch("application/get_language", {
-        method: 'GET',
-    });
-    let lang = await lang_response.text();
-    console.log(lang);
     // Формируем запрос на загрузки дат мероприятий
     let url = "rooms/load/calendar/" + room_id;
     let options = {

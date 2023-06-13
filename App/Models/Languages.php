@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-class Languages extends \Core\Model{
+class Languages extends \Core\Model
+{
     private $data;
 
     public function __construct($language){
@@ -12,8 +13,6 @@ class Languages extends \Core\Model{
     public function get($name){
         return $this->data[$name];  
     }
-
-
 
     public static function getLanguage(){
         preg_match_all('/([a-z]{1,8}(?:-[a-z]{1,8})?)(?:;q=([0-9.]+))?/', strtolower($_SERVER["HTTP_ACCEPT_LANGUAGE"]), $matches);
@@ -27,5 +26,5 @@ class Languages extends \Core\Model{
     }
 
 }
-
+echo $language = Languages::getLanguage();
 ?>
