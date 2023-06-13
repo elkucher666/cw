@@ -23,6 +23,29 @@
     <div class="linename">
         <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p>
     </div>
+
+<!-- <?php
+    if(isset($date['set_lang'])){
+        $user->language=$data['language'];
+        R::store($user);
+        header("Refresh: 0")
+    }
+> -->
+
+
+    <div class="linename">
+        <select name="languages">
+            <option value=""></option>
+            <option value="ru-ru">Русский</option>
+            <option value="en-us">English</option>
+        </select>
+        <button type="submit" name="set_lang"> Сохранить </button>      
+    </div>
+    
+
+
+
+
 </div>
 <div class="top_bar none" id="top_bar">
     <div class="selectedimg">
