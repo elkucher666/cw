@@ -31,11 +31,10 @@ $router->add('/', ['controller' => 'Index', 'action' => 'index']);
 $router->add('setlang/{lang}', ['controller' => 'Index', 'action' => 'setLang']);
 $router->add('rooms/load', ['controller' => 'Index', 'action' => 'roomsLoader']);
 $router->add('rooms/load/calendar/{id:\d+}', ['controller' => 'Index', 'action' => 'loadCalendarToRoom']);
-$router->add('application/get_language', ['controller' => 'Index', 'action' => 'getLanguage']);
 $router->add('application/post', ['controller' => 'Index', 'action' => 'applicationPost']);
 
 $router->add('admin', ['controller' => 'Admin', 'action' => 'index']);
-$router->add('admin/redactor', ['controller' => 'Admin', 'action' => 'index']);
+$router->add('asetlang/{lang}', ['controller' => 'Admin', 'action' => 'setLang']);
 $router->add('admin/filter', ['controller' => 'Admin', 'action' => 'filter']);
 $router->add('admin/application/accept/{id:\d+}', ['controller' => 'Admin', 'action' => 'accept']);
 $router->add('admin/application/reject/{id:\d+}', ['controller' => 'Admin', 'action' => 'reject']);

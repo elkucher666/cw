@@ -31,12 +31,32 @@ class Admin extends \Core\Controller
      *
      * @return void
      */
+    public $lang_list = [
+        "ru",
+        "en",
+    ];
+        
 
+    public function setLang() {
+
+        session_start();
+        if (in_array($this->route_params["lang"], $this->lang_list)){
+            $_SESSION["lang"] = $this->route_params["lang"];
+        } else {
+            $_SESSION["lang"] = "ru";
+        }
+
+        return header("Location: admin");
+    }
+    
     public function indexAction()
     {
-        $this->auth();
-        $language = $_POST["lang"]; 
-        $lang= new Languages($this->language);
+        session_start();
+        if (!isset($_SESSION["lang"])){
+            $_SESSION["lang"] = "ru";
+        }
+
+        $lang= new Languages($_SESSION["lang"]);
         $data = [
             'name' => $lang->get('NAME'),
             'fio'=>$lang->get('FIO'),
@@ -128,8 +148,7 @@ class Admin extends \Core\Controller
 
     public function add(){
         $this->auth();
-        $language = $_POST["lang"]; 
-        $lang= new Languages($this->language);
+        $lang= new Languages($_SESSION["lang"]);
 
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
@@ -177,8 +196,7 @@ class Admin extends \Core\Controller
 
     public function edit(){
         $this->auth();
-        $language = $_POST["lang"]; 
-        $lang= new Languages($this->language);
+        $lang= new Languages($_SESSION["lang"]);
         
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)

@@ -12,16 +12,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<form method="post" action="../../../App/Controllers/Andex.php">
-    <input name="lang" class="none" value="ru">
-    <input type="submit" value="Русский">
-</form>
-
-<form method="post" action="../../../App/Controllers/Admin.php">
-    <input name="lang" class="none" value="en">
-    <input type="submit" value="English">
-</form>
-
 </head>
 <body>
      
@@ -31,7 +21,17 @@
         <!-- <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p> -->
         <p class="name">{{name}}</p>
     </div>
+    <form method="post" action="asetlang/ru">
+        <input name="lang" class="none" value="ru">
+        <input type="submit" value="Русский">
+    </form>
+    
+    <form method="post" action="asetlang/en">
+        <input name="lang" class="none" value="en">
+        <input type="submit" value="English">
+    </form>
 </div>
+
 <div class="content">
     <div class="filter">
         <div class="filterrow">
@@ -108,9 +108,20 @@
             <div class="namebut">{{btn_add}}</div>
         </div>
     </button>
-
-    
-
+    <textarea></textarea>
+    <script>tinymce.init({
+        width: "100%",
+        height: "500",
+        selector: 'textarea',
+        plugins: 'anchor autosave autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes autocorrect typography inlinecss',
+        autosave_interval: '2s',
+        autosave_restore_when_empty: true,
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name'
+        
+    });
+    </script>
 </div>
 
 
@@ -141,6 +152,7 @@
             </div>
         </button>
     </form>
+
 </div>
 <div id="edit_back_form" class="none">
     <form id="edit_form" enctype="multipart/form-data" class="edit_form" onsubmit="event.preventDefault()">
@@ -171,15 +183,6 @@
 
     </form>
 </div>
-<script>tinymce.init({
-    width: "300",
-    height: "200",
-    selector: 'textarea',
-    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes autocorrect typography inlinecss',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name'
-});
-</script>
+
 </body>
 </html>
