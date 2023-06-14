@@ -16,10 +16,11 @@ class Admin extends \Core\Controller
      *
      * @return void
      */
+    public $language = 'en';
     public function indexAction()
     {
-        $language = 'en';
-        $lang= new Languages($language);
+        
+        $lang= new Languages($this->language);
         $data = [
             'name' => $lang->get('NAME'),
             'fio'=>$lang->get('FIO'),
@@ -102,7 +103,7 @@ class Admin extends \Core\Controller
     }
 
     public function add(){
-
+        $lang= new Languages($this->language);
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
             return print_r(json_encode(array('fail' => $lang->get('NULL_ADDRESS')), JSON_UNESCAPED_UNICODE));
@@ -148,7 +149,7 @@ class Admin extends \Core\Controller
     }
 
     public function edit(){
-
+        $lang= new Languages($this->language);
         // Валидация для поля АДРЕС
         if ($_POST["address"] == null)
             return print_r(json_encode(array('fail' => $lang->get('NULL_ADDRESS')), JSON_UNESCAPED_UNICODE));

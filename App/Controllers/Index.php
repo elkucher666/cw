@@ -44,10 +44,12 @@ class Index extends \Core\Controller
         "6",
     ];
 
+    public $language ="en";
+        
+
     public function indexAction()
     {
-        $language = 'en';
-        $lang= new Languages($language);
+        $lang= new Languages($this->language);
         $data = [
             'name' => $lang->get('NAME'),
             'welcome' => $lang->get('WELCOME'),
@@ -103,6 +105,8 @@ class Index extends \Core\Controller
     }
 
     public function applicationPost() {
+        $lang= new Languages($this->language);
+        
         //TODO: баг с региксом фио
         // Валидация по полю ФИО
         if ($_POST["fullname"] == null)

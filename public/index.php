@@ -32,6 +32,7 @@ $router->add('rooms/load', ['controller' => 'Index', 'action' => 'roomsLoader'])
 $router->add('rooms/load/calendar/{id:\d+}', ['controller' => 'Index', 'action' => 'loadCalendarToRoom']);
 $router->add('application/get_language', ['controller' => 'Index', 'action' => 'getLanguage']);
 $router->add('application/post', ['controller' => 'Index', 'action' => 'applicationPost']);
+$router->add('application/set_lang', ['controller' => 'Index', 'action' => 'indexAction']);
 
 $router->add('admin', ['controller' => 'Admin', 'action' => 'index']);
 $router->add('admin/filter', ['controller' => 'Admin', 'action' => 'filter']);
@@ -40,5 +41,8 @@ $router->add('admin/application/reject/{id:\d+}', ['controller' => 'Admin', 'act
 $router->add('admin/rooms/delete/{id:\d+}', ['controller' => 'Admin', 'action' => 'delete']);
 $router->add('admin/rooms/add', ['controller' => 'Admin', 'action' => 'add']);
 $router->add('admin/rooms/edit', ['controller' => 'Admin', 'action' => 'edit']);
+
+
+
 
 $router->dispatch($_SERVER['QUERY_STRING']);
