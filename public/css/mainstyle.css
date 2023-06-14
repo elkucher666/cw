@@ -434,10 +434,9 @@ body {
   left: 0.8854166667vw;
 }
 .catalog .worktimeroom .calendar .calendarev-container-calendar .calendarev-calendar-body .calendarev-day-selected {
-  border: 0.2vw solid #1A1819;
+  box-shadow: 0vw 0vw 0vw 0.2vw #1A1819;
   font-size: 0.9375vw;
   z-index: 1000;
-  position: absolute;
 }
 .catalog .worktimeroom .calendarev-events-container {
   display: block;
