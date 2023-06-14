@@ -31,11 +31,11 @@ class Admin extends \Core\Controller
      *
      * @return void
      */
-    public $language = 'en';
+
     public function indexAction()
     {
         $this->auth();
-        
+        $language = $_POST["lang"]; 
         $lang= new Languages($this->language);
         $data = [
             'name' => $lang->get('NAME'),
@@ -128,7 +128,7 @@ class Admin extends \Core\Controller
 
     public function add(){
         $this->auth();
-
+        $language = $_POST["lang"]; 
         $lang= new Languages($this->language);
 
         // Валидация для поля АДРЕС
@@ -177,7 +177,7 @@ class Admin extends \Core\Controller
 
     public function edit(){
         $this->auth();
-
+        $language = $_POST["lang"]; 
         $lang= new Languages($this->language);
         
         // Валидация для поля АДРЕС

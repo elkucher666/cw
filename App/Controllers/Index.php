@@ -57,14 +57,15 @@ class Index extends \Core\Controller
         "4",
         "5",
         "6",
-    ];
+    ];   
 
-    public $language ="en";
-        
+  
 
+ 
     public function indexAction()
     {
-        $lang= new Languages($this->language);
+        $this->route_params["lang"];
+        $lang= new Languages($_SESSION["name"]);
         $data = [
             'name' => $lang->get('NAME'),
             'welcome' => $lang->get('WELCOME'),
@@ -114,13 +115,26 @@ class Index extends \Core\Controller
         View::renderTemplate('Home/index.html', $data);
     }
 
+    public function langs() {
+        if($this->route_params["lang"]==0)
+        {
+            $_SESSION["name"]='ru';    
+            echo $_SESSION["name"];
+        }
+        else
+        { 
+            $_SESSION["name"]='en';
+            echo $_SESSION["name"];
+        }
+    }
+
     public function roomsLoader(){
         $rooms = Room::getAll();
         return print_r(json_encode($rooms));
     }
 
     public function applicationPost() {
-        $lang= new Languages($this->language);
+        $lang= new Languages($_SESSION["name"]);
         
         //TODO: баг с региксом фио
         // Валидация по полю ФИО
@@ -130,7 +144,7 @@ class Index extends \Core\Controller
             return print_r(json_encode(array('fail' => $lang->get('MIN_FIO')), JSON_UNESCAPED_UNICODE));
         if (iconv_strlen($_POST["fullname"]) > 120)
             return print_r(json_encode(array('fail' => $lang->get('MAX_FIO')), JSON_UNESCAPED_UNICODE));
-        if (!preg_match("/^[а-яА-ЯёЁa-zA-Z ]+$/", $_POST["fullname"]))
+        if (!preg_match("/^[а-яА-ЯёЁa-zA-Z ]/", $_POST["fullname"]))
             return print_r(json_encode(array('fail' => $lang->get('NUMBER_FIO')), JSON_UNESCAPED_UNICODE));
         
         // Валидация по полю ВОЗРАСТ
@@ -247,7 +261,5 @@ class Index extends \Core\Controller
         return print_r(json_encode($dates));
     }
 
-    public function getLanguage() {
-        return json_encode(Languages::getLanguage());
-    }
+
 }
