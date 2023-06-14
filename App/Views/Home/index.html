@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Творческий цех{% endblock %}
+{% block title %}{{name}}{% endblock %}
 
 {% block head %}
 <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
@@ -16,12 +16,14 @@
 
 {% block body %}
 
+
 <div class="header">
     <button class="adminbut">
         <img class="LogoImg" src="img/MainLogo2.png"> 
     </button>
     <div class="linename">
-        <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p>
+        <p class="name">{{name}}</p>
+        <!-- <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p> -->
     </div>
 
 <!-- <?php
@@ -32,19 +34,19 @@
     }
 > -->
 
+<!-- TODO: Сделать вывод мероприятий -->
 
-    <div class="linename">
-        <select name="languages">
-            <option value=""></option>
-            <option value="ru-ru">Русский</option>
-            <option value="en-us">English</option>
-        </select>
-        <button type="submit" name="set_lang"> Сохранить </button>      
-    </div>
+
+
+    <!-- <form method="post" action="application/set_lang">
+        <input name="lang" class="none" value="ru">
+        <input type="submit" value="Русский">
+    </form>
     
-
-
-
+    <form method="post" action="application/set_lang">
+        <input name="lang" class="none" value="en">
+        <input type="submit" value="English">
+    </form> -->
 
 </div>
 <div class="top_bar none" id="top_bar">
@@ -59,8 +61,7 @@
 </div>
 <div class="content">
     <div class="hellomess">
-        <div class="messege">Здраствуте, дорогие посетители!
-            <br>На сайте “ТВОРЧЕСКИЙ ЦЕХ” вы можете узнать полную информацию о помещениях, а так же их забронировать.
+        <div class="messege">{{welcome}}
         </div>
     </div>
     <div id="catalogstr"></div>
@@ -72,12 +73,12 @@
             </div>
         </div>
         <div class="worktimeroom">
-
             <div class="calendar">
-                <div class="legend none">
+                <div class="legend">
                     <div class="occupied">
-                        <div class="blockoccupied"></div>
-                        <p class="legendoccupied">- мероприятия</p>
+                        <div class="blockoccupied">
+                        </div>
+                        <p class="legendoccupied">{{calendar_legend}}</p>
                     </div>
                 </div>
                 <div id="calendar_insertion"></div>
@@ -88,7 +89,9 @@
     <div id="book" class="buttons">
         <button class="order">
             <div class="linebut">
-                <p class="namebut">ЗАБР<span class="decor-4">О</span>НИРОВАТЬ</p>
+                <!-- <p class="namebut">ЗАБР<span class="decor-4">О</span>НИРОВАТЬ</p> -->
+                <p class="namebut">{{btn_booking}}</p>
+
             </div>
         </button>
     </div>
@@ -96,69 +99,72 @@
 <div id="booking" class="none">
     <form id="application_form" method="post" onsubmit="event.preventDefault()">
         <img id="close" src="img/NoBut.png">
-        <div class="nameform">ФОРМА ЗАПОЛНЕНИЯ</div>
+        <div class="nameform">{{form}}</div>
         <div id="booking_date_id" name="booking_date" class="dateform"></div>
         <div class="timeform">
-            с
+            {{from}}
             <select id="timebegin" class="timebegin" name="booking_start">
                
             </select>
-
-            по
+            {{to}}
             <select id="timeend" class="timeend" name="booking_end">
                 
             </select>
         </div>
         <div class="groupformstep">
             <div class="formstep">
-                ФИО:<input name="fullname"pattern="^[а-яА-ЯёЁa-zA-Z ]+$" required       >
+                {{fio}}<input name="fullname"pattern="^[а-яА-ЯёЁa-zA-Z ]+$" required>
             </div>
             <div class="formstep">
-                Возраст:<input name="age" pattern="^\d+$" required>
+                {{age}}<input name="age" pattern="^\d+$" required>
             </div>
             <div class="formstep">
-                Институт:
+                {{institute}}
                 <select name="institute" required>
-                    <option value="" disabled selected>Выберите институт</option>
-                    <option>Другое</option>
-                    <option>ИИТ</option>
-                    <option>ИЯЭиП</option>
-                    <option>ЮИ</option>
-                    <option>МИ</option>
-                    <option>ИРиИТС</option>
-                    <option>ИФЭиУ</option>
-                    <option>ПИ</option>
-                    <option>ИОНиМО</option>
-                    <option>ГПИ</option>
-                    <option>ИФМиЗ</option>
-                    <option>ИРГ</option>
-                    <option>ИПИ</option>
-                    <option>Морской Колледж</option>
-                    <option>Аспирантура</option>
+
+                    <option value="" disabled selected>
+                            {{institute_select}}</option>
+                    <option>{{institute_other}}</option>
+                    <option>{{institute_maritame_college}}</option>
+                    <option>{{institute_postraduare}}</option>
+                    <option>{{institute_iit}}</option>
+                    <option>{{institute_ilep}}</option>
+                    <option>{{institute_yi}}</option>
+                    <option>{{institute_mi}}</option>
+                    <option>{{institute_irits}}</option>
+                    <option>{{institute_ifenu}}</option>
+                    <option>{{institute_pi}}</option>
+                    <option>{{institute_ionmo}}</option>
+                    <option>{{institute_gpi}}</option>
+                    <option>{{institute_ifmc}}</option>
+                    <option>{{institute_irg}}</option>
+                    <option>{{institute_ipi}}</option>
+                    
                 </select>
             </div>
             <div class="formstep">
-                Курс:<select name="course" required>
-                    <option value="" disabled selected>Выберите курс</option>
-                    <option value="0">Другое</option>
-                    <option value="1">1 курс</option>
-                    <option value="2">2 курс</option>
-                    <option value="3">3 курс</option>
-                    <option value="4">4 курс</option>
-                    <option value="5">1 курс магистратура</option>
-                    <option value="6">2 курс магистратура</option>
+                {{course}}<select name="course" required>
+                    <option value="" disabled selected>{{course_select}}</option>
+                    <option value="0">{{course_other}}</option>
+                    <option value="1">{{course_1}}</option>
+                    <option value="2">{{course_2}}</option>
+                    <option value="3">{{course_3}}</option>
+                    <option value="4">{{course_4}}</option>
+                    <option value="5">{{course_1_mage}}</option>
+                    <option value="6">{{course_2_mage}}</option>
                 </select>
             </div>
             <div class="formstep">
-                Номер тел.:<input name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,20}" required>
+                {{phone}}<input name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,20}" required>
             </div>
             <div class="formstep">
-                Контакты:<input name="social_network" required>
+                {{contacts}}<input name="social_network" required>
             </div>
         </div>
         <button class="orderform">
             <div class="linebut">
-                <div class="namebut">ЗАБР<span class="decor-5">О</span>НИРОВАТЬ</div>
+                <!-- <div class="namebut">ЗАБР<span class="decor-5">О</span>НИРОВАТЬ</div> -->
+                <div class="namebut">{{btn_booking}}</div>
             </div>
         </button>
     </form>
@@ -166,9 +172,9 @@
 <div class="footer">
     <div class="container">
         <div class="contactinfo">
-            КОНТАКТНАЯ ИНФОРМАЦИЯ
+           {{contact_information}}
             <div class="contact">
-                <b>Служба подржки: </b>+7 (978) 888-88-88
+                <b>{{support_service}}: </b>+7 (978) 888-88-88
                 <br>
                 <b>E-mail: </b>TvorcheskiCheh@mail.ru
             </div>

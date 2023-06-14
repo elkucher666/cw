@@ -8,10 +8,13 @@
 //
 // =====================================================================================================================
 
+
+
 lang = "ru";
+// let mylang={{'calentar'}};
 
-(function( $ ) {
-
+(async function( $ ) {
+    
 	try {
         var timeNow = moment();
     } catch(e){
@@ -44,8 +47,6 @@ lang = "ru";
                 var $calendar = $(this);
                 $calendar.data("isActive", true);
 
-
-
                 var $prev,
                     $next,
                     $month,
@@ -64,14 +65,11 @@ lang = "ru";
                     toYear,
                     firstStart = true;
 
-
-
                 // public methods
                 this.updateData = function(options){
                     settings = $.extend(settings, options);
                     removeHTML();
                 };
-
 
 
                 // private methods
@@ -479,8 +477,6 @@ lang = "ru";
 
 // Отображает календарь
 async function showCalendar(room_id) {
-    document.querySelector(".calendar .legend").classList.remove("none");
-
     // Формируем запрос на загрузки дат мероприятий
     let url = "rooms/load/calendar/" + room_id;
     let options = {

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Творческий цех{% endblock %}
+{% block title %}{{name}}{% endblock %}
 
 {% block head %}
 <link rel="shortcut icon" href="img/LogoWeb.png">
@@ -15,7 +15,8 @@
 <div class="header">
     <img class="LogoImg" src="img/MainLogo1.png" onclick="document.location = '/'">      
     <div class="linename">
-        <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p>
+        <!-- <p class="name">ТВО<span class="decor-1">Р</span>ЧЕСКИЙ Ц<span class="decor-2">Е</span>Х</p> -->
+        <p class="name">{{name}}</p>
     </div>
 </div>
 <div class="content">
@@ -23,13 +24,13 @@
         <div class="filterrow">
             <div class="filtercol">
                 <div class="periodfilt">
-                    Дата брони:
+                    {{booking_date}}
                     <div class="date">
                         <input type="date" name="booking_date">
                     </div>
                 </div>
                 <div class="typerooms">
-                    Дата заявки:
+                    {{applicatin_date}}
                     <div class="date">
                         <input type="date" name="application_date">
                     </div>
@@ -37,26 +38,26 @@
             </div>
             <div class="filtercol">
                 <div class="telephone">
-                    Телефон:
+                    {{phone}}
                     <input class="tel" type="text" name="phone" pattern="((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,20}">    
                 </div>
                 <div class="fio">
-                    ФИО:
+                    {{fio}}
                     <input class="fio" type="text" name="fullname" pattern="^[А-яёЁ ,.'-]+$">
                 </div>
             </div>
             <div class="filtercol">
                 <div class="status">
-                    Статус:
+                    {{status}}
                     <select name="approved">
-                        <option value="">Все</option>
-                        <option value="0">На расмотрение</option>
-                        <option value="1">Одобреные</option>
-                        <option value="2">Неодобреные</option>
+                        <option value=""> {{status_all}}</option>
+                        <option value="0">{{status_under_consideration}}</option>
+                        <option value="1">{{status_approved}}</option>
+                        <option value="2">{{status_disapproved}}</option>
                     </select>
                 </div>
                 <div class="statuspeople">
-                    Адрес:
+                    {{address}}
                     <select name="address">
                     </select>
                 </div>
@@ -64,16 +65,16 @@
         </div>
         <div class="filterrow">
             <div class="filtbutgroup">
-                <button id="apply_filter" class="butsfilter">Применить</button>
-                <button id="nullify_filter" class="butsfilter">Отчистить</button>
+                <button id="apply_filter" class="butsfilter">{{btn_accept}}</button>
+                <button id="nullify_filter" class="butsfilter">{{btn_clear}}</button>
             </div>
         </div>
     </div>
     <div class="groupbuttime">
-        <button class="buttime selected" value="today">СЕГОДНЯ</button>
-        <button class="buttime" value="current_week">НЕДЕЛЯ</button>
-        <button class="buttime" value="current_month">МЕСЯЦ</button>
-        <button class="buttime" value="all_time">ВСЁ ВРЕМЯ</button>
+        <button class="buttime selected" value="today">{{today}}</button>
+        <button class="buttime" value="current_week">{{week}}</button>
+        <button class="buttime" value="current_month">{{month}}</button>
+        <button class="buttime" value="all_time">{{all_time}}</button>
     </div>
     <table class="aplication" id="applications_table">
         <tbody>
@@ -90,7 +91,8 @@
     </table>
     <button class="butaddroom" id="add_room_button">
         <div class="linebut">
-            <div class="namebut">ДОБАВ<span class="decor-6">И</span>ТЬ</div>
+            <!-- <div class="namebut">ДОБАВ<span class="decor-6">И</span>ТЬ</div> -->
+            <div class="namebut">{{btn_add}}</div>
         </div>
     </button>
 
@@ -99,24 +101,36 @@
 <div id="back_form" class="none">
     <form id="application_form" enctype="multipart/form-data" class="edit_form" onsubmit="event.preventDefault()">
         <img id="close" src="img/reject_image.png">
-        <div class="nameform">ДОБАВЛЕНИЕ ПОМЕЩЕНИЯ</div>
+        <div class="nameform">{{add_room}}</div>
         <div class="groupformstep">
             <div class="formstep">
-                Название помещения:<input name="name" required>
+                {{room_name}}<input name="name" required>
             </div>
             <div class="formstep">
-                Адрес:<input name="address" required>
+                {{address}}<input name="address" required>
             </div>
             <div class="formstep">
-                Описание:<input name="info">
+                {{description}}<input name="info">
             </div>
+            <script src="https://<hostname.tld>/tinymce.min.js" referrerpolicy="origin"></script>
+            <script src="https://cdn.tiny.cloud/1/a3wecvjp5eqc06gwrxiks0ounwxne7s168qmzf7xqu5xpzvt/tinymce/6/plugins.min.js" referrerpolicy="origin"></script>
+            <script>
+                tinymce.init({
+                  selector: '#textarea'
+                });
+              </script>
+                <textarea id="textarea" name="textarea">
+                   Welcome to TinyMCE!
+                </textarea>
+              
             <div class="formstep">
-                Изображение:<input class="input_img" type="file" accept="image/*" name="image" required>
+                {{image}}<input class="input_img" type="file" accept="image/*" name="image" required>
             </div>
         </div>
         <button class="orderform" id="add_room_form_button">
             <div class="linebut">
-                <div class="namebut">ДО<span class="decor-5">Б</span>АВИТЬ</div>
+                <!-- <div class="namebut">ДО<span class="decor-5">Б</span>АВИТЬ</div> -->
+                <div class="namebut">{{btn_add}}</div>
             </div>
         </button>
     </form>
@@ -124,25 +138,27 @@
 <div id="edit_back_form" class="none">
     <form id="edit_form" enctype="multipart/form-data" class="edit_form" onsubmit="event.preventDefault()">
         <img id="edit_close" src="img/reject_image.png">
-        <div class="nameform">РЕДАКТИРОВАНИЕ ПОМЕЩЕНИЯ</div>
+        <div class="nameform">{{edit_room}}</div>
         <div class="groupformstep">
             <input name="id" class="none">
             <div class="formstep">
-                Название помещения:<input name="name" required>
+                {{room_name}} <input name="name" required>
             </div>
             <div class="formstep">
-                Адрес:<input name="address" required>
+                {{address}} <input name="address" required>
             </div>
             <div class="formstep">
-                Описание:<input name="info" required>
+                {{description}} <input name="info" required>
             </div>
             <div class="formstep">
-                Изображение:<input class="input_img" type="file" accept="image/*" name="image">
+                {{image}} <input class="input_img" type="file" accept="image/*" name="image">
             </div>
         </div>
         <button class="orderform" id="edit_room_form_button">
             <div class="linebut">
-                <div class="namebut">ИЗМЕ<span class="decor-5">Н</span>ИТЬ</div>
+                <!-- <div class="namebut">ИЗМЕ<span class="decor-5">Н</span>ИТЬ</div> -->
+                <div class="namebut">{{btn_edit}}</div>
+            
             </div>
         </button>
     </form>
