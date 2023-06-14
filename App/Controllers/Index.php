@@ -31,6 +31,21 @@ class Index extends \Core\Controller
         "ИПИ",
         "Морской Колледж",
         "Аспирантура",
+        "Other",
+        "IIT",
+        "ILEP",
+        "YI",
+        "MI",
+        "IRITS",
+        "IFENU",
+        "PI",
+        "IONMO",
+        "GPI",
+        "IFMC",
+        "IRG",
+        "IPI",
+        "Maritime College",
+        "Graduate School",
     ];
 
     // Список допущенных курсов
@@ -223,7 +238,7 @@ class Index extends \Core\Controller
         $application->created_at = date("Y-m-d H:i:s"); 
         $application->approved = 0;
         $application->save();
-        
+            
         return print_r(json_encode(array('success' => $lang->get('ACCEPT_BOOKING')), JSON_UNESCAPED_UNICODE));
     }
 

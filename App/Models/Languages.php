@@ -26,5 +26,5 @@ class Languages extends \Core\Model
     }
 
 }
-echo $language = Languages::getLanguage();
+// echo $language = Languages::getLanguage();
 ?>
