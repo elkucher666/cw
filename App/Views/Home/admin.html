@@ -1,17 +1,30 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{name}}</title>
 
-{% block title %}{{name}}{% endblock %}
-
-{% block head %}
+<script src="https://cdn.tiny.cloud/1/1vrezf9bnrlqj2yw7nkk7bm3imezdk32qupqnw1hniucyw6p/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 <link rel="shortcut icon" href="img/LogoWeb.png">
 <link rel="stylesheet" type="text/css" href="css/mainstyleadmin.css">
 <script src="js/admin.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-{%endblock%}
 
-{% block body %}
+<form method="post" action="../../../App/Controllers/Andex.php">
+    <input name="lang" class="none" value="ru">
+    <input type="submit" value="Русский">
+</form>
+
+<form method="post" action="../../../App/Controllers/Admin.php">
+    <input name="lang" class="none" value="en">
+    <input type="submit" value="English">
+</form>
+
+</head>
+<body>
+     
 <div class="header">
     <img class="LogoImg" src="img/MainLogo1.png" onclick="document.location = '/'">      
     <div class="linename">
@@ -96,7 +109,11 @@
         </div>
     </button>
 
+    
+
 </div>
+
+
 
 <div id="back_form" class="none">
     <form id="application_form" enctype="multipart/form-data" class="edit_form" onsubmit="event.preventDefault()">
@@ -112,17 +129,7 @@
             <div class="formstep">
                 {{description}}<input name="info">
             </div>
-            <script src="https://<hostname.tld>/tinymce.min.js" referrerpolicy="origin"></script>
-            <script src="https://cdn.tiny.cloud/1/a3wecvjp5eqc06gwrxiks0ounwxne7s168qmzf7xqu5xpzvt/tinymce/6/plugins.min.js" referrerpolicy="origin"></script>
-            <script>
-                tinymce.init({
-                  selector: '#textarea'
-                });
-              </script>
-                <textarea id="textarea" name="textarea">
-                   Welcome to TinyMCE!
-                </textarea>
-              
+
             <div class="formstep">
                 {{image}}<input class="input_img" type="file" accept="image/*" name="image" required>
             </div>
@@ -161,6 +168,18 @@
             
             </div>
         </button>
+
     </form>
 </div>
-{% endblock %}
+<script>tinymce.init({
+    width: "300",
+    height: "200",
+    selector: 'textarea',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes autocorrect typography inlinecss',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name'
+});
+</script>
+</body>
+</html>

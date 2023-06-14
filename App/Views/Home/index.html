@@ -16,6 +16,7 @@
 <script src="js/catalog.js"></script>
 <script src="js/booking.js"></script>
 <script src="js/adminbut.js"></script>
+<script src="js/language.js"></script>
 {%endblock%}
 
 {% block body %}
@@ -41,17 +42,16 @@
 
 <!-- TODO: Сделать вывод мероприятий -->
 
-
-
-    <!-- <form method="post" action="application/set_lang">
-        <input name="lang" class="none" value="ru">
+    <form method="post" action="application/set_lang/0">
+        <input name="lang" class="none" value="0">
         <input type="submit" value="Русский">
     </form>
     
-    <form method="post" action="application/set_lang">
-        <input name="lang" class="none" value="en">
+    <form method="post" action="application/set_lang/1">
+        <input name="lang" class="none" value="1">
         <input type="submit" value="English">
-    </form> -->
+    </form>
+
 
 </div>
 <div class="top_bar none" id="top_bar">
