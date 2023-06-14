@@ -6,7 +6,6 @@ use App\Models\Room;
 use \Core\View;
 use \App\Models\Application;
 
-// TODO: Добавить проверку авторизованности администратора
 // TODO: Добавить смену языка
 class Admin extends \Core\Controller
 {
