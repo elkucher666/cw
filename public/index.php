@@ -28,6 +28,7 @@ $router = new Core\Router();
 // Add the routes
 $router->add('', ['controller' => 'Index', 'action' => 'index']);
 $router->add('/', ['controller' => 'Index', 'action' => 'index']);
+$router->add('setlang/{lang}', ['controller' => 'Index', 'action' => 'setLang']);
 $router->add('rooms/load', ['controller' => 'Index', 'action' => 'roomsLoader']);
 $router->add('rooms/load/calendar/{id:\d+}', ['controller' => 'Index', 'action' => 'loadCalendarToRoom']);
 $router->add('application/get_language', ['controller' => 'Index', 'action' => 'getLanguage']);

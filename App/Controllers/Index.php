@@ -59,12 +59,33 @@ class Index extends \Core\Controller
         "6",
     ];
 
-    public $language ="en";
+    
+    public $lang_list = [
+        "ru",
+        "en",
+    ];
         
 
+    public function setLang() {
+
+        session_start();
+        if (in_array($this->route_params["lang"], $this->lang_list)){
+            $_SESSION["lang"] = $this->route_params["lang"];
+        } else {
+            $_SESSION["lang"] = "ru";
+        }
+
+        return header("Location: /");
+    }
+    
     public function indexAction()
     {
-        $lang= new Languages($this->language);
+        session_start();
+        if (!isset($_SESSION["lang"])){
+            $_SESSION["lang"] = "ru";
+        }
+
+        $lang= new Languages($_SESSION["lang"]);
         $data = [
             'name' => $lang->get('NAME'),
             'welcome' => $lang->get('WELCOME'),
@@ -120,7 +141,7 @@ class Index extends \Core\Controller
     }
 
     public function applicationPost() {
-        $lang= new Languages($this->language);
+        $lang= new Languages( $_SESSION["lang"]);
         
         //TODO: баг с региксом фио
         // Валидация по полю ФИО
