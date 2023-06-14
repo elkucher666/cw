@@ -3,6 +3,10 @@
 {% block title %}{{name}}{% endblock %}
 
 {% block head %}
+<script type="text/javascript">
+    window.myLang = "{{calendar}}";
+</script>
+
 <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
 <link rel="shortcut icon" href="img/LogoWeb.png">
 <link rel="stylesheet" type="text/css" href="css/mainstyle.css">
@@ -15,8 +19,9 @@
 {%endblock%}
 
 {% block body %}
-
-
+<script type="text/javascript">
+    console.log(window.myLang);
+</script>
 <div class="header">
     <button class="adminbut">
         <img class="LogoImg" src="img/MainLogo2.png"> 
