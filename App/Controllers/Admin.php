@@ -51,6 +51,8 @@ class Admin extends \Core\Controller
     
     public function indexAction()
     {
+        $this->auth();
+        
         session_start();
         if (!isset($_SESSION["lang"])){
             $_SESSION["lang"] = "ru";
