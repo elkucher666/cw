@@ -97,6 +97,7 @@ class Admin extends \Core\Controller
             'edit_room' => $lang->get('EDIT_ROOM'),
             'btn_edit' => $lang->get('BTN_EDIT'),
             'delete_message' => $lang->get('DELETE_MESSAGE'),
+            'note' => $lang->get('NOTE'),
         ];
         View::renderTemplate('Home/admin.html', $data);
     }

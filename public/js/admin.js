@@ -20,10 +20,24 @@ let post_options = {
 };
 
 // Заголовки для таблицы с помещениями
-const rooms_table_headers = ["ID", "НАЗВАНИЕ", "АДРЕС", "ИНФОРМАЦИЯ", "ИЗОБРАЖЕНИЕ", "РЕДАКТИРОВАНИЕ"]
+const rooms_table_headers = [
+    window.table_room_name,
+    window.table_room_address,
+    window.table_room_information,
+    window.table_room_image,
+    window.table_room_edit,
+];
 
 // Заголовки для таблицы с заявками
-const applications_table_headers = ["ID", "ДАТА БРОНИ", "ВРЕМЯ", "ФИО", "ТЕЛЕФОН", "ПОМЕЩЕНИЕ/АДРЕС", "ДАТА ЗАЯВКИ", "СТАТУС"]
+const applications_table_headers = [
+    window.table_booking_date,
+    window.table_time,
+    window.table_fio,
+    window.table_phone,
+    window.table_address,
+    window.table_application_date,
+    window.table_status,
+];
 
 // При загрузке HTML вызываем основную логику
 async function onLoad() {
