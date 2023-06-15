@@ -46,13 +46,13 @@ class Admin extends \Core\Controller
             $_SESSION["lang"] = "ru";
         }
 
-        return header("Location: admin");
+        return header("Location: /admin");
     }
     
     public function indexAction()
     {
         $this->auth();
-        
+
         session_start();
         if (!isset($_SESSION["lang"])){
             $_SESSION["lang"] = "ru";
